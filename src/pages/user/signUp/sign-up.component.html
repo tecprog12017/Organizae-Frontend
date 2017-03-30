@@ -1,38 +1,38 @@
 <ion-content>
-  <form [formGroup]="authForm" (ngSubmit)="submitForm(authForm.value)">
+  <form [formGroup]="signUpForm" (ngSubmit)="submitForm(signUpForm.value)">
 
     <ion-item>
       <ion-label floating>First Name</ion-label>
-      <ion-input type="text" placeholder="First Name" [formControl]="authForm.controls['firstName']"></ion-input>
+      <ion-input type="text" placeholder="First Name" [formControl]="signUpForm.controls['firstName']"></ion-input>
     </ion-item>
-    <div class="error-box" *ngIf="authForm.controls['firstName'].hasError('maxLength') && authForm.controls['firstName'].touched">
+    <div class="error-box" *ngIf="signUpForm.controls['firstName'].hasError('maxLength') && signUpForm.controls['firstName'].touched">
       First name can only have 10 letters!
     </div>
-    <div class="error-box" *ngIf="authForm.controls['firstName'].hasError('required') && authForm.controls['firstName'].touched">
+    <div class="error-box" *ngIf="signUpForm.controls['firstName'].hasError('required') && signUpForm.controls['firstName'].touched">
       First name is required!
     </div>
 
     <ion-item>
       <ion-label floating>Last Name</ion-label>
-      <ion-input type="text" placeholder="Last Name" [formControl]="authForm.controls['lastName']"></ion-input>
+      <ion-input type="text" placeholder="Last Name" [formControl]="signUpForm.controls['lastName']"></ion-input>
     </ion-item>
-    <div class="error-box" *ngIf="authForm.controls['lastName'].hasError('required') && authForm.controls['lastName'].touched">
+    <div class="error-box" *ngIf="signUpForm.controls['lastName'].hasError('required') && signUpForm.controls['lastName'].touched">
       Last name is required!
     </div>
 
     <ion-item>
       <ion-label floating>E-mail</ion-label>
-      <ion-input type="text" placeholder="E-mail" [formControl]="authForm.controls['email']"></ion-input>
+      <ion-input type="text" placeholder="E-mail" [formControl]="signUpForm.controls['email']"></ion-input>
     </ion-item>
-    <div class="error-box" *ngIf="authForm.controls['email'].hasError('required') && authForm.controls['email'].touched">
+    <div class="error-box" *ngIf="signUpForm.controls['email'].hasError('required') && signUpForm.controls['email'].touched">
       E-mail is required!
     </div>
 
     <ion-item>
       <ion-label floating>Password</ion-label>
-      <ion-input type="password" placeholder="Password" [formControl]="authForm.controls['password']"></ion-input>
+      <ion-input type="password" placeholder="Password" [formControl]="signUpForm.controls['password']"></ion-input>
     </ion-item>
-    <div class="error-box" *ngIf="authForm.controls['password'].hasError('required') && authForm.controls['password'].touched">
+    <div class="error-box" *ngIf="signUpForm.controls['password'].hasError('required') && signUpForm.controls['password'].touched">
       Password is required!
     </div>
 
