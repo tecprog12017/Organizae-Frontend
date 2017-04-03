@@ -1,0 +1,44 @@
+<ion-content>
+  <form [formGroup]="signUpForm" (ngSubmit)="submitForm(signUpForm.value)">
+
+    <ion-item>
+      <ion-label floating>First Name</ion-label>
+      <ion-input type="text" placeholder="First Name" [formControl]="signUpForm.controls['firstName']" maxLength="15"></ion-input>
+    </ion-item>
+    <div class="error-box" *ngIf="signUpForm.controls['firstName'].hasError('required') && signUpForm.controls['firstName'].touched">
+      First name is required!
+    </div>
+
+    <ion-item>
+      <ion-label floating>Last Name</ion-label>
+      <ion-input type="text" placeholder="Last Name" [formControl]="signUpForm.controls['lastName']" maxLength="15"></ion-input>
+    </ion-item>
+    <div class="error-box" *ngIf="signUpForm.controls['lastName'].hasError('required') && signUpForm.controls['lastName'].touched">
+      Last name is required!
+    </div>
+
+    <ion-item>
+      <ion-label floating>E-mail</ion-label>
+      <ion-input type="text" placeholder="E-mail" [formControl]="signUpForm.controls['email']"></ion-input>
+    </ion-item>
+    <div class="error-box" *ngIf="signUpForm.controls['email'].hasError('required') && signUpForm.controls['email'].touched">
+      E-mail is required!
+    </div>
+    <div class="error-box" *ngIf="signUpForm.controls['email'].hasError('ValidateEmailOutput') && signUpForm.controls['email'].touched">
+      Type a valid e-mail.
+    </div>
+
+    <ion-item>
+      <ion-label floating>Password</ion-label>
+      <ion-input type="password" placeholder="Password" [formControl]="signUpForm.controls['password']"></ion-input>
+    </ion-item>
+    <div class="error-box" *ngIf="signUpForm.controls['password'].hasError('required') && signUpForm.controls['password'].touched">
+      Password is required!
+    </div>
+    <div class="error-box" *ngIf="signUpForm.controls['password'].hasError('ValidatePasswordOutput') && signUpForm.controls['password'].touched">
+      Your password must have at least one digit, one upper case letter and one lower case letter.
+    </div>
+
+    <button type="submit" ion-button full [disabled]="!signUpForm.valid">Submit</button>
+  </form>
+</ion-content>
