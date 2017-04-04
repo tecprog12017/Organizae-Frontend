@@ -29,6 +29,7 @@ export class SignUp {
   submitForm(value: any):void{
     this.newUser = new UserProfile(this.signUpForm);
     this.http.post('http://localhost:3000/api/UserProfiles/sign-up', this.newUser).subscribe();
+    this.navCtrl.pop();
   }
 
 }
