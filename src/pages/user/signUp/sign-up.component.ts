@@ -2,7 +2,7 @@ import { Component} from "@angular/core";
 import { NavController } from "ionic-angular"
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { UserProfile } from '../../../models/userProfile';
-import { ValidateEmail, ValidatePassword } from '../../../controller/custom-validations'
+import { ValidateEmail, ValidatePassword } from '../../../controller/custom-validations';
 import { Http } from '@angular/http';
 
 @Component({
