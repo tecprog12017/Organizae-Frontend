@@ -46,11 +46,11 @@ export class SignIn {
     );
   }
 
-  //Used to show the user if an error ocurred during his acces attempt
+  //Used to show the user if an error ocurred during his access attempt
   showSignInError () {
     let alert = this.alertCtrl.create({
       title: 'Login Error!',
-      subTitle: `There was an error on your login!Check your inputs or if you are registered.`,
+      subTitle: `There was an error on your login! Check your inputs or if you are registered.`,
       buttons: ['OK']
     });
     alert.present();
