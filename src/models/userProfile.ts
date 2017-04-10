@@ -13,3 +13,13 @@ export class UserProfile {
     this.password = signUpForm.get('password').value;
   }
 }
+
+export class Gender {
+  genderIdentity: string;
+  pronoun: string;
+
+  constructor( editForm: FormGroup) {
+    this.genderIdentity = editForm.get('firstName').value;
+    this.pronoun = editForm.get('lastName').value;
+  }
+}
