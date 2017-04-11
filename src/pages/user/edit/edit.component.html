@@ -1,22 +1,31 @@
 <ion-content>
-  <form [formGroup]="editForm">
+  <form [formGroup]="editForm" (ngSubmit)="submitForm(editForm.value)">
 
   <h1>GENDER</h1>
   <ion-list>
     <ion-item>
+
         <ion-label>Gender Identity</ion-label>
-        <ion-select>
+        <ion-select [formControl]="editForm.controls['genderIdentity']">
           <ion-option value="masculino">Masculino</ion-option>
           <ion-option value="feminino">Feminino</ion-option>
-          <ion-option value="outro">Outro</ion-option>
+          <ion-option value="outro" >Outro</ion-option>
         </ion-select>
+
+
     </ion-item>
+
+    <!-- <ion-item *ngIf="editForm.controls.genderIdentity.value  === 'outro' ">
+      <ion-label>Detail</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item> -->
+
   </ion-list>
 
     <ion-list>
       <ion-item>
           <ion-label>Pronoun</ion-label>
-          <ion-select>
+          <ion-select [formControl]="editForm.controls['pronoun']">
             <ion-option value="masculino">Masculino</ion-option>
             <ion-option value="feminino">Feminino</ion-option>
             <ion-option value="neutro">Neutro</ion-option>
@@ -24,12 +33,9 @@
       </ion-item>
     </ion-list>
 
-    <ion-item *ngIf="userType == 'outro'">
-      <ion-label>Detail</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
 
 
-    <button type="submit" ion-button full [disabled]="!signUpForm.valid">Submit</button>
+
+    <button type="submit" ion-button full >Submit</button>
   </form>
 </ion-content>
