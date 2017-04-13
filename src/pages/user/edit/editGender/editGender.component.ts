@@ -4,13 +4,14 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { UserProfile, Gender } from '../../../../models/userProfile';
 import { ValidateEmail, ValidatePassword } from '../../../controller/custom-validations'
 import { Http } from '@angular/http'
+import { EditRg } from '../../../../pages/user/edit/editRg/editRg.component'
 
 @Component({
   selector: "edit",
   templateUrl: 'editGender.component.html'
 })
 
-export class Edit {
+export class EditGender {
   editGenderForm: FormGroup;
   newGender: Gender;
 
@@ -24,8 +25,8 @@ export class Edit {
 
   //Creating method to submit form gender values to backend
   submitForm(value: any):void{
-    this.newGender = new Gender(this.editGenderForm);
-    console.log(this.newGender);
+    this.newGender = new Gender(this.editGenderForm)
+    console.log(this.newGender)
+    this.navCtrl.push(EditRg)
   }
-
 }

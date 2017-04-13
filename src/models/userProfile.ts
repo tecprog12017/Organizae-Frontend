@@ -24,3 +24,13 @@ export class Gender {
     this.pronoun = editGenderForm.get('pronoun').value;
   }
 }
+
+export class Rg {
+  rgNumber: string;
+  rgExpeditionState: string;
+
+  constructor( editRgForm: FormGroup) {
+    this.rgNumber = editRgForm.get('rgNumber').value;
+    this.rgExpeditionState = editRgForm.get('rgExpeditionState').value;
+  }
+}
