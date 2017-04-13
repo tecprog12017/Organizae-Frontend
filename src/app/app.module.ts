@@ -10,6 +10,7 @@ import { EditCpf } from '../pages/user/edit/editCpf/editCpf.component'
 import { EditGender } from '../pages/user/edit/editGender/editGender.component'
 import { EditRg } from '../pages/user/edit/editRg/editRg.component'
 import { EditAddress } from '../pages/user/edit/editAddress/editAddress.component'
+import { EditAdditionalInformation } from '../pages/user/edit/editAdditionalInformation/editAdditionalInformation.component';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -25,7 +26,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     EditCpf,
     EditGender,
     EditRg,
-    EditAddress
+    EditAddress,
+    EditAdditionalInformation
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -41,7 +43,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     EditCpf,
     EditGender,
     EditRg,
-    EditAddress
+    EditAddress,
+    EditAdditionalInformation
   ],
   providers: [
     StatusBar,

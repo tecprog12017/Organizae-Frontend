@@ -9,13 +9,14 @@ import { EditCpf } from '../pages/user/edit/editCpf/editCpf.component';
 import { EditGender } from '../pages/user/edit/editGender/editGender.component';
 import { EditRg } from '../pages/user/edit/editRg/editRg.component';
 import { EditAddress } from '../pages/user/edit/editRg/editAddress.component';
+import { EditAdditionalInformation } from '../pages/user/edit/editAdditionalInformation/editAdditionalInformation.component';
 
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage = EditCpf;
+  rootPage = EditAdditionalInformation;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {

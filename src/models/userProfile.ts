@@ -64,3 +64,13 @@ export class Address {
 
   }
 }
+
+export class Information {
+  birthdate: Date;
+  phone: string;
+
+  constructor( editRgForm: FormGroup) {
+    this.birthdate = editRgForm.get('birthdate').value;
+    this.phone = editRgForm.get('phone').value;
+  }
+}
