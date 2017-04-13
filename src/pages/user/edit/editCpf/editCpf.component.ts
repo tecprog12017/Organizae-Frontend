@@ -10,18 +10,19 @@ import { Http } from '@angular/http'
   templateUrl: 'editCpf.component.html'
 })
 
+//Used to take care the cpf data of the user.
 export class EditCpf {
   editCpfForm: FormGroup;
   newCpf: Cpf;
 
-  //Creating responsive for user profile edit gender.
+  //Form responsible to collect the cpf of user.
   constructor(public navCtrl: NavController, formBuilder: FormBuilder, private http: Http) {
     this.editCpfForm = formBuilder.group({
       'cpf' : [null, Validators.compose([Validators.required])],
     });
   }
 
-  //Creating method to submit form gender values to backend
+  //Method that assign cpf to user profile.
   submitForm(value: any):void{
     this.newCpf = new Cpf(this.editCpfForm);
   }

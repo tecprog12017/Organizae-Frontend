@@ -10,11 +10,12 @@ import { Http } from '@angular/http'
   templateUrl: 'editAddress.component.html'
 })
 
+//Class used to handle with user address informations.
 export class EditAddress {
   editAddressForm: FormGroup;
   newAddress: Address;
 
-  //Creating responsive for user profile edit gender.
+  //Form responsible to register informations related to address.
   constructor(public navCtrl: NavController, formBuilder: FormBuilder, private http: Http) {
     this.editAddressForm = formBuilder.group({
       'cep' : [null, Validators.compose([Validators.required])],
@@ -26,7 +27,7 @@ export class EditAddress {
     });
   }
 
-  //Creating method to submit form gender values to backend
+  //Method responsible to attribute the data of address to the user profile.
   submitForm(value: any):void{
     this.newAddress = new Address(this.editAddressForm)
     console.log(this.newAddress)

@@ -11,11 +11,12 @@ import { EditRg } from '../../../../pages/user/edit/editRg/editRg.component'
   templateUrl: 'editGender.component.html'
 })
 
+//Class used to collect user gender.
 export class EditGender {
   editGenderForm: FormGroup;
   newGender: Gender;
 
-  //Creating responsive for user profile edit gender.
+  //Form to handle with the gender and pronoun that the user identify itself.
   constructor(public navCtrl: NavController, formBuilder: FormBuilder, private http: Http) {
     this.editGenderForm = formBuilder.group({
       'genderIdentity' : [null, Validators.compose([Validators.required])],
@@ -23,7 +24,7 @@ export class EditGender {
     });
   }
 
-  //Creating method to submit form gender values to backend
+  //Method used to ascribe gender data to the user profile.
   submitForm(value: any):void{
     this.newGender = new Gender(this.editGenderForm)
     console.log(this.newGender)

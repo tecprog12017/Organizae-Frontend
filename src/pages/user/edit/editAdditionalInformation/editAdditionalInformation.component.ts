@@ -10,11 +10,12 @@ import { Http } from '@angular/http'
   templateUrl: 'editAdditionalInformation.component.html'
 })
 
+//Class used to handle user secondary informations
 export class EditAdditionalInformation{
   editAdditionalInformationForm: FormGroup;
   newInformations: Information;
 
-  //Creating responsive for user profile edit gender.
+  //Creates form where user insert birthdate and phone number.
   constructor(public navCtrl: NavController, formBuilder: FormBuilder, private http: Http) {
     this.editAdditionalInformationForm = formBuilder.group({
       'birthdate' : [null, Validators.compose([Validators.required])],
@@ -22,7 +23,7 @@ export class EditAdditionalInformation{
     });
   }
 
-  //Creating method to submit form gender values to backend
+  //Method to assign the birthdate and phone to the user.
   submitForm(value: any):void{
     this.newInformations = new Information(this.editAdditionalInformationForm)
     console.log(this.newInformations)

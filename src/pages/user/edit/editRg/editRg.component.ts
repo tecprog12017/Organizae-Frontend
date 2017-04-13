@@ -11,11 +11,12 @@ import { EditAddress } from '../../../../pages/user/edit/editAddress/editAddress
   templateUrl: 'editRg.component.html'
 })
 
+//Class used to deal with rg data.
 export class EditRg {
   editRgForm: FormGroup;
   newRg: Rg;
 
-  //Creating responsive for user profile edit gender.
+  //Form that collect number and where the document was made.
   constructor(public navCtrl: NavController, formBuilder: FormBuilder, private http: Http) {
     this.editRgForm = formBuilder.group({
       'rgNumber' : [null, Validators.compose([Validators.required])],
@@ -23,7 +24,7 @@ export class EditRg {
     });
   }
 
-  //Creating method to submit form gender values to backend
+  //Method to assign rg to current user. 
   submitForm(value: any):void{
     this.newRg = new Rg(this.editRgForm);
     console.log(this.newRg);
