@@ -7,6 +7,7 @@ import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { SignUp } from '../pages/user/signUp/sign-up.component';
 import { SignIn } from '../pages/user/signIn/sign-in.component';
+import { UserHome } from '../pages/user/userHome/user-home.component';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -19,7 +20,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     HomePage,
     TabsPage,
     SignUp,
-    SignIn
+    SignIn,
+    UserHome
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -32,7 +34,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     HomePage,
     TabsPage,
     SignUp,
-    SignIn
+    SignIn,
+    UserHome
   ],
   providers: [
     StatusBar,
