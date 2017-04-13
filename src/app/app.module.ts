@@ -8,6 +8,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { SignUp } from '../pages/user/signUp/sign-up.component';
 import { EditGender } from '../pages/user/edit/editGender/editGender.component'
 import { EditRg } from '../pages/user/edit/editRg/editRg.component'
+import { EditAddress } from '../pages/user/edit/editAddress/editAddress.component'
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -21,7 +22,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     TabsPage,
     SignUp,
     EditGender,
-    EditRg
+    EditRg,
+    EditAddress
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -35,7 +37,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     TabsPage,
     SignUp,
     EditGender,
-    EditRg
+    EditRg,
+    EditAddress
   ],
   providers: [
     StatusBar,

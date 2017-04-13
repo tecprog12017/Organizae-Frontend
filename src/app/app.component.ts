@@ -7,6 +7,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { SignUp } from '../pages/user/signUp/sign-up.component';
 import { EditGender } from '../pages/user/edit/editGender/editGender.component';
 import { EditRg } from '../pages/user/edit/editRg/editRg.component';
+import { EditAddress } from '../pages/user/edit/editRg/editAddress.component';
+
 
 @Component({
   templateUrl: 'app.html'

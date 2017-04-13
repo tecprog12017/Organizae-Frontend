@@ -34,3 +34,25 @@ export class Rg {
     this.rgExpeditionState = editRgForm.get('rgExpeditionState').value;
   }
 }
+
+
+export class Address {
+
+  cep: number
+  city: string
+  state: string
+  neighbourhood: string
+  number: number
+  complement: string
+
+  constructor( editAddressForm: FormGroup) {
+
+    this.cep = editAddressForm.get('cep').value;
+    this.city = editAddressForm.get('city').value;
+    this.state = editAddressForm.get('state').value;
+    this.neighbourhood = editAddressForm.get('neighbourhood').value;
+    this.number = editAddressForm.get('number').value;
+    this.complement = editAddressForm.get('complement').value;
+
+  }
+}

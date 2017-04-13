@@ -4,6 +4,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { UserProfile, Rg } from '../../../../models/userProfile';
 import { ValidateEmail, ValidatePassword } from '../../../controller/custom-validations'
 import { Http } from '@angular/http'
+import { EditAddress } from '../../../../pages/user/edit/editAddress/editAddress.component'
 
 @Component({
   selector: "edit",
@@ -26,6 +27,7 @@ export class EditRg {
   submitForm(value: any):void{
     this.newRg = new Rg(this.editRgForm);
     console.log(this.newRg);
+    this.navCtrl.push(EditAddress);
   }
 
 }
