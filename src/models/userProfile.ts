@@ -24,3 +24,12 @@ export class Gender {
     this.pronoun = editGenderForm.get('pronoun').value;
   }
 }
+
+  export class Cpf {
+    cpf: string;
+
+    constructor( editCpfForm: FormGroup) {
+      this.cpf = editCpfForm.get('cpf').value;
+    }
+
+}
