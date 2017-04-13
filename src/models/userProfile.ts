@@ -18,8 +18,9 @@ export class Gender {
   genderIdentity: string;
   pronoun: string;
 
-  constructor( editForm: FormGroup) {
-    this.genderIdentity = editForm.get('genderIdentity').value;
-    this.pronoun = editForm.get('pronoun').value;
+  constructor( editGenderForm: FormGroup) {
+    console.log(editGenderForm.get('genderIdentity'));
+    this.genderIdentity = editGenderForm.get('genderIdentity').value;
+    this.pronoun = editGenderForm.get('pronoun').value;
   }
 }
