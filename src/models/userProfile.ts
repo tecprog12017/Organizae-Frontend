@@ -25,6 +25,14 @@ export class Gender {
   }
 }
 
+  export class Cpf {
+    cpf: string;
+
+    constructor( editCpfForm: FormGroup) {
+      this.cpf = editCpfForm.get('cpf').value;
+    }
+}
+
 export class Rg {
   rgNumber: string;
   rgExpeditionState: string;
