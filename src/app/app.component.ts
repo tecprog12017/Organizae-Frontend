@@ -16,7 +16,7 @@ import { EditAdditionalInformation } from '../pages/user/edit/editAdditionalInfo
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage = EditAdditionalInformation;
+  rootPage = EditRg;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {

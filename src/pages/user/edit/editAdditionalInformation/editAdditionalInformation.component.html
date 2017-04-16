@@ -15,6 +15,9 @@
       <ion-label>Phone</ion-label>
         <ion-input type="text" [formControl]="editAdditionalInformationForm.controls['phone']"></ion-input>
     </ion-item>
+    <div class="error-box" *ngIf="editAdditionalInformationForm.controls['phone'].hasError('ValidatePhoneOutput') && editAdditionalInformationForm.controls['phone'].touched">
+      Your password must have at least ten digits, with only numeric characters.
+    </div>
   </ion-list>
 
     <button type="submit" ion-button full >Submit</button>
