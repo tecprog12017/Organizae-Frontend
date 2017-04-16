@@ -2,7 +2,7 @@ import { Component } from "@angular/core";
 import { NavController } from "ionic-angular"
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { UserProfile, Information } from '../../../../models/userProfile';
-import { ValidateEmail, ValidatePassword } from '../../../controller/custom-validations'
+import { ValidatePhone } from '../../../../controller/custom-validations'
 import { Http } from '@angular/http'
 
 @Component({
@@ -19,7 +19,7 @@ export class EditAdditionalInformation{
   constructor(public navCtrl: NavController, formBuilder: FormBuilder, private http: Http) {
     this.editAdditionalInformationForm = formBuilder.group({
       'birthdate' : [null, Validators.compose([Validators.required])],
-      'phone' : [null, Validators.compose([Validators.required])]
+      'phone' : [null, Validators.compose([Validators.required, ValidatePhone()])]
     });
   }
 
