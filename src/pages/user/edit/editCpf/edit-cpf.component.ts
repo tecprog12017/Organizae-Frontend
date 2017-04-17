@@ -6,8 +6,8 @@ import { ValidateEmail, ValidatePassword } from '../../../controller/custom-vali
 import { Http } from '@angular/http'
 
 @Component({
-  selector: "editCpf",
-  templateUrl: 'editCpf.component.html'
+  selector: "edit-cpf",
+  templateUrl: 'edit-cpf.component.html'
 })
 
 //Used to take care the cpf data of the user.

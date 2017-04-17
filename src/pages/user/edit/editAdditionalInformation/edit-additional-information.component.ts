@@ -6,8 +6,8 @@ import { ValidatePhone } from '../../../../controller/custom-validations'
 import { Http } from '@angular/http'
 
 @Component({
-  selector: "editAdditionalInformation",
-  templateUrl: 'editAdditionalInformation.component.html'
+  selector: "edit-additional-information",
+  templateUrl: 'edit-additional-information.component.html'
 })
 
 //Class used to handle user secondary informations

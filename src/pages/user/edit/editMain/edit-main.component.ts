@@ -7,7 +7,7 @@ import { Http } from '@angular/http'
 
 @Component({
   selector: "edit",
-  templateUrl: 'editMain.component.html'
+  templateUrl: 'edit-main.component.html'
 })
 
 //Class used to handle user informations.

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { EditMain } from '../edit/editMain/editMain.component'
+import { EditMain } from '../edit/editMain/edit-main.component'
 
 @Component({
   selector: "user-home",
