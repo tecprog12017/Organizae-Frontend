@@ -36,4 +36,7 @@
     </form>
   </ion-card>
 
+    <button id="sign-in-button" type="submit" ion-button [disabled]="!signInForm.valid">Submit</button>
+    <button id="#register-button" type="register" ion-button [navPush]="signUp">Register</button>
+  </form>
 </ion-content>
