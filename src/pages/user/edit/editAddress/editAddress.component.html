@@ -7,6 +7,8 @@
         <ion-label>CEP</ion-label>
           <ion-input type="text" [formControl]="editAddressForm.controls['cep']"></ion-input>
     </ion-item>
+    <div *ngIf="editAddressForm.controls['cep'].value !== null && editAddressForm.controls['cep'].value.length > 8"> Cep can't have more then 8 characters </div>
+    <div *ngIf="editAddressForm.controls['cep'].value !== null && editAddressForm.controls['cep'].value.length < 8"> Cpf can't have less then 8 characters </div>
 
   </ion-list>
 
@@ -74,7 +76,7 @@
   <ion-list>
     <ion-item>
         <ion-label>number</ion-label>
-          <ion-input type="text" [formControl]="editAddressForm.controls['number']"></ion-input>
+          <ion-input type="number" [formControl]="editAddressForm.controls['number']"></ion-input>
     </ion-item>
 
   </ion-list>

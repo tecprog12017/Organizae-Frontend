@@ -18,7 +18,7 @@ export class EditAddress {
   //Form responsible to register informations related to address.
   constructor(public navCtrl: NavController, formBuilder: FormBuilder, private http: Http) {
     this.editAddressForm = formBuilder.group({
-      'cep' : [null, Validators.compose([Validators.required])],
+      'cep' : [null, Validators.compose([Validators.required, Validators.maxLength(8)])],
       'city' : [null, Validators.compose([Validators.required])],
       'state' : [null, Validators.compose([Validators.required])],
       'neighbourhood' : [null, Validators.compose([Validators.required])],
