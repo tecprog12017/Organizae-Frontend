@@ -14,7 +14,7 @@ describe("Sign In Tests", function(){
                .pressButton("#sign-up-submit-button button[type=submit]")
                .fill("#email input[name='email']", "teste@gmail.com")
                .fill("#password input[name='password']", "Teste123");
-        expect(browser.html('body')).toNotContain("Login Error!");;
+        expect(browser.html('body')).toNotContain("User Homepage");;
       });
     });
   });
