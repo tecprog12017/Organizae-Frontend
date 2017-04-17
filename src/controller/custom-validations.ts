@@ -1,4 +1,5 @@
 import { AbstractControl, ValidatorFn } from '@angular/forms';
+import { Directive, ElementRef, HostListener, Input } from '@angular/core';
 
 //Validation used for the email on the user account
 export function ValidateEmail (): ValidatorFn {
@@ -28,6 +29,23 @@ export function ValidatePassword (): ValidatorFn {
     }
     else {
       return { ValidatePasswordOutput: true};
+    }
+  }
+}
+
+//Validation used to not allow letters, special characters and short strings in phone number
+export function ValidatePhone (): ValidatorFn {
+
+  return (control: AbstractControl): {[key: string]: any} => {
+    const phoneRegex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,7}$/im
+    var isValid = phoneRegex.test(control.value);
+
+    console.log(isValid);
+    if(isValid){
+      return null
+    }
+    else{
+      return { ValidatePhoneOutput : true };
     }
   }
 }

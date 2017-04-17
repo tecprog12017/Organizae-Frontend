@@ -12,7 +12,6 @@ import { Http } from '@angular/http'
 
 //Used to take care the cpf data of the user.
 export class EditCpf {
-
   @Input('group')
   editCpf: FormGroup;
 }

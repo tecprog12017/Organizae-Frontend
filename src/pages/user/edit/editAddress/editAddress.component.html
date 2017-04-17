@@ -4,6 +4,9 @@
       <ion-input type="text" [formControl]="editAddress.controls['cep']"></ion-input>
   </ion-item>
 
+  <div *ngIf="editAddress.controls['cep'].value !== null && editAddress.controls['cep'].value.length < 8"> Cpf can't have less then 8 characters </div>
+  <div *ngIf="editAddress.controls['cep'].value !== null && editAddress.controls['cep'].value.length > 8"> Cep can't have more then 8 characters </div>
+
 </ion-list>
 
 <ion-list>
@@ -13,7 +16,6 @@
   </ion-item>
 
   </ion-list>
-
 
   <ion-list>
     <ion-item>
@@ -61,24 +63,22 @@
 
   <ion-list>
     <ion-item>
-        <ion-label floating>Neighbourhood</ion-label>
-          <ion-input type="text" [formControl]="editAddress.controls['neighbourhood']"></ion-input>
+      <ion-label floating>Neighbourhood</ion-label>
+        <ion-input type="text" [formControl]="editAddress.controls['neighbourhood']"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-item>
+      <ion-label floating>Number</ion-label>
+        <ion-input type="text" [formControl]="editAddress.controls['number']"></ion-input>
     </ion-item>
 
   </ion-list>
 
   <ion-list>
     <ion-item>
-        <ion-label floating>number</ion-label>
-          <ion-input type="text" [formControl]="editAddress.controls['number']"></ion-input>
+      <ion-label floating>Complement</ion-label>
+        <ion-input type="text" [formControl]="editAddress.controls['complement']"></ion-input>
     </ion-item>
-
-  </ion-list>
-
-  <ion-list>
-    <ion-item>
-        <ion-label floating>Complement</ion-label>
-          <ion-input type="text" [formControl]="editAddress.controls['complement']"></ion-input>
-    </ion-item>
-
 </ion-list>

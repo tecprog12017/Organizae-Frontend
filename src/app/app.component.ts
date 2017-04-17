@@ -8,7 +8,7 @@ import { SignUp } from '../pages/user/signUp/sign-up.component';
 import { EditCpf } from '../pages/user/edit/editCpf/editCpf.component';
 import { EditGender } from '../pages/user/edit/editGender/editGender.component';
 import { EditRg } from '../pages/user/edit/editRg/editRg.component';
-import { EditAddress } from '../pages/user/edit/editRg/editAddress.component';
+import { EditAddress } from '../pages/user/edit/editAddress/editAddress.component';
 import { EditAdditionalInformation } from '../pages/user/edit/editAdditionalInformation/editAdditionalInformation.component';
 import { EditMain } from '../pages/user/edit/editMain/editMain.component';
 

@@ -12,8 +12,6 @@ import { Http } from '@angular/http'
 
 //Class used to handle with user address informations.
 export class EditAddress {
-
   @Input('group')
   editAddress: FormGroup;
-
 }
