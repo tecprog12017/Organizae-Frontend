@@ -1,11 +1,7 @@
-<ion-content>
-  <form [formGroup]="editGenderForm" (ngSubmit)="submitForm(editGenderForm.value)">
-
-  <h1>GENDER</h1>
-  <ion-list>
+  <ion-list [formGroup]="editGender">
     <ion-item>
-        <ion-label>Gender Identity</ion-label>
-        <ion-select [formControl]="editGenderForm.controls['genderIdentity']">
+        <ion-label floating>Gender Identity</ion-label>
+        <ion-select [formControl]="editGender.controls['genderIdentity']">
           <ion-option value="male">Male</ion-option>
           <ion-option value="female">Female</ion-option>
           <ion-option value="other">Other</ion-option>
@@ -13,27 +9,20 @@
     </ion-item>
 
 
-    <ion-item *ngIf="(editGenderForm.controls.genderIdentity.value  !== 'male' && editGenderForm.controls.genderIdentity.value  !== 'female') && editGenderForm.controls.genderIdentity.value  !== null">
-      <ion-label>Detail</ion-label>
-      <ion-input type="text" [formControl]="editGenderForm.controls['genderIdentity']"></ion-input>
+    <ion-item *ngIf="(editGender.controls.genderIdentity.value  !== 'male' && editGender.controls.genderIdentity.value  !== 'female') && editGender.controls.genderIdentity.value  !== null">
+      <ion-label floating>Detail</ion-label>
+      <ion-input type="text" [formControl]="editGender.controls['genderIdentity']"></ion-input>
     </ion-item>
 
   </ion-list>
 
   <ion-list>
     <ion-item>
-      <ion-label>Pronoun</ion-label>
-        <ion-select [formControl]="editGenderForm.controls['pronoun']">
+      <ion-label floating>Pronoun</ion-label>
+        <ion-select [formControl]="editGender.controls['pronoun']">
           <ion-option value="male">Male</ion-option>
           <ion-option value="female">Female</ion-option>
           <ion-option value="neutral">Neutral</ion-option>
         </ion-select>
     </ion-item>
   </ion-list>
-
-
-
-
-    <button type="submit" ion-button full >Submit</button>
-  </form>
-</ion-content>
