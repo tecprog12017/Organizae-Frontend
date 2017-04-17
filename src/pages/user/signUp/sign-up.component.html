@@ -14,7 +14,7 @@
       <!-- Input for the first name of the user used on registration-->
       <ion-item>
         <ion-label floating>First Name</ion-label>
-        <ion-input type="text" placeholder="First Name" [formControl]="signUpForm.controls['firstName']" maxLength="15"></ion-input>
+        <ion-input id="first-name" type="text" placeholder="First Name" [formControl]="signUpForm.controls['firstName']" maxLength="15"></ion-input>
       </ion-item>
       <div class="error-box" *ngIf="signUpForm.controls['firstName'].hasError('required') && signUpForm.controls['firstName'].touched">
         First name is required!
@@ -24,7 +24,7 @@
       <!-- Input for the last name of the user used on the registration -->
       <ion-item>
         <ion-label floating>Last Name</ion-label>
-        <ion-input type="text" placeholder="Last Name" [formControl]="signUpForm.controls['lastName']" maxLength="15"></ion-input>
+        <ion-input id="last-name" type="text" placeholder="Last Name" [formControl]="signUpForm.controls['lastName']" maxLength="15"></ion-input>
       </ion-item>
       <div class="error-box" *ngIf="signUpForm.controls['lastName'].hasError('required') && signUpForm.controls['lastName'].touched">
         Last name is required!
@@ -34,7 +34,7 @@
       <!-- Input for the email of the user used on the registration -->
       <ion-item>
         <ion-label floating>E-mail</ion-label>
-        <ion-input type="text" placeholder="E-mail" [formControl]="signUpForm.controls['email']"></ion-input>
+        <ion-input id="email-register" type="text" placeholder="E-mail" [formControl]="signUpForm.controls['email']"></ion-input>
       </ion-item>
       <div class="error-box" *ngIf="signUpForm.controls['email'].hasError('required') && signUpForm.controls['email'].touched">
         E-mail is required!
@@ -47,7 +47,7 @@
       <!-- Input for the password of the user used on the registrations -->
       <ion-item>
         <ion-label floating>Password</ion-label>
-        <ion-input type="password" placeholder="Password" [formControl]="signUpForm.controls['password']"></ion-input>
+        <ion-input id="password-register" type="password" placeholder="Password" [formControl]="signUpForm.controls['password']"></ion-input>
       </ion-item>
       <div class="error-box" *ngIf="signUpForm.controls['password'].hasError('required') && signUpForm.controls['password'].touched">
         Password is required!
@@ -57,7 +57,8 @@
       </div>
       <br>
 
-      <button type="submit" ion-button full [disabled]="!signUpForm.valid">Submit</button>
+      <button id="sign-up-submit-button" type="submit" ion-button full [disabled]="!signUpForm.valid">Submit</button>
     </form>
   </ion-card>
+
 </ion-content>
