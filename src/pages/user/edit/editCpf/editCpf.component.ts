@@ -18,7 +18,7 @@ export class EditCpf {
   //Form responsible to collect the cpf of user.
   constructor(public navCtrl: NavController, formBuilder: FormBuilder, private http: Http) {
     this.editCpfForm = formBuilder.group({
-      'cpf' : [null, Validators.compose([Validators.required])],
+      'cpf' : [null, Validators.compose([Validators.required, Validators.maxLength(12)])],
     });
   }
 
