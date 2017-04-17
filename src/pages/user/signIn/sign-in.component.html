@@ -1,30 +1,38 @@
-
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>Sign In</ion-title>
+  <ion-navbar color='primary'>
+    <ion-title>Organizaê</ion-title>
   </ion-navbar>
-
 </ion-header>
 
-<ion-content padding>
+<ion-content class="content-class">
+  <!-- Card containing sign in form -->
+  <ion-card color='gray' class="card">
+    <ion-card-header>Sign In</ion-card-header>
+    <!-- Form used for the user to access his account -->
+    <form [formGroup]="signInForm" (ngSubmit)="submitForm(signInForm.value)">
 
-  <!-- Form used for the user to access his account -->
-  <form [formGroup]="signInForm" (ngSubmit)="submitForm(signInForm.value)">
+      <!-- Email input used for the user to access his account -->
+      <ion-item class="input-class">
+        <ion-label floating>E-mail</ion-label>
+        <ion-input type="text" class="input-class" [formControl]="signInForm.controls['email']"></ion-input>
+      </ion-item>
+      <br>
 
-    <!-- Email input used for the user to access his account -->
-    <ion-item>
-      <ion-label floating>E-mail</ion-label>
-      <ion-input type="text" [formControl]="signInForm.controls['email']"></ion-input>
-    </ion-item>
+      <!-- Password input used for the user to access his account -->
+      <ion-item class="input-class">
+        <ion-label floating>Password</ion-label>
+        <ion-input type="password" [formControl]="signInForm.controls['password']"></ion-input>
+      </ion-item>
+      <br>
 
-    <!-- Password input used for the user to access his account -->
-    <ion-item>
-      <ion-label floating>Password</ion-label>
-      <ion-input type="password" [formControl]="signInForm.controls['password']"></ion-input>
-    </ion-item>
+      <!-- Button to access application -->
+      <button type="submit" ion-button class="button-class" [disabled]="!signInForm.valid">Submit</button>
+      <br>
 
-    <button type="submit" ion-button [disabled]="!signInForm.valid">Submit</button>
-    <button type="register" ion-button [navPush]="signUp">Register</button>
-  </form>
+      <!-- Link redirecting to sign up page -->
+      <a [navPush]="signUp" class="link-class">Not a member? Sign up now.</a>
+      <br>
+
+    </form>
+  </ion-card>
 </ion-content>

@@ -5,7 +5,9 @@ import { Http } from '@angular/http';
 import { AlertController } from 'ionic-angular';
 import { ValidateEmail, ValidatePassword } from '../../../controller/custom-validations';
 import { SignUp } from '../signUp/sign-up.component';
-import { UserProfile } from '../../../models/user-profile'
+import { UserProfile } from '../../../models/user-profile';
+import { UserHome } from '../userHome/user-home.component';
+
 import 'rxjs/add/operator/map';
 import * as  jwt from 'jwt-simple/lib/jwt';
 
@@ -36,8 +38,9 @@ export class SignIn {
     this.http.post('http://localhost:3000/api/UserProfiles/login', this.signInForm.value)
     .map(res => res.json())
     .subscribe(token => {
-      if(token != 400){
+      if(token.status != 400){
         this.userToken = jwt.decode(token, this.secret);
+        this.navCtrl.setRoot(UserHome, { }, {animate: true, direction: 'forward'});
       }
       else{
         this.showSignInError();
