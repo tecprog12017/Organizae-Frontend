@@ -1,28 +1,24 @@
-<ion-content>
-  <form [formGroup]="editAddressForm" (ngSubmit)="submitForm(editAddressForm.value)">
+<ion-list [formGroup]="editAddress">
+  <ion-item>
+    <ion-label floating>CEP</ion-label>
+      <ion-input type="text" [formControl]="editAddress.controls['cep']"></ion-input>
+  </ion-item>
 
-  <h1>Address</h1>
-  <ion-list>
-    <ion-item>
-        <ion-label>CEP</ion-label>
-          <ion-input type="text" [formControl]="editAddressForm.controls['cep']"></ion-input>
-    </ion-item>
+</ion-list>
 
-  </ion-list>
-
-  <ion-list>
-    <ion-item>
-        <ion-label>City</ion-label>
-          <ion-input type="text" [formControl]="editAddressForm.controls['city']"></ion-input>
-    </ion-item>
+<ion-list>
+  <ion-item>
+    <ion-label floating>City</ion-label>
+      <ion-input type="text" [formControl]="editAddress.controls['city']"></ion-input>
+  </ion-item>
 
   </ion-list>
 
 
   <ion-list>
     <ion-item>
-      <ion-label> State</ion-label>
-        <ion-select [formControl]="editAddressForm.controls['state']">
+      <ion-label floating> State</ion-label>
+        <ion-select [formControl]="editAddress.controls['state']">
           <ion-option value="ac"> Acre </ion-option>
           <ion-option value="al"> Alagoas </ion-option>
           <ion-option value="ap"> Amapá </ion-option>
@@ -65,32 +61,24 @@
 
   <ion-list>
     <ion-item>
-        <ion-label>Neighbourhood</ion-label>
-          <ion-input type="text" [formControl]="editAddressForm.controls['neighbourhood']"></ion-input>
+        <ion-label floating>Neighbourhood</ion-label>
+          <ion-input type="text" [formControl]="editAddress.controls['neighbourhood']"></ion-input>
     </ion-item>
 
   </ion-list>
 
   <ion-list>
     <ion-item>
-        <ion-label>number</ion-label>
-          <ion-input type="text" [formControl]="editAddressForm.controls['number']"></ion-input>
+        <ion-label floating>number</ion-label>
+          <ion-input type="text" [formControl]="editAddress.controls['number']"></ion-input>
     </ion-item>
 
   </ion-list>
 
   <ion-list>
     <ion-item>
-        <ion-label>Complement</ion-label>
-          <ion-input type="text" [formControl]="editAddressForm.controls['complement']"></ion-input>
+        <ion-label floating>Complement</ion-label>
+          <ion-input type="text" [formControl]="editAddress.controls['complement']"></ion-input>
     </ion-item>
 
-  </ion-list>
-
-
-
-
-
-    <button type="submit" ion-button full >Submit</button>
-  </form>
-</ion-content>
+</ion-list>
