@@ -12,6 +12,8 @@ import { EditRg } from '../pages/user/edit/editRg/editRg.component'
 import { EditAddress } from '../pages/user/edit/editAddress/editAddress.component'
 import { EditAdditionalInformation } from '../pages/user/edit/editAdditionalInformation/editAdditionalInformation.component';
 import { EditMain } from '../pages/user/edit/editMain/editMain.component';
+import { SignIn } from '../pages/user/signIn/sign-in.component';
+import { UserHome } from '../pages/user/userHome/user-home.component';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -29,7 +31,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     EditRg,
     EditAddress,
     EditAdditionalInformation,
-    EditMain
+    EditMain,
+    SignIn,
+    UserHome
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -47,7 +51,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     EditRg,
     EditAddress,
     EditAdditionalInformation,
-    EditMain
+    EditMain,
+    SignIn,
+    UserHome
   ],
   providers: [
     StatusBar,

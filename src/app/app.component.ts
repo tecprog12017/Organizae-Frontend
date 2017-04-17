@@ -12,12 +12,13 @@ import { EditAddress } from '../pages/user/edit/editAddress/editAddress.componen
 import { EditAdditionalInformation } from '../pages/user/edit/editAdditionalInformation/editAdditionalInformation.component';
 import { EditMain } from '../pages/user/edit/editMain/editMain.component';
 
+import { SignIn } from '../pages/user/signIn/sign-in.component';
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage = EditMain;
+  rootPage = SignIn;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
