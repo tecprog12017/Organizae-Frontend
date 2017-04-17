@@ -1,0 +1,27 @@
+<ion-content>
+  <form [formGroup]="editForm" (ngSubmit)="submitForm(editForm.value)">
+    <ion-slides>
+
+      <ion-slide>
+        <h1>Document Information</h1>
+          <editRg [group] = "editForm.controls['documents'].controls[0]"></editRg>
+          <editCpf [group] = "editForm.controls['documents'].controls[1]"></editCpf>
+      </ion-slide>
+
+      <ion-slide>
+        <h1>Address</h1>
+          <editAddress [group] = "editForm.controls['address'].controls[0]"></editAddress>
+      </ion-slide>
+
+      <ion-slide>
+        <h1>Personal Information</h1>
+          <editAdditionalInformation [group] = "editForm.controls['personalInformation'].controls[0]"></editAdditionalInformation>
+          <editGender [group] = "editForm.controls['personalInformation'].controls[1]" ></editGender>
+
+          <button type="submit" ion-button full >Submit</button>
+      </ion-slide>
+
+    </ion-slides>
+  </form>
+
+</ion-content>

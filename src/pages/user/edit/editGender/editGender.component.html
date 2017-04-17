@@ -1,0 +1,28 @@
+  <ion-list [formGroup]="editGender">
+    <ion-item>
+        <ion-label floating>Gender Identity</ion-label>
+        <ion-select [formControl]="editGender.controls['genderIdentity']">
+          <ion-option value="male">Male</ion-option>
+          <ion-option value="female">Female</ion-option>
+          <ion-option value="other">Other</ion-option>
+        </ion-select>
+    </ion-item>
+
+
+    <ion-item *ngIf="(editGender.controls.genderIdentity.value  !== 'male' && editGender.controls.genderIdentity.value  !== 'female') && editGender.controls.genderIdentity.value  !== null">
+      <ion-label floating>Detail</ion-label>
+      <ion-input type="text" [formControl]="editGender.controls['genderIdentity']"></ion-input>
+    </ion-item>
+
+  </ion-list>
+
+  <ion-list>
+    <ion-item>
+      <ion-label floating>Pronoun</ion-label>
+        <ion-select [formControl]="editGender.controls['pronoun']">
+          <ion-option value="male">Male</ion-option>
+          <ion-option value="female">Female</ion-option>
+          <ion-option value="neutral">Neutral</ion-option>
+        </ion-select>
+    </ion-item>
+  </ion-list>

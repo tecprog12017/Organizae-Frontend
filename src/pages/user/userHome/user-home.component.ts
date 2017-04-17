@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { EditMain } from '../edit/editMain/editMain.component'
 
 @Component({
   selector: "user-home",
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
 })
 
 export class UserHome {
-
+  editMain = EditMain;
 }

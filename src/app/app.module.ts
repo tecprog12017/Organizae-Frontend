@@ -6,6 +6,14 @@ import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { SignUp } from '../pages/user/signUp/sign-up.component';
+
+import { EditCpf } from '../pages/user/edit/editCpf/editCpf.component'
+import { EditGender } from '../pages/user/edit/editGender/editGender.component'
+import { EditRg } from '../pages/user/edit/editRg/editRg.component'
+import { EditAddress } from '../pages/user/edit/editAddress/editAddress.component'
+import { EditAdditionalInformation } from '../pages/user/edit/editAdditionalInformation/editAdditionalInformation.component';
+import { EditMain } from '../pages/user/edit/editMain/editMain.component';
+
 import { SignIn } from '../pages/user/signIn/sign-in.component';
 import { UserHome } from '../pages/user/userHome/user-home.component';
 
@@ -20,6 +28,12 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     HomePage,
     TabsPage,
     SignUp,
+    EditCpf,
+    EditGender,
+    EditRg,
+    EditAddress,
+    EditAdditionalInformation,
+    EditMain,
     SignIn,
     UserHome
   ],
@@ -34,6 +48,12 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     HomePage,
     TabsPage,
     SignUp,
+    EditCpf,
+    EditGender,
+    EditRg,
+    EditAddress,
+    EditAdditionalInformation,
+    EditMain,
     SignIn,
     UserHome
   ],
