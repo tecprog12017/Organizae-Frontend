@@ -1,8 +1,6 @@
 var Browser = require("zombie");
 var url = "http://localhost:3000";
-var browser = new Browser({
-    waitDuration: 29*1000
-});
+var browser = new Browser();
 
 describe("Sign In Tests", function(){
   describe("Sign In with success", function () {
