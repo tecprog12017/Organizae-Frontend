@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 import { NavController } from "ionic-angular"
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import { UserProfile, Cpf, Rg, Address, Information, Gender } from '../../../../models/user-profile';
+import { UserFullProfile, Cpf, Rg, Address, Information, Gender } from '../../../../models/user-profile';
 import { ValidateEmail, ValidatePassword } from '../../../controller/custom-validations'
 import { Http } from '@angular/http'
 
@@ -18,7 +18,7 @@ export class EditMain{
   newAddress: Address
   newInformation: Information
   newGender: Gender
-
+  userFullProfile: UserFullProfile
 
   //Form that collect all data the user provides by the slides form .
   constructor(public navCtrl: NavController, private formBuilder: FormBuilder, private http: Http) {
@@ -38,11 +38,8 @@ export class EditMain{
     this.newInformation = new Information(this.editForm)
     this.newGender = new Gender(this.editForm)
 
-    console.log('rg',this.newRg)
-    console.log('cpf',this.newCpf)
-    console.log('address', this.newAddress)
-    console.log('information', this.newInformation)
-    console.log('gender', this.newGender)
+    this.userFullProfile = new UserFullProfile('hugo@hugo.com',this.newRg, this.newCpf, this.newAddress, this.newInformation, this.newGender)
+    console.log('All infos', this.userFullProfile)
 
   }
 
