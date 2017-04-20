@@ -40,6 +40,7 @@ export class EditMain{
 
     this.userFullProfile = new UserFullProfile('hugo@hugo.com',this.newRg, this.newCpf, this.newAddress, this.newInformation, this.newGender)
     console.log('All infos', this.userFullProfile)
+    this.http.post('http://localhost:3000/api/UserProfiles/update', this.userFullProfile).map(res => res.json()).subscribe();
 
   }
 

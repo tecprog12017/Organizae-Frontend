@@ -73,7 +73,7 @@ export class Gender {
 
 //Class which contain personal information from the user, that are not relevant at user sign-up.
 export class UserFullProfile {
-  userEmail: string;
+  email: string;
   rg: Rg;
   cpf: Cpf;
   address: Address;
@@ -81,7 +81,7 @@ export class UserFullProfile {
   gender: Gender;
 
   constructor(userEmail: string, rg: Rg, cpf: Cpf, address: Address, information: Information, gender: Gender) {
-    this.userEmail = userEmail;
+    this.email = userEmail;
     this.rg = rg;
     this.cpf = cpf;
     this.address = address;
