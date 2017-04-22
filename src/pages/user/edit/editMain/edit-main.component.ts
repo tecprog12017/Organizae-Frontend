@@ -4,6 +4,12 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { UserFullProfile, Cpf, Rg, Address, Information, Gender } from '../../../../models/user-profile';
 import { ValidateEmail, ValidatePassword } from '../../../controller/custom-validations'
 import { Http } from '@angular/http'
+import { UserTokenSession } from '../../signIn/user-token-session.service'
+import { UserHome } from '../../userHome/user-home.component';
+import { AlertController } from 'ionic-angular';
+
+import 'rxjs/add/operator/map';
+import * as  jwt from 'jwt-simple/lib/jwt';
 
 @Component({
   selector: "edit",
@@ -19,9 +25,13 @@ export class EditMain{
   newInformation: Information
   newGender: Gender
   userFullProfile: UserFullProfile
+  secret = 'tecprog-2017/01';
+
 
   //Form that collect all data the user provides by the slides form .
-  constructor(public navCtrl: NavController, private formBuilder: FormBuilder, private http: Http) {
+  constructor(public navCtrl: NavController, private formBuilder: FormBuilder,
+              private http: Http, public userTokenSession: UserTokenSession,
+              public alertCtrl: AlertController) {
     this.editForm = formBuilder.group({
       'documents' : formBuilder.array([this.initRg(), this.initCpf()],),
       'address' : formBuilder.array([ this.initAddress()],),
@@ -39,8 +49,18 @@ export class EditMain{
     this.newGender = new Gender(this.editForm)
 
     this.userFullProfile = new UserFullProfile('hugo@hugo.com',this.newRg, this.newCpf, this.newAddress, this.newInformation, this.newGender)
-    console.log('All infos', this.userFullProfile)
-    this.http.post('http://localhost:3000/api/UserProfiles/update', this.userFullProfile).map(res => res.json()).subscribe();
+    this.http.post('http://localhost:3000/api/UserProfiles/update', this.userFullProfile)
+    .map(res => res.json())
+    .subscribe(token =>{
+      if(token.status != 400){
+        var userToken = jwt.decode(token, this.secret);
+        this.userTokenSession.setToken(userToken)
+        this.navCtrl.setRoot(UserHome, { }, {animate: true, direction: 'forward'});
+      }
+      else{
+        this.showUpdateError();
+      }
+    });
 
   }
 
@@ -86,4 +106,16 @@ export class EditMain{
       'pronoun' : [null, Validators.compose([Validators.required])]
     });
   }
+
+
+  //Used to show the user if an error ocurred during his access attempt
+  showUpdateError () {
+    let alert = this.alertCtrl.create({
+      title: 'Update Error!',
+      subTitle: `There was an error on your update form! Check your inputs.`,
+      buttons: ['OK']
+    });
+    alert.present();
+  }
+
 }
