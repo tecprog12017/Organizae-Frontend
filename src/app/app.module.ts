@@ -16,6 +16,7 @@ import { EditMain } from '../pages/user/edit/editMain/edit-main.component';
 
 import { SignIn } from '../pages/user/signIn/sign-in.component';
 import { UserHome } from '../pages/user/userHome/user-home.component';
+import { UserTokenSession } from '../pages/user/signIn/user-token-session.service'
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -60,6 +61,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   providers: [
     StatusBar,
     SplashScreen,
+    UserTokenSession,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
