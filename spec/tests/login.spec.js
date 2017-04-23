@@ -13,8 +13,9 @@ describe("Sign In Tests", function(){
                .fill("#password-register input[name='password']", "Teste123")
                .pressButton("#sign-up-submit-button button[type=submit]")
                .fill("#email input[name='email']", "teste@gmail.com")
-               .fill("#password input[name='password']", "Teste123");
-        expect(browser.html('body')).toNotContain("User Homepage");;
+               .fill("#password input[name='password']", "Teste123")
+               .pressButton("#sign-in-button button[type=submit]");
+        expect(browser.html('body')).toContain("User Homepage");;
       });
     });
   });
