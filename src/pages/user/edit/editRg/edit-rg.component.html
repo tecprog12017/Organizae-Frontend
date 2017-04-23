@@ -1,25 +1,24 @@
 <ion-list [formGroup]="editRg">
   <ion-item>
     <ion-label floating>RG Number</ion-label>
-
+    <!-- User already have a registered rg number, the field shows it up -->
     <ion-input type="text" *ngIf="userToken.rg" [(ngModel)]="userToken.rg.rgNumber" [formControl]="editRg.controls['rgNumber']"></ion-input>
-
+    <!-- User have never registered rg number, the field is empty -->
     <ion-input type="text"  *ngIf="!userToken.rg" [formControl]="editRg.controls['rgNumber']"></ion-input>
 
   </ion-item>
 
-  <div *ngIf="editRg.controls['rgNumber'].value !== null && editRg.controls['rgNumber'].value.length > 15"> Rg number can't have more then 15 characters </div>
-  <div *ngIf="editRg.controls['rgNumber'].value !== null && editRg.controls['rgNumber'].value.length < 5"> Rg number can't have less then 5 characters </div>
+
 </ion-list>
 
 <ion-list>
   <ion-item>
     <ion-label floating>RG Expedition State</ion-label>
-
+    <!-- User already have a registered rg expedition state, the field shows it up -->
     <ion-select *ngIf="userToken.rg" [(ngModel)]="userToken.rg.rgExpeditionState" [formControl]="editRg.controls['rgExpeditionState']">
         <ion-option *ngFor="let state of states" [value]="state.initials">{{ state.name }}</ion-option>
     </ion-select>
-
+    <!-- User have never registered and rg expedition state, the field comes empty -->
     <ion-select *ngIf="!userToken.rg" [formControl]="editRg.controls['rgExpeditionState']">
         <ion-option *ngFor="let state of states" [value]="state.initials">{{ state.name }}</ion-option>
     </ion-select>

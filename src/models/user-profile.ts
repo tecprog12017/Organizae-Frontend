@@ -51,6 +51,7 @@ export class Address {
   }
 }
 
+//Class wich contains other adittional relevant informations about the user
 export class Information {
   birthdate: Date;
   phone: string;
@@ -71,7 +72,7 @@ export class Gender {
   }
 }
 
-//Class which contain personal information from the user, that are not relevant at user sign-up.
+//Class which contain all personal information from the user, that are not relevant at user sign-up.
 export class UserFullProfile {
   email: string;
   rg: Rg;

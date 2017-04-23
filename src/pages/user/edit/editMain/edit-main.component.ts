@@ -16,7 +16,7 @@ import * as  jwt from 'jwt-simple/lib/jwt';
   templateUrl: 'edit-main.component.html'
 })
 
-//Class used to handle user informations.
+//Class used to handle user additional informations.
 export class EditMain{
   editForm: FormGroup
   newCpf: Cpf

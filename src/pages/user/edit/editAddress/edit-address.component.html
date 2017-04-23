@@ -1,23 +1,23 @@
 <ion-list [formGroup]="editAddress">
   <ion-item>
     <ion-label floating>CEP</ion-label>
-
+      <!-- User already have a registered cep, the field shows it up -->
       <ion-input type="text" *ngIf="userToken.address" [(ngModel)]="userToken.address.cep" [formControl]="editAddress.controls['cep']"></ion-input>
-
-      <ion-input type="text" *ngIf="!userToken.address" [formControl]="editAddress.controls['cep']"></ion-input>
+      <!-- User have never registered cep, the field is empty -->
+    <ion-input type="text" *ngIf="!userToken.address" [formControl]="editAddress.controls['cep']"></ion-input>
   </ion-item>
 
-  <div *ngIf="editAddress.controls['cep'].value !== null && editAddress.controls['cep'].value.length < 8"> Cpf can't have less then 8 characters </div>
-  <div *ngIf="editAddress.controls['cep'].value !== null && editAddress.controls['cep'].value.length > 8"> Cep can't have more then 8 characters </div>
+
 
 </ion-list>
 
 <ion-list>
   <ion-item>
     <ion-label floating>City</ion-label>
-
+      <!-- User already have a registered city, the field shows it up -->
       <ion-input type="text" *ngIf="userToken.address" [(ngModel)]="userToken.address.city" [formControl]="editAddress.controls['city']"></ion-input>
 
+      <!-- User have never registered city, the field is empty -->
       <ion-input type="text" *ngIf="!userToken.address" [formControl]="editAddress.controls['city']"></ion-input>
 
   </ion-item>
@@ -26,10 +26,12 @@
 <ion-list>
   <ion-item>
     <ion-label floating> State</ion-label>
+      <!-- User already have a registered state, the field shows it up -->
       <ion-select *ngIf="userToken.address" [(ngModel)]="userToken.address.state" [formControl]="editAddress.controls['state']">
         <ion-option *ngFor="let state of states" [value]="state.initials">{{ state.name }}</ion-option>
       </ion-select>
 
+      <!-- User have never registered state, the field is empty -->
       <ion-select *ngIf="!userToken.address" [formControl]="editAddress.controls['state']">
         <ion-option *ngFor="let state of states" [value]="state.initials">{{ state.name }}</ion-option>
       </ion-select>
@@ -39,8 +41,10 @@
 <ion-list>
   <ion-item>
     <ion-label floating>Neighbourhood</ion-label>
+      <!-- User already have a registered Neighbourhood, the field shows it up -->
       <ion-input type="text" *ngIf="userToken.address" [(ngModel)]="userToken.address.neighbourhood" [formControl]="editAddress.controls['neighbourhood']"></ion-input>
 
+      <!-- User have never registered Neighbourhood, the field is empty -->
       <ion-input type="text" *ngIf="!userToken.address" [formControl]="editAddress.controls['neighbourhood']"></ion-input>
   </ion-item>
 </ion-list>
@@ -48,8 +52,10 @@
 <ion-list>
   <ion-item>
     <ion-label floating>Number</ion-label>
+      <!-- User already have a registered adress number, the field shows it up -->
       <ion-input type="text" *ngIf="userToken.address" [(ngModel)]="userToken.address.number" [formControl]="editAddress.controls['number']"></ion-input>
 
+      <!-- User have never registered adress number, the field is empty -->
       <ion-input type="text" *ngIf="!userToken.address" [formControl]="editAddress.controls['number']"></ion-input>
   </ion-item>
 </ion-list>
@@ -57,8 +63,10 @@
 <ion-list>
   <ion-item>
     <ion-label floating>Complement</ion-label>
+      <!-- User already have a registered adress complement, the field shows it up -->
       <ion-input type="text" *ngIf="userToken.address" [(ngModel)]="userToken.address.complement" [formControl]="editAddress.controls['complement']"></ion-input>
 
+      <!-- User have never registered adress complement, the field is empty -->
       <ion-input type="text" *ngIf="!userToken.address" [formControl]="editAddress.controls['complement']"></ion-input>
   </ion-item>
 </ion-list>
