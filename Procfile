@@ -1,1 +1,2 @@
-web: ionic serve
+npm install
+ionic serve
