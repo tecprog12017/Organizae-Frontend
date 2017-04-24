@@ -9,8 +9,9 @@
     "ionic:build": "ionic-app-scripts build",
     "ionic:serve": "ionic-app-scripts serve",
     "test": "ng test",
-    "posttest": "node_modules/.bin/remap-istanbul -i coverage/coverage-final.json -o coverage -t html",
-    "test-coverage": "ng test --code-coverage"
+    "posttest": "remap-istanbul -i coverage/coverage-final.json -o coverage -t html",
+    "test-coverage": "ng test --code-coverage",
+    "start": "node server.js"
   },
   "dependencies": {
     "@angular/common": "2.4.8",
@@ -67,5 +68,16 @@
     "ionic-plugin-keyboard"
   ],
   "cordovaPlatforms": [],
-  "description": "Frontend: An Ionic project"
+  "description": "Frontend: An Ionic project",
+  "version": "1.0.0",
+  "main": "karma.conf.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tecprog12017/Organizae-Frontend.git"
+  },
+  "keywords": [],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tecprog12017/Organizae-Frontend/issues"
+  }
 }
