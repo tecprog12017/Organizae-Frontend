@@ -20,10 +20,19 @@ describe("Sign In Tests", function(){
   });
 
   describe("Sign In Failure state", function () {
-    it("Shouldn't allow signin with invalid information", function () {
+    it("Shouldn't allow signin with invalid email", function () {
       browser.visit(url, function(){
         browser.fill("#email input[name='email']", "test")
                .fill("#password input[name='password']", "Teste123");
+        var submit = byId('sign-in-button');
+        expect(submit.isEnabled()).toBe(false);
+      });
+    });
+
+    it("Shouldn't allow signin with invalid password", function () {
+      browser.visit(url, function(){
+        browser.fill("#email input[name='email']", "test@test.com")
+               .fill("#password input[name='password']", "test");
         var submit = byId('sign-in-button');
         expect(submit.isEnabled()).toBe(false);
       });
