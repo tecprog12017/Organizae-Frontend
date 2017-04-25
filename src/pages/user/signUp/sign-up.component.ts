@@ -32,7 +32,7 @@ export class SignUp {
     this.http.post('http://localhost:3000/api/UserProfiles/sign-up', this.newUser)
     .map(res => res.json())
     .subscribe( res => {
-      if(res.status == 200){
+      if (res.status == 200){
         this.navCtrl.pop();
       }
       else {
