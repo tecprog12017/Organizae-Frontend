@@ -14,5 +14,5 @@ app.listen(app.get('port'), function () {
 });
 
 app.get('/', function(request, response) {
-  response.redirect('app/main.ts');
+    response.redirect('/index.html');
 });
