@@ -1,2 +1,1 @@
-npm install
-ionic serve
+web: node server.js $PORT 
