@@ -7,26 +7,26 @@
 <ion-content class="content-class">
   <ion-card color="gray" class="card-class">
     <!--Form used to register an enterprise -->
-    <form>
+    <form [formGroup]="enterpriseForm" (ngSubmit)="submitForm(enterpriseForm.value)">
       <ion-item>
         <ion-label floating>Name</ion-label>
-        <ion-input type="text"></ion-input>
+        <ion-input type="text" [formControl]="enterpriseForm.controls['name']"></ion-input>
       </ion-item>
       <br>
 
       <ion-item>
         <ion-label floating>Occupation Area</ion-label>
-        <ion-input type="text"></ion-input>
+        <ion-input type="text" [formControl]="enterpriseForm.controls['occupationArea']"></ion-input>
       </ion-item>
       <br>
 
       <ion-item>
         <ion-label floating>CNPJ</ion-label>
-        <ion-input type="text"></ion-input>
+        <ion-input type="text" [formControl]="enterpriseForm.controls['cnpj']"></ion-input>
       </ion-item>
       <br>
 
-      <button ion-button full type="submit">Register</button>
+      <button ion-button full type="submit" [disabled]="!enterpriseForm.valid">Register</button>
     </form>
   </ion-card>
 </ion-content>
