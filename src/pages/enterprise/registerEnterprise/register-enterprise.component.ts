@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { NavController } from 'ionic-angular';
 import { Http } from '@angular/http';
 import { AlertController } from 'ionic-angular';
-import { EditAdress } from '../user/edit/editAddress/edit-address.component';
+import { Enterprise } from '../../../models/enterprise';
 
 @Component({
   templateUrl: 'register-enterprise.component.html'
@@ -11,6 +11,7 @@ import { EditAdress } from '../user/edit/editAddress/edit-address.component';
 
 export class RegisterEnterprise {
   enterpriseForm: FormGroup;
+  newEnterprise: Enterprise;
 
   constructor(public navCtrl: NavController, formBuilder: FormBuilder, private http: Http, public alertCtrl: AlertController) {
     this.enterpriseForm = formBuilder.group({
@@ -23,10 +24,11 @@ export class RegisterEnterprise {
 
   //Submit used to register the enterprise on the database
   submitForm (value: any): void {
-    this.http.post('http://localhost:3000/api/enterprises/register-enterprise', this.enterpriseForm.value)
+    this.newEnterprise = new Enterprise(this.enterpriseForm);
+    this.http.post('http://localhost:3000/api/enterprises/register-enterprise', this.newEnterprise)
     .map( res => res.json())
     .subscribe( res => {
-      if (res.status == 200) {
+      if (res.status === 200) {
         this.navCtrl.pop();
       }
       else {
@@ -40,7 +42,8 @@ export class RegisterEnterprise {
       title: 'Registration error!!',
       subTitle: 'There was an error in your registration. Check your cnpj',
       buttons: ['OK']
-    })
+    });
+    alert.present();
   }
 
 }

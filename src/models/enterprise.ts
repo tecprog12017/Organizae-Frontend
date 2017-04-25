@@ -7,4 +7,11 @@ export class Enterprise {
   occupationArea: string;
   address: string;
   owner: UserProfile;
+
+  constructor (form: FormGroup) {
+    this.name = form.get('name').value;
+    this.cnpj = form.get('cnpj').value;
+    this.occupationArea = form.get('occupationArea').value;
+    this.owner = null;
+  }
 }
