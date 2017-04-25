@@ -41,6 +41,9 @@
       </div>
       <br>
 
+      <!-- Rendering address inputs component -->
+      <edit-address [group]="enterpriseForm.controls['address'].controls[0]"></edit-address>
+
       <!--Button used for the user to register and submit an enterprise -->
       <button ion-button full type="submit" [disabled]="!enterpriseForm.valid">Register</button>
     </form>

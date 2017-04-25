@@ -4,6 +4,7 @@ import { NavController } from 'ionic-angular';
 import { Http } from '@angular/http';
 import { AlertController } from 'ionic-angular';
 import { Enterprise } from '../../../models/enterprise';
+import { EditAddress } from '../../user/edit/editAddress/edit-address.component';
 
 @Component({
   templateUrl: 'register-enterprise.component.html'
@@ -13,18 +14,19 @@ export class RegisterEnterprise {
   enterpriseForm: FormGroup;
   newEnterprise: Enterprise;
 
-  constructor(public navCtrl: NavController, formBuilder: FormBuilder, private http: Http, public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, private formBuilder: FormBuilder, private http: Http, public alertCtrl: AlertController) {
     this.enterpriseForm = formBuilder.group({
       'name': [null, Validators.required],
       'cnpj': [null, Validators.required],
-      'occupationArea': [null, Validators.required]
-      //'address': [null, Validators.compose(Validators.required)]
+      'occupationArea': [null, Validators.required],
+      'address': formBuilder.array([this.initAddress(),])
     });
   }
 
   //Submit used to register the enterprise on the database
   submitForm (value: any): void {
     this.newEnterprise = new Enterprise(this.enterpriseForm);
+    console.log(this.newEnterprise);
     this.http.post('http://localhost:3000/api/enterprises/register-enterprise', this.newEnterprise)
     .map( res => res.json())
     .subscribe( res => {
@@ -37,6 +39,7 @@ export class RegisterEnterprise {
     });
   }
 
+  //Pop up used to notify the user of an error
   showRegisterError () {
     let alert = this.alertCtrl.create({
       title: 'Registration error!!',
@@ -44,6 +47,18 @@ export class RegisterEnterprise {
       buttons: ['OK']
     });
     alert.present();
+  }
+
+  //Method that connect component address to the main form
+  initAddress(){
+    return this.formBuilder.group({
+      'cep' : [null, Validators.compose([Validators.required])],
+      'city' : [null, Validators.compose([Validators.required])],
+      'state' : [null, Validators.compose([Validators.required])],
+      'neighbourhood' : [null, Validators.compose([Validators.required])],
+      'number' : [null, Validators.compose([Validators.required])],
+      'complement' : [null, Validators.compose([Validators.required])]
+    });
   }
 
 }
