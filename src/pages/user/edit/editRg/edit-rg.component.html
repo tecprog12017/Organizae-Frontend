@@ -1,5 +1,5 @@
 <ion-list [formGroup]="editRg">
-  <ion-item>
+  <ion-item class="in-class">
     <ion-label floating>RG Number</ion-label>
     <ion-input type="text" [formControl]="editRg.controls['rgNumber']"></ion-input>
   </ion-item>
@@ -9,7 +9,7 @@
 </ion-list>
 
 <ion-list>
-  <ion-item>
+  <ion-item class="in-class">
     <ion-label floating>RG Expedition State</ion-label>
       <ion-select [formControl]="editRg.controls['rgExpeditionState']">
         <ion-option value="ac"> Acre </ion-option>

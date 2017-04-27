@@ -1,5 +1,5 @@
 <ion-list [formGroup]="editAddress">
-  <ion-item>
+  <ion-item class="in-class">
     <ion-label floating>CEP</ion-label>
       <ion-input type="text" [formControl]="editAddress.controls['cep']"></ion-input>
   </ion-item>
@@ -10,7 +10,7 @@
 </ion-list>
 
 <ion-list>
-  <ion-item>
+  <ion-item class="in-class">
     <ion-label floating>City</ion-label>
       <ion-input type="text" [formControl]="editAddress.controls['city']"></ion-input>
   </ion-item>
@@ -18,7 +18,7 @@
   </ion-list>
 
   <ion-list>
-    <ion-item>
+    <ion-item class="in-class">
       <ion-label floating> State</ion-label>
         <ion-select [formControl]="editAddress.controls['state']">
           <ion-option value="ac"> Acre </ion-option>
@@ -62,14 +62,14 @@
   </ion-list>
 
   <ion-list>
-    <ion-item>
+    <ion-item class="in-class">
       <ion-label floating>Neighbourhood</ion-label>
         <ion-input type="text" [formControl]="editAddress.controls['neighbourhood']"></ion-input>
     </ion-item>
   </ion-list>
 
   <ion-list>
-    <ion-item>
+    <ion-item class="in-class">
       <ion-label floating>Number</ion-label>
         <ion-input type="text" [formControl]="editAddress.controls['number']"></ion-input>
     </ion-item>
@@ -77,7 +77,7 @@
   </ion-list>
 
   <ion-list>
-    <ion-item>
+    <ion-item class="in-class">
       <ion-label floating>Complement</ion-label>
         <ion-input type="text" [formControl]="editAddress.controls['complement']"></ion-input>
     </ion-item>

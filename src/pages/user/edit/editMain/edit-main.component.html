@@ -1,4 +1,4 @@
-<ion-content class="content-class">
+<ion-content padding class="background-class">
   <form [formGroup]="editForm" (ngSubmit)="submitForm(editForm.value)">
     <ion-slides>
 
@@ -8,7 +8,7 @@
             <ion-title>Document Information</ion-title>
           </ion-navbar>
         </ion-header>
-          <br><br><br>
+          <br><br><br><br><br><br>
           <edit-rg [group] = "editForm.controls['documents'].controls[0]"></edit-rg>
           <edit-cpf [group] = "editForm.controls['documents'].controls[1]"></edit-cpf>
       </ion-slide>
@@ -19,7 +19,7 @@
             <ion-title>Address Information</ion-title>
           </ion-navbar>
         </ion-header>
-          <br><br><br>
+          <br><br><br><br><br><br>
           <edit-address [group] = "editForm.controls['address'].controls[0]"></edit-address>
       </ion-slide>
 
@@ -29,7 +29,7 @@
             <ion-title>Additional Information</ion-title>
           </ion-navbar>
         </ion-header>
-        <br><br><br>
+        <br><br><br><br><br><br>
         <edit-additional-information [group] = "editForm.controls['personalInformation'].controls[0]"></edit-additional-information>
         <edit-gender [group] = "editForm.controls['personalInformation'].controls[1]" ></edit-gender>
 
