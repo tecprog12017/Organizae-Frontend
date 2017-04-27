@@ -1,5 +1,5 @@
   <ion-list [formGroup]="editGender">
-    <ion-item>
+    <ion-item class="in-class">
         <ion-label floating>Gender Identity</ion-label>
         <ion-select [formControl]="editGender.controls['genderIdentity']">
           <ion-option value="male">Male</ion-option>
@@ -17,7 +17,7 @@
   </ion-list>
 
   <ion-list>
-    <ion-item>
+    <ion-item class="in-class">
       <ion-label floating>Pronoun</ion-label>
         <ion-select [formControl]="editGender.controls['pronoun']">
           <ion-option value="male">Male</ion-option>
