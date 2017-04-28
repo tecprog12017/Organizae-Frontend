@@ -1,12 +1,12 @@
 import { FormGroup } from '@angular/forms';
-import { UserProfile, Address } from './user-profile';
+import { Address } from './user-profile';
 
 export class Enterprise {
   name: string;
   cnpj: string;
   occupationArea: string;
   address: Address;
-  owner: UserProfile;
+  owner: Object;
 
   constructor (form: FormGroup) {
     this.name = form.get('name').value;

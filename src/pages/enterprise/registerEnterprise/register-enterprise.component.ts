@@ -5,6 +5,7 @@ import { Http } from '@angular/http';
 import { AlertController } from 'ionic-angular';
 import { Enterprise } from '../../../models/enterprise';
 import { EditAddress } from '../../user/edit/editAddress/edit-address.component';
+import { UserTokenSession } from '../../user/signIn/user-token-session.service';
 
 @Component({
   templateUrl: 'register-enterprise.component.html'
@@ -14,7 +15,10 @@ export class RegisterEnterprise {
   enterpriseForm: FormGroup;
   newEnterprise: Enterprise;
 
-  constructor(public navCtrl: NavController, private formBuilder: FormBuilder, private http: Http, public alertCtrl: AlertController) {
+  //Form used to create the inputs used to register an enterprise
+  constructor(public navCtrl: NavController, private formBuilder: FormBuilder,
+              private http: Http, public alertCtrl: AlertController,
+              public userTokenSession: UserTokenSession) {
     this.enterpriseForm = formBuilder.group({
       'name': [null, Validators.required],
       'cnpj': [null, Validators.required],
@@ -26,7 +30,7 @@ export class RegisterEnterprise {
   //Submit used to register the enterprise on the database
   submitForm (value: any): void {
     this.newEnterprise = new Enterprise(this.enterpriseForm);
-    console.log(this.newEnterprise);
+    this.newEnterprise.owner = this.userTokenSession.getToken();
     this.http.post('http://localhost:3000/api/enterprises/register-enterprise', this.newEnterprise)
     .map( res => res.json())
     .subscribe( res => {
