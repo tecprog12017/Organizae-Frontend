@@ -3,7 +3,7 @@ import { NavController } from "ionic-angular"
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { UserProfile } from '../../../models/user-profile';
 import { AlertController } from 'ionic-angular';
-import { ValidateEmail, ValidatePassword } from '../../../controller/custom-validations';
+import { ValidateEmail, ValidatePassword, ValidateRepeatPassword } from '../../../controller/custom-validations';
 import { Http } from '@angular/http';
 
 @Component({
@@ -14,15 +14,21 @@ import { Http } from '@angular/http';
 
 export class SignUp {
   signUpForm: FormGroup;
+  passwordGroup: FormGroup;
+  repeatPasswordForm: FormGroup;
   newUser: UserProfile;
+  password: string;
 
   //Responsive form used for the user profile sign up.
   constructor(public navCtrl: NavController, formBuilder: FormBuilder, private http: Http, private alertCtrl: AlertController) {
     this.signUpForm = formBuilder.group({
-      'firstName' : [null, Validators.compose([Validators.required, Validators.maxLength(15)])],
-      'lastName' : [null, Validators.compose([Validators.required, Validators.maxLength(15)])],
-      'email' : [null, Validators.compose([Validators.required, ValidateEmail()])],
-      'password' : [null, Validators.compose([Validators.required, ValidatePassword()])]
+      'firstName': [null, Validators.compose([Validators.required, Validators.maxLength(15)])],
+      'lastName': [null, Validators.compose([Validators.required, Validators.maxLength(15)])],
+      'email': [null, Validators.compose([Validators.required, ValidateEmail()])],
+      'passwords': formBuilder.group({
+        'password': [null, Validators.compose([Validators.required, ValidatePassword()])],
+        'repeatPassword': [null, Validators.required]
+      }, {validator: this.passwordEqual})
     });
   }
 
@@ -40,6 +46,8 @@ export class SignUp {
       }
     });
   }
+
+
 
   //Used to show the user if an error ocurred during his registration attempt
   showSignUpError () {
