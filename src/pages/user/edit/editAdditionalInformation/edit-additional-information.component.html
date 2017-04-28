@@ -8,7 +8,7 @@
 </ion-list>
 
 <ion-list>
-  <ion-item>
+  <ion-item class="in-class">
     <ion-label floating>Phone</ion-label>
           <!-- User already have a registered phone number, the field shows it up -->
       <ion-input type="text" *ngIf="userToken.information" [(ngModel)]="userToken.information.phone" [formControl]="editAdditionalInformation.controls['phone']"></ion-input>
