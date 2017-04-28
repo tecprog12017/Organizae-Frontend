@@ -33,6 +33,19 @@ export function ValidatePassword (): ValidatorFn {
   }
 }
 
+//Validation used to check if the passwords match
+export function ValidateRepeatPassword (password: string): ValidatorFn {
+  console.log(password);
+  return (control: AbstractControl): {[key: string]: any} => {
+    if (control.value === password){
+      return null;
+    }
+    else {
+      return {ValidateRepeatPasswordOutput: true};
+    }
+  }
+}
+
 //Validation used to not allow letters, special characters and short strings in phone number
 export function ValidatePhone (): ValidatorFn {
 
