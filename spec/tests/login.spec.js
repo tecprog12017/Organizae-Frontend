@@ -11,6 +11,7 @@ describe("Sign In Tests", function(){
                .fill("#last-name input[name='last name']", "Cristo")
                .fill("#email-register input[name='email']", "teste@gmail.com")
                .fill("#password-register input[name='password']", "Teste123")
+               .fill("#repeat-password-register input[name='repeat password']", "Teste123")
                .pressButton("#sign-up-submit-button button[type=submit]")
                .fill("#email input[name='email']", "teste@gmail.com")
                .fill("#password input[name='password']", "Teste123");
