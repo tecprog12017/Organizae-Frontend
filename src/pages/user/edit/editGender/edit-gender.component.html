@@ -1,28 +1,40 @@
   <ion-list [formGroup]="editGender">
-    <ion-item>
+    <ion-item class="in-class">
         <ion-label floating>Gender Identity</ion-label>
-        <ion-select [formControl]="editGender.controls['genderIdentity']">
-          <ion-option value="male">Male</ion-option>
-          <ion-option value="female">Female</ion-option>
-          <ion-option value="other">Other</ion-option>
+
+        <ion-select (ionChange)="onChangeSelectGender(editGender.controls.genderIdentity.value)" [(ngModel)]="optionChecked" [formControl]="editGender.controls['genderIdentity']">
+          <ion-option value="male"> Male </ion-option>
+          <ion-option value="female"> Female </ion-option>
+
+          <!-- User selects "other" in gender identity the field recieves the value of the input of the user -->
+          <ion-option *ngIf="optionChecked !== 'male' && optionChecked !== 'female' "  value="{{ theOtherGender}}"> Other </ion-option>
+         <!-- User does not select "other" options in gender indentity, the field receives the value of 'other'-->
+          <ion-option *ngIf="optionChecked == 'male' || optionChecked == 'female' "  value="other"> Other </ion-option>
         </ion-select>
-    </ion-item>
 
-
-    <ion-item *ngIf="(editGender.controls.genderIdentity.value  !== 'male' && editGender.controls.genderIdentity.value  !== 'female') && editGender.controls.genderIdentity.value  !== null">
+  </ion-item>
+    <!-- User selects "other" option, it shows a field for user to write his gender indentity -->
+    <ion-item *ngIf="isOtherGender">
       <ion-label floating>Detail</ion-label>
-      <ion-input type="text" [formControl]="editGender.controls['genderIdentity']"></ion-input>
-    </ion-item>
-
+      <ion-input type="text" (input)="onChangeInputGender(editGender.controls.genderIdentity.value)" [ngModel]="optionChecked" [formControl]="editGender.controls['genderIdentity']"></ion-input>
+  </ion-item>
   </ion-list>
 
   <ion-list>
-    <ion-item>
+    <ion-item class="in-class">
       <ion-label floating>Pronoun</ion-label>
-        <ion-select [formControl]="editGender.controls['pronoun']">
-          <ion-option value="male">Male</ion-option>
-          <ion-option value="female">Female</ion-option>
-          <ion-option value="neutral">Neutral</ion-option>
+        <!-- User already have a registered gender pronoun, the field shows it up -->
+        <ion-select *ngIf="userToken.gender" [(ngModel)]="userToken.gender.pronoun" [formControl]="editGender.controls['pronoun']">
+          <ion-option value="male"> Male </ion-option>
+          <ion-option value="female"> Female </ion-option>
+          <ion-option value="neutral"> Neutral </ion-option>
         </ion-select>
+        <!-- User have never registered gender pronoun, the field is empty -->
+        <ion-select *ngIf="!userToken.gender" [formControl]="editGender.controls['pronoun']">
+          <ion-option value="male"> Male </ion-option>
+          <ion-option value="female"> Female </ion-option>
+          <ion-option value="neutral"> Neutral </ion-option>
+        </ion-select>
+
     </ion-item>
   </ion-list>

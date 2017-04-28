@@ -4,12 +4,23 @@
 }
 
 .card-class {
-  background: transparentize(#b3b3b3, .2);
   position: relative;
   margin-left: auto;
   margin-right: auto;
   width: 80%;
   top: 30%;
+}
+
+.input-class {
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+}
+
+.button-class {
+  position: relative;
+  left: 10%;
+  width: 80%;
 }
 
 .title-class {
