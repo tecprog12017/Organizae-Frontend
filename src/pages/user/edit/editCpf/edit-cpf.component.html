@@ -1,6 +1,12 @@
-<ion-item class="in-class" [formGroup]="editCpf">
-  <ion-label floating>CPF</ion-label>
-  <ion-input type="text" [formControl]="editCpf.controls['cpf']" ui-mask="999.999.999-99"></ion-input>
+<ion-item [formGroup]="editCpf">
+
+  	<ion-label floating>CPF</ion-label>
+
+    <!-- User already have a registered cpf, the field shows it up -->
+    <ion-input type="text" *ngIf="userToken.cpf" [(ngModel)]="userToken.cpf.cpf" [formControl]="editCpf.controls['cpf']" ui-mask="999.999.999-99"></ion-input>
+
+    <!-- User have never registered cp, the field is empty -->
+    <ion-input type="text" *ngIf="!userToken.cpf" [formControl]="editCpf.controls['cpf']" ui-mask="999.999.999-99"></ion-input>
 </ion-item>
 
 <div *ngIf="editCpf.controls['cpf'].value !== null && editCpf.controls['cpf'].value.length > 11"> Cpf can't have more then 11 characters </div>

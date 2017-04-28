@@ -1,16 +1,21 @@
 <ion-list [formGroup]="editAdditionalInformation">
-  <ion-item class="in-class">
-    <ion-label floating>Birthdate</ion-label>
-    <ion-datetime displayFormat="DD/MM/YYYY" pickerFormat="DD MMMM YYYY" [formControl]="editAdditionalInformation.controls['birthdate']"></ion-datetime>
+  <ion-item>
+    <ion-label floating>Birthdate</ion-label>      <!-- User already have it's birthdate, the field shows it up -->
+      <ion-datetime displayFormat="DD/MM/YYYY" pickerFormat="DD MMMM YYYY" *ngIf="userToken.information" [(ngModel)]="userToken.information.birthdate" [formControl]="editAdditionalInformation.controls['birthdate']"></ion-datetime>
+      <!-- User have never registered it's birthdate, the field is empty -->
+      <ion-datetime displayFormat="DD/MM/YYYY" pickerFormat="DD MMMM YYYY" *ngIf="!userToken.information" [formControl]="editAdditionalInformation.controls['birthdate']"></ion-datetime>
   </ion-item>
 </ion-list>
 
 <ion-list>
   <ion-item class="in-class">
     <ion-label floating>Phone</ion-label>
-      <ion-input type="text" [formControl]="editAdditionalInformation.controls['phone']"></ion-input>
+          <!-- User already have a registered phone number, the field shows it up -->
+      <ion-input type="text" *ngIf="userToken.information" [(ngModel)]="userToken.information.phone" [formControl]="editAdditionalInformation.controls['phone']"></ion-input>
+
+      <!-- User have never registered it's phone number, the field is empty -->
+      <ion-input type="text" *ngIf="!userToken.information" [formControl]="editAdditionalInformation.controls['phone']"></ion-input>
   </ion-item>
-  <div class="error-box" *ngIf="editAdditionalInformation.controls['phone'].hasError('ValidatePhoneOutput') && editAdditionalInformation.controls['phone'].touched">
-    Your password must have at least ten digits, with only numeric characters.
-  </div>
+
+
 </ion-list>
