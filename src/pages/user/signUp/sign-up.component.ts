@@ -47,7 +47,20 @@ export class SignUp {
     });
   }
 
+  //Method for validating password confirmation
+  passwordEqual (group: FormGroup) {
+    var password = group.controls['password'].value;
+    var repeat = group.controls['repeatPassword'].value;
 
+    if (password === repeat) {
+      return null;
+    }
+    else {
+      return{
+        ValidateRepeatPasswordOutput: true
+    };
+    }
+  }
 
   //Used to show the user if an error ocurred during his registration attempt
   showSignUpError () {
