@@ -58,7 +58,14 @@
       <br>
 
       <!--Input for the confirmation password of the user used on the registrations -->
-    
+      <ion-item>
+        <ion-label floating>Repeat Password</ion-label>
+        <ion-input id="repeat-password-register" type="password" placeholder="Repeat Password" [formControl]="signUpForm.controls['passwords'].controls['repeatPassword']"></ion-input>
+      </ion-item>
+      <div class="error-box" *ngIf="signUpForm.controls['passwords'].controls['repeatPassword'].touched && signUpForm.controls['passwords'].hasError('ValidateRepeatPasswordOutput')">
+        Your passwords must match.
+      </div>
+      <br>
 
       <button id="sign-up-submit-button" type="submit" ion-button full [disabled]="!signUpForm.valid">Submit</button>
     </form>
