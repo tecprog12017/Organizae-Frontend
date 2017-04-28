@@ -1,42 +1,39 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Profile Information</ion-title>
+    <ion-buttons start>
+      <button type="submit" form="editMainForm" ion-button>
+        <ion-icon name="checkmark" (click)="onSubmit"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+  <ion-segment [(ngModel)] = "section" (ionChange)="onSegmentChange($event)" >
+    <ion-segment-button value="0"> Documents </ion-segment-button>
+    <ion-segment-button value="1"> Address </ion-segment-button>
+    <ion-segment-button value="2"> Personal </ion-segment-button>
+  </ion-segment>
+  </ion-header>
+
+
 <ion-content class="content-class">
-  <form [formGroup]="editForm" (ngSubmit)="submitForm(editForm.value)">
-    <ion-slides>
-
+  <form id="editMainForm" [formGroup]="editForm" (ngSubmit)="submitForm(editForm.value)">
+    <ion-slides (ionSlideWillChange)="onSlideChange($event)">
       <ion-slide>
-        <ion-header>
-          <ion-navbar color="primary">
-            <ion-title>Document Information</ion-title>
-          </ion-navbar>
-        </ion-header>
-          <br><br><br>
-          <edit-rg [group] = "editForm.controls['documents'].controls[0]"></edit-rg>
-          <edit-cpf [group] = "editForm.controls['documents'].controls[1]"></edit-cpf>
+        <edit-rg [group] = "editForm.controls['documents'].controls[0]"></edit-rg>
+        <edit-cpf [group] = "editForm.controls['documents'].controls[1]"></edit-cpf>
       </ion-slide>
 
       <ion-slide>
-        <ion-header>
-          <ion-navbar color="primary">
-            <ion-title>Address Information</ion-title>
-          </ion-navbar>
-        </ion-header>
-          <br><br><br>
-          <edit-address [group] = "editForm.controls['address'].controls[0]"></edit-address>
+        <edit-address [group] = "editForm.controls['address'].controls[0]"></edit-address>
       </ion-slide>
 
       <ion-slide>
-        <ion-header>
-          <ion-navbar color="primary">
-            <ion-title>Additional Information</ion-title>
-          </ion-navbar>
-        </ion-header>
-        <br><br><br>
         <edit-additional-information [group] = "editForm.controls['personalInformation'].controls[0]"></edit-additional-information>
         <edit-gender [group] = "editForm.controls['personalInformation'].controls[1]" ></edit-gender>
-
-          <button type="submit" ion-button full >Submit</button>
       </ion-slide>
-
     </ion-slides>
-  </form>
 
+    <button type="submit" ion-button full >Submit</button>
+  </form>
 </ion-content>
