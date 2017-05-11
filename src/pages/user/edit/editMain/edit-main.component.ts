@@ -7,6 +7,8 @@ import { Http } from '@angular/http'
 import { UserTokenSession } from '../../signIn/user-token-session.service'
 import { UserHome } from '../../userHome/user-home.component';
 import { AlertController } from 'ionic-angular';
+import { Slides } from 'ionic-angular';
+import { ViewChild } from '@angular/core';
 
 import 'rxjs/add/operator/map';
 import * as  jwt from 'jwt-simple/lib/jwt';
@@ -26,6 +28,8 @@ export class EditMain{
   newGender: Gender
   userFullProfile: UserFullProfile
   secret = 'tecprog-2017/01';
+  section =  '0'
+  @ViewChild(Slides) slides: Slides;
 
 
   //Form that collect all data the user provides by the slides form .
@@ -48,7 +52,7 @@ export class EditMain{
     this.newInformation = new Information(this.editForm)
     this.newGender = new Gender(this.editForm)
 
-    this.userFullProfile = new UserFullProfile('hugo@hugo.com',this.newRg, this.newCpf, this.newAddress, this.newInformation, this.newGender)
+    this.userFullProfile = new UserFullProfile(this.userTokenSession.getToken()['email'],this.newRg, this.newCpf, this.newAddress, this.newInformation, this.newGender)
     this.http.post('http://localhost:3000/api/UserProfiles/update', this.userFullProfile)
     .map(res => res.json())
     .subscribe(token =>{
@@ -118,4 +122,25 @@ export class EditMain{
     alert.present();
   }
 
+  onSegmentChange(segmentButton){
+    this.slides.slideTo(segmentButton.value)
+  }
+
+  onSlideChange(){
+    let currentIndex = this.slides.getActiveIndex();
+    switch(currentIndex) {
+      case 0: {
+        this.section = '0'
+      break;
+      }
+      case 1: {
+        this.section = '1'
+      break;
+      }
+      case 2: {
+        this.section = '2'
+      break;
+      }
+    }
+  }
 }

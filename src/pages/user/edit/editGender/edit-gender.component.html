@@ -1,6 +1,5 @@
   <ion-list [formGroup]="editGender">
-
-    <ion-item>
+    <ion-item class="in-class">
         <ion-label floating>Gender Identity</ion-label>
 
         <ion-select (ionChange)="onChangeSelectGender(editGender.controls.genderIdentity.value)" [(ngModel)]="optionChecked" [formControl]="editGender.controls['genderIdentity']">
@@ -22,7 +21,7 @@
   </ion-list>
 
   <ion-list>
-    <ion-item>
+    <ion-item class="in-class">
       <ion-label floating>Pronoun</ion-label>
         <!-- User already have a registered gender pronoun, the field shows it up -->
         <ion-select *ngIf="userToken.gender" [(ngModel)]="userToken.gender.pronoun" [formControl]="editGender.controls['pronoun']">
