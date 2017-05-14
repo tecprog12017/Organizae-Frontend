@@ -171,7 +171,6 @@ function ValidatesCpfFirstVerifyingDigit(cpf:string){
 
     //check if the verifying digit is equal to the the nineth digit
     if(firstDigitVerifier != parseInt(cpf.charAt(lastNumericalDigit))){
-      console.log('Deu ruim aqui')
       console.log(firstDigitVerifier)
       console.log(number)
       return false;
@@ -211,4 +210,70 @@ function ValidatesCpfSecondVerifyingDigit(cpf:string){
     return true
   }
 
+}
+
+export function ValidateRgExpeditionState (): ValidatorFn {
+
+  return (control: AbstractControl): {[key: string]: any} => {
+    var rgExpeditionState = control.value;
+    console.log(rgExpeditionState);
+
+    //rg expedition state have not been registered yet
+    if(rgExpeditionState == null){
+      console.info("rgExpeditionState has not been registered before")
+      return null;
+    }
+    else{
+      //Do nothing
+    }
+
+    //rg expedition state can't be empty
+    if(rgExpeditionState.trim() == "" || rgExpeditionState == null){
+      console.error("Rg expedition state is empty")
+      return { ValidateRgExpeditionStateOutput : true };
+    }else{
+      console.trace("Rg Expedition state:" ,rgExpeditionState, " is 1valid")
+      return null
+    }
+  };
+}
+
+export function ValidateRgNumber (): ValidatorFn {
+
+  return (control: AbstractControl): {[key: string]: any} => {
+    var rgNumber = control.value;
+    console.log(rgNumber);
+
+    //rg number have not been registered yet
+    if(rgNumber == null){
+      console.info("Rg number have not been registered before")
+      return null;
+    }
+    else{
+      //Do nothing
+    }
+
+    //remove all non numerical characters of rg to prevent masks
+    rgNumber = rgNumber.replace(/[^\d]+g/,'');
+    console.info("Rg number after replace: ",rgNumber);
+
+    //rg expedition state can't be empty;
+    const rgNumberString = String(rgNumber)
+    if(rgNumberString.trim() == "" || rgNumberString.trim() == null || rgNumberString.trim() == " "){
+      console.error("Rg number is empty")
+      return { ValidateRgNumberIsEmpty : true };
+    }else{
+      //Do nothing
+    }
+
+    //rg number can't have less then 5 digits or more then 13
+    const rgNumberLength:number = String(rgNumber).trim().length
+    if(rgNumberLength < 5 || rgNumberLength > 13){
+      console.error("Rg number:", rgNumber, " is not valid")
+      return { ValidateRgNumberOutput : true };
+    }else{
+      console.trace("Rg number:", rgNumber, " is valid");
+      return null
+    }
+  };
 }
