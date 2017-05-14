@@ -38,7 +38,31 @@ export function ValidatePhone (): ValidatorFn {
 
   return (control: AbstractControl): {[key: string]: any} => {
     const phoneRegex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,7}$/im
+
+    //takes off non numerical digits to avoid masks
     var isValid = phoneRegex.test(control.value);
+
+    var phone = control.value
+    //phone have not been registered yet
+    if(phone == null){
+      console.info("phone has not been registered before")
+      return null;
+    }
+    else{
+      //Do nothing
+    }
+
+    //take off non numerical characters of phone number to avoid masks
+    phone = phone.replace(/[^\d]+g/,'');
+
+    const phoneString:string = String(phone).trim()
+    console.info("Phone String: ", phoneString)
+    if(phoneString == "" || phoneString == null){
+      console.error("Phone is empty")
+      return { ValidatePhoneOutputIsEmpty : true}
+    }else{
+      //Do nothing
+    }
 
     console.log(isValid);
     if(isValid){
@@ -273,6 +297,32 @@ export function ValidateRgNumber (): ValidatorFn {
       return { ValidateRgNumberOutput : true };
     }else{
       console.trace("Rg number:", rgNumber, " is valid");
+      return null
+    }
+  };
+}
+
+export function ValidateBirthDate(): ValidatorFn {
+
+  return (control: AbstractControl): {[key: string]: any} => {
+    var birthdate = control.value;
+    console.log(birthdate);
+
+    //birthdate have not been registered yet
+    if(birthdate == null){
+      console.info("birthdate has not been registered before")
+      return null;
+    }
+    else{
+      //Do nothing
+    }
+
+    const birthDateString:string = String(birthdate).trim()
+    if(birthDateString == "" || birthDateString == null){
+      console.error("birthDate state is empty")
+      return { ValidateBirthDateIsEmpty : true };
+    }else{
+      console.trace("birthDate:" ,birthDateString, " is valid")
       return null
     }
   };
