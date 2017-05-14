@@ -2,7 +2,7 @@ import { Component } from "@angular/core";
 import { NavController } from "ionic-angular"
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { UserFullProfile, Cpf, Rg, Address, Information, Gender } from '../../../../models/user-profile';
-import { ValidateEmail, ValidatePassword } from '../../../controller/custom-validations'
+import { ValidateEmail, ValidatePassword, ValidatesCpf } from '../../../../controller/custom-validations'
 import { Http } from '@angular/http'
 import { UserTokenSession } from '../../signIn/user-token-session.service'
 import { UserHome } from '../../userHome/user-home.component';
@@ -71,7 +71,7 @@ export class EditMain{
   //Method that connect component cpf to the main form
   initCpf(){
     return this.formBuilder.group({
-      'cpf' : [null, Validators.compose([Validators.required])]
+      'cpf' : [null, Validators.compose([Validators.required, ValidatesCpf()])]
     });
   }
 

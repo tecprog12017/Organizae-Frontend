@@ -3,9 +3,9 @@ import { NavController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Http } from '@angular/http';
 import { AlertController } from 'ionic-angular';
+import { UserProfile } from '../../../models/user-profile';
 import { ValidateEmail, ValidatePassword } from '../../../controller/custom-validations';
 import { SignUp } from '../signUp/sign-up.component';
-import { UserProfile } from '../../../models/user-profile';
 import { UserHome } from '../userHome/user-home.component';
 import { UserTokenSession } from './user-token-session.service'
 
