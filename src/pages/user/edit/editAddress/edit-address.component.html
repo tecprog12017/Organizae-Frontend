@@ -9,6 +9,14 @@
 
 </ion-list>
 
+<div class="error-box" *ngIf="editAddress.controls['cep'].hasError('ValidateCepOutputIsEmpty') && editAddress.controls['cep'].touched">
+  Cep can't be empty.
+</div>
+
+<div class="error-box" *ngIf="editAddress.controls['cep'].hasError('ValidateCepOutput') && editAddress.controls['cep'].touched">
+  This cep isn't valid.
+</div>
+
 <ion-list>
   <ion-item class="in-class">
     <ion-label floating>City</ion-label>
@@ -20,6 +28,10 @@
 
   </ion-item>
 </ion-list>
+
+<div class="error-box" *ngIf="editAddress.controls['city'].hasError('ValidateComplementIsEmpty') && editAddress.controls['city'].touched">
+  City can't be empty.
+</div>
 
 <ion-list>
   <ion-item>
@@ -36,6 +48,10 @@
   </ion-item>
 </ion-list>
 
+<div class="error-box" *ngIf="editAddress.controls['state'].hasError('ValidateComplementIsEmpty') && editAddress.controls['state'].touched">
+  State can't be empty.
+</div>
+
 <ion-list>
   <ion-item>
     <ion-label floating>Neighbourhood</ion-label>
@@ -47,6 +63,10 @@
   </ion-item>
 </ion-list>
 
+<div class="error-box" *ngIf="editAddress.controls['neighbourhood'].hasError('ValidateComplementIsEmpty') && editAddress.controls['neighbourhood'].touched">
+  Neighbourhood can't be empty.
+</div>
+
 <ion-list>
   <ion-item>
     <ion-label floating>Number</ion-label>
@@ -57,6 +77,11 @@
       <ion-input type="text" *ngIf="!userToken.address" [formControl]="editAddress.controls['number']"></ion-input>
   </ion-item>
 </ion-list>
+
+<div class="error-box" *ngIf="editAddress.controls['number'].hasError('ValidateNumberIsEmpty') && editAddress.controls['number'].touched">
+  Number can't be empty.
+</div>
+
 <ion-list>
   <ion-item>
     <ion-label floating>Complement</ion-label>
@@ -67,3 +92,7 @@
       <ion-input type="text" *ngIf="!userToken.address" [formControl]="editAddress.controls['complement']"></ion-input>
   </ion-item>
 </ion-list>
+
+<div class="error-box" *ngIf="editAddress.controls['complement'].hasError('ValidateComplementIsEmpty') && editAddress.controls['complement'].touched">
+  Complement can't be empty.
+</div>

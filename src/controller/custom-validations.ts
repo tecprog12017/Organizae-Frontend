@@ -17,6 +17,51 @@ export function ValidateEmail (): ValidatorFn {
   };
 }
 
+export function ValidateCep (): ValidatorFn{
+
+  return (control: AbstractControl): {[key: string]: any} => {
+    const cepRegex = /^[0-9]{5}-[0-9]{3}$/
+    var isValid = cepRegex.test(control.value)
+    var cep = control.value
+
+    //cep have not been registered yet
+    if(cep == null){
+      console.info("cep has not been registered before")
+      return null;
+    }
+    else{
+      //Do nothing
+    }
+
+    cep = cep.replace(/[^\d]+g/,'');
+
+    const cepString:string = String(cep).trim()
+    console.info("Cep String: ", cepString)
+    if(cepString == "" || cepString == null){
+      console.error("Cep is empty")
+      return { ValidateCepOutputIsEmpty : true}
+    }else{
+      //Do nothing
+    }
+
+    if(cepString.length < 5 || cepString.length > 10){
+      console.error("Cep length is not valid")
+      return { ValidateCepOutput : true }
+    }else{
+      //Do nothing
+    }
+
+    console.log(isValid);
+    if(isValid){
+      return null
+    }
+    else{
+      return { ValidateCepOutput : true };
+    }
+
+  }
+}
+
 //Validation used for the password on the user account
 export function ValidatePassword (): ValidatorFn {
 
@@ -375,6 +420,62 @@ export function ValidatePronoun(): ValidatorFn {
       return { ValidatePronounIsEmpty : true };
     }else{
       console.trace("pronounString:" ,pronoun, " is valid")
+      return null
+    }
+  };
+}
+
+export function ValidateAdressInformation(): ValidatorFn {
+
+  return (control: AbstractControl): {[key: string]: any} => {
+    var adressInformation = control.value;
+    console.log(adressInformation);
+
+    //adressInformation have not been registered yet
+    if(adressInformation == null){
+      console.info("adressInformation has not been registered before")
+      return null;
+    }
+    else{
+      //Do nothing
+    }
+
+    const adressInformationString:string = String(adressInformation).trim()
+    if(adressInformationString == "" || adressInformationString == null){
+      console.error("complementString is empty")
+      return { ValidateComplementIsEmpty : true };
+    }else{
+      console.trace("complementString:" ,adressInformation, " is valid")
+      return null
+    }
+  };
+}
+
+export function ValidateNumber(): ValidatorFn {
+
+  return (control: AbstractControl): {[key: string]: any} => {
+    var number = control.value;
+    console.log(number);
+
+    //number have not been registered yet
+    if(number == null){
+      console.info("adressInformation has not been registered before")
+      return null;
+    }
+    else{
+      //Do nothing
+    }
+
+    //remove all not numerical characters
+    number = number.replace(/[^a-z]/gi, '')
+    number = number.replace(/[^\d]+g/,'');
+
+    const numberString:string = String(number).trim()
+    if(numberString == "" || numberString == null){
+      console.error("numberString is empty")
+      return { ValidateNumberIsEmpty : true };
+    }else{
+      console.trace("numberString:" ,numberString, " is valid")
       return null
     }
   };

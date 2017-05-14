@@ -4,6 +4,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { UserFullProfile, Cpf, Rg, Address, Information, Gender } from '../../../../models/user-profile';
 import { ValidateEmail, ValidatePassword, ValidatesCpf, ValidateRgExpeditionState } from '../../../../controller/custom-validations'
 import { ValidateRgNumber, ValidateBirthDate, ValidatePhone, ValidatePronoun, ValidateGenderIdentity } from '../../../../controller/custom-validations'
+import { ValidateAdressInformation, ValidateNumber, ValidateCep } from '../../../../controller/custom-validations'
 import { Http } from '@angular/http'
 import { UserTokenSession } from '../../signIn/user-token-session.service'
 import { UserHome } from '../../userHome/user-home.component';
@@ -88,11 +89,11 @@ export class EditMain{
   initAddress(){
     return this.formBuilder.group({
       'cep' : [null, Validators.compose([Validators.required])],
-      'city' : [null, Validators.compose([Validators.required])],
-      'state' : [null, Validators.compose([Validators.required])],
-      'neighbourhood' : [null, Validators.compose([Validators.required])],
-      'number' : [null, Validators.compose([Validators.required])],
-      'complement' : [null, Validators.compose([Validators.required])]
+      'city' : [null, Validators.compose([Validators.required, ValidateAdressInformation()])],
+      'state' : [null, Validators.compose([Validators.required, ValidateAdressInformation()])],
+      'neighbourhood' : [null, Validators.compose([Validators.required, ValidateAdressInformation()])],
+      'number' : [null, Validators.compose([Validators.required, ValidateNumber()])],
+      'complement' : [null, Validators.compose([Validators.required, ValidateAdressInformation()])]
     });
   }
 
