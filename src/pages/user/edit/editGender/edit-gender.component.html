@@ -20,6 +20,10 @@
   </ion-item>
   </ion-list>
 
+  <div class="error-box" *ngIf="editGender.controls['genderIdentity'].hasError('ValidateGenderIdentityIsEmpty') && editGender.controls['genderIdentity'].touched">
+    Gendar Identity can't be empty.
+  </div>
+
   <ion-list>
     <ion-item class="in-class">
       <ion-label floating>Pronoun</ion-label>
@@ -38,3 +42,7 @@
 
     </ion-item>
   </ion-list>
+
+  <div class="error-box" *ngIf="editGender.controls['pronoun'].hasError('ValidatePronounIsEmpty') && editGender.controls['pronoun'].touched">
+    Pronoun can't be empty.
+  </div>
