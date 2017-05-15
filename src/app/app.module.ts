@@ -1,10 +1,6 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
-import { HomePage } from '../pages/home/home';
-import { TabsPage } from '../pages/tabs/tabs';
 import { SignUp } from '../pages/user/signUp/sign-up.component';
 
 import { EditCpf } from '../pages/user/edit/editCpf/edit-cpf.component'
@@ -18,16 +14,14 @@ import { SignIn } from '../pages/user/signIn/sign-in.component';
 import { UserHome } from '../pages/user/userHome/user-home.component';
 import { UserTokenSession } from '../pages/user/signIn/user-token-session.service'
 
+import { RegisterEnterprise } from '../pages/enterprise/registerEnterprise/register-enterprise.component';
+
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 @NgModule({
   declarations: [
     MyApp,
-    AboutPage,
-    ContactPage,
-    HomePage,
-    TabsPage,
     SignUp,
     EditCpf,
     EditGender,
@@ -36,7 +30,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     EditAdditionalInformation,
     EditMain,
     SignIn,
-    UserHome
+    UserHome,
+    RegisterEnterprise
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -44,10 +39,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
-    ContactPage,
-    HomePage,
-    TabsPage,
     SignUp,
     EditCpf,
     EditGender,
@@ -56,7 +47,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     EditAdditionalInformation,
     EditMain,
     SignIn,
-    UserHome
+    UserHome,
+    RegisterEnterprise
   ],
   providers: [
     StatusBar,
