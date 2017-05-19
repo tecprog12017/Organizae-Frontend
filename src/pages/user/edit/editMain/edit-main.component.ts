@@ -88,7 +88,7 @@ export class EditMain{
   //Method that connect component address to the main form
   initAddress(){
     return this.formBuilder.group({
-      'cep' : [null, Validators.compose([Validators.required])],
+      'cep' : [null, Validators.compose([Validators.required, ValidateCep()])],
       'city' : [null, Validators.compose([Validators.required, ValidateAdressInformation()])],
       'state' : [null, Validators.compose([Validators.required, ValidateAdressInformation()])],
       'neighbourhood' : [null, Validators.compose([Validators.required, ValidateAdressInformation()])],
