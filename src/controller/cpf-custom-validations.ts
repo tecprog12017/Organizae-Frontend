@@ -9,6 +9,7 @@ export function ValidatesCpf(): ValidatorFn {
     var cpf = control.value;
     console.info(cpf);
 
+
     const cpfWithoutletters = ReplaceNotNumericalDigits(cpf);
     if(cpfWithoutletters != null){
       cpf = cpfWithoutletters
@@ -17,73 +18,61 @@ export function ValidatesCpf(): ValidatorFn {
       return null
     }
 
-    const cpfIsEmpty = CheckIfCpfIsEmpty(cpf);
-    if(cpfIsEmpty){
-      return { CpfIsEmpty : true };
-    }else{
-      //Do nothing
-    }
+    try{
+      CheckIfCpfIsEmpty(cpf);
+      CheckIfCpfHasRequiredLenght(cpf);
 
-    const cpfHasElevenDigits = CheckIfCpfHasRequiredLenght(cpf);
-    if(!cpfHasElevenDigits){
-      return { CpfDontHaveRequiredLenght : true };
-    }else{
-      //Do nothing
-    }
+      //check if the first digit of cpf is out of leght of is a known invalid number
+      CheckIfCpfIsKnown(cpf);
 
-    //check if the first digit of cpf is out of leght of is a known invalid number
-    const cpfIsKnown = CheckIfCpfIsKnown(cpf);
-    if(cpfIsKnown){
-      return { ValidateCpfOutput : true };
-    }else{
-      //Do nothing
-    }
+      //check if the first verifying digit of cpf is valid
+      ValidatesCpfFirstVerifyingDigit(cpf);
+      console.trace("Cpf: ", cpf, " tem o primeiro digito valido");
 
-    const cpfFirstVerifyingDigitIsValid = ValidatesCpfFirstVerifyingDigit(cpf);
-    //check if the first verifying digit of cpf is valid
-    if(cpfFirstVerifyingDigitIsValid){
-      console.trace("Cpf: ", cpf, " has the first digit valid");
-    }else{
-      console.error("Cpf:", cpf, " has not the first digit valid")
-      return { ValidateCpfOutput : true };
+      //check if the second verifying digit of cpf is valid
+      ValidatesCpfSecondVerifyingDigit(cpf);
+      console.trace("Cpf: ", cpf, " tem o segundo digito válido");
+      
+    }catch(error){
+      if(error instanceof Error){
+        if(error.message == "Cpf is empty"){
+          console.log("ESta chagando bem aqui essa merda passa pfffffff");
+          return { CpfIsEmpty : true };
+        }else if(error.message == "Cpf does not have eleven digits"){
+          return { CpfDoesNotHaveRequiredLenght : true };
+        }else if(error.message == "Cpf first digit is invalid" || error.message == "Cpf second digit is not valid" || error.message == "Cpf is an invalid known number"){
+          return { CpfIsInvalid : true };
+        }else{
+          //Do nothing
+        }
+      }else{
+        //Do nothing
+      }
     }
-
-    const cpfSecondVerifyingDigitIsValid = ValidatesCpfSecondVerifyingDigit(cpf);
-    //check if the second verifying digit of cpf is valid
-    if(cpfSecondVerifyingDigitIsValid){
-      console.trace("Cpf: ", cpf, " has the second digit valid");
-    }else{
-      console.error("Cpf:", cpf, " has not the second digit valid")
-      return { ValidateCpfOutput : true };
-    }
-
     return null
   }
 }
 
 //Check if cpf has eleven digits
 function CheckIfCpfHasRequiredLenght(cpf:string){
-  //cpf need to have exactly eleven digits
-  const cpfRequiredLenght = 11;
+  const cpfRequiredLenght = 11;   //cpf need to have eleven digits
 
   if(cpf.length == cpfRequiredLenght){
     console.trace("Cpf:", cpf, " has eleven digits");
-    return true;
   }
   else{
     console.error("Cpf:", cpf, " does not have eleven digits");
-    return false;
+    throw new RangeError("Cpf does not have eleven digits")
   }
 }
 
 function CheckIfCpfIsEmpty(cpf:string){
   if(cpf.trim() == ""){
     console.error("Cpf is empty");
-    return true;
+    throw new Error("Cpf is empty")
   }
   else{
     console.trace("Cpf is not empty");
-    return false;
   }
 }
 
@@ -103,12 +92,11 @@ function CheckIfCpfIsKnown(cpf:string){
   if(cpf == "00000000000" || cpf == "11111111111" || cpf == "22222222222" || cpf == "33333333333" ||
      cpf == "44444444444" || cpf == "55555555555" || cpf == "66666666666" || cpf == "77777777777" ||
      cpf == "88888888888" || cpf == "99999999999"){
-       console.error("Cpf: ", cpf, " is a invalid known number")
-       return true;
+       console.error("Cpf: ", cpf, " is an invalid known number");
+       throw Error("Cpf is an invalid known number");
      }
   else{
-    console.trace("Cpf:", cpf, " isn't a invalid known number")
-    return false;
+    console.trace("Cpf:", cpf, " isn't a invalid known number");
   }
 }
 
@@ -137,14 +125,12 @@ function ValidatesCpfFirstVerifyingDigit(cpf:string){
 
     //check if the verifying digit is equal to the the nineth digit
     if(firstDigitVerifier != parseInt(cpf.charAt(lastNumericalDigit))){
-      console.log(firstDigitVerifier)
-      console.log(number)
-      return false;
+      console.log(firstDigitVerifier);
+      console.log(number);
+      throw new Error("Cpf first digit is invalid");
     }else{
       //DO NOTHING
     }
-
-  return true;
 }
 
 function ValidatesCpfSecondVerifyingDigit(cpf:string){
@@ -171,9 +157,9 @@ function ValidatesCpfSecondVerifyingDigit(cpf:string){
 
   //check if the verifying digit is equal to the the tenth digit
   if(secondDigitVerifier != parseInt(cpf.charAt(firstNumericalDigitLimit))){
-    return false
+    throw new Error("Cpf second digit is not valid");
   }else{
-    return true
+    return true;
   }
 
 }

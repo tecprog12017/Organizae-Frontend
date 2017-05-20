@@ -2,7 +2,8 @@ import { Component } from "@angular/core";
 import { NavController } from "ionic-angular"
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { UserFullProfile, Cpf, Rg, Address, Information, Gender } from '../../../../models/user-profile';
-import { ValidateEmail, ValidatePassword, ValidatesCpf, ValidateRgExpeditionState } from '../../../../controller/custom-validations'
+import { ValidateEmail, ValidatePassword, ValidateRgExpeditionState } from '../../../../controller/custom-validations'
+import { ValidatesCpf } from '../../../../controller/cpf-custom-validations'
 import { ValidateRgNumber, ValidateBirthDate, ValidatePhone, ValidatePronoun, ValidateGenderIdentity } from '../../../../controller/custom-validations'
 import { ValidateAdressInformation, ValidateNumber, ValidateCep } from '../../../../controller/custom-validations'
 import { Http } from '@angular/http'
