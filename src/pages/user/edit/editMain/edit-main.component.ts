@@ -2,9 +2,10 @@ import { Component } from "@angular/core";
 import { NavController } from "ionic-angular"
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { UserFullProfile, Cpf, Rg, Address, Information, Gender } from '../../../../models/user-profile';
-import { ValidateEmail, ValidatePassword, ValidateRgExpeditionState } from '../../../../controller/custom-validations'
+import { ValidateEmail, ValidatePassword } from '../../../../controller/custom-validations'
 import { ValidatesCpf } from '../../../../controller/cpf-custom-validations'
-import { ValidateRgNumber, ValidateBirthDate, ValidatePhone, ValidatePronoun, ValidateGenderIdentity } from '../../../../controller/custom-validations'
+import { ValidateRgNumber } from '../../../../controller/rg-custom-validations'
+import { ValidateBirthDate, ValidatePhone, ValidatePronoun, ValidateGenderIdentity } from '../../../../controller/custom-validations'
 import { ValidateAdressInformation, ValidateNumber, ValidateCep } from '../../../../controller/custom-validations'
 import { Http } from '@angular/http'
 import { UserTokenSession } from '../../signIn/user-token-session.service'
@@ -82,7 +83,7 @@ export class EditMain{
   initRg(){
     return this.formBuilder.group({
       'rgNumber' : [null, Validators.compose([Validators.required, ValidateRgNumber()])],
-      'rgExpeditionState' : [null, Validators.compose([Validators.required, ValidateRgExpeditionState()])]
+      'rgExpeditionState' : [null, Validators.compose([Validators.required])]
     });
   }
 

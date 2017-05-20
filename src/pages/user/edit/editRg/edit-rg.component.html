@@ -7,11 +7,12 @@
     <ion-input type="text"  *ngIf="!userToken.rg" [formControl]="editRg.controls['rgNumber']"></ion-input>
   </ion-item>
 </ion-list>
-<div class="error-box" *ngIf="editRg.controls['rgNumber'].hasError('ValidateRgNumberIsEmpty') && editRg.controls['rgNumber'].touched">
-  Rg number can't be empty.
+
+<div class="error-box" *ngIf="editRg.controls['rgNumber'].hasError('RgNumberIsEmpty') && editRg.controls['rgNumber'].touched">
+  Rg number can't be empty or have letters.
 </div>
 
-<div class="error-box" *ngIf="editRg.controls['rgNumber'].hasError('ValidateRgNumberOutput') && editRg.controls['rgNumber'].touched">
+<div class="error-box" *ngIf="editRg.controls['rgNumber'].hasError('RgNumberDoesNotHaveRequiredLenght') && editRg.controls['rgNumber'].touched">
   Rg number can't have less then 5 characters or more then 13 characters.
 </div>
 
@@ -28,7 +29,3 @@
     </ion-select>
     </ion-item>
 </ion-list>
-
-<div class="error-box" *ngIf="editRg.controls['rgExpeditionState'].hasError('ValidateRgExpeditionStateOutput') && editRg.controls['rgExpeditionState'].touched">
-  Rg Expedition State can't be empty.
-</div>

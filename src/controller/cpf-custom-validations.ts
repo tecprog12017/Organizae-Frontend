@@ -32,11 +32,10 @@ export function ValidatesCpf(): ValidatorFn {
       //check if the second verifying digit of cpf is valid
       ValidatesCpfSecondVerifyingDigit(cpf);
       console.trace("Cpf: ", cpf, " tem o segundo digito válido");
-      
+
     }catch(error){
       if(error instanceof Error){
         if(error.message == "Cpf is empty"){
-          console.log("ESta chagando bem aqui essa merda passa pfffffff");
           return { CpfIsEmpty : true };
         }else if(error.message == "Cpf does not have eleven digits"){
           return { CpfDoesNotHaveRequiredLenght : true };
