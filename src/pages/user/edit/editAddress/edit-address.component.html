@@ -9,12 +9,12 @@
 
 </ion-list>
 
-<div class="error-box" *ngIf="editAddress.controls['cep'].hasError('ValidateCepOutputIsEmpty') && editAddress.controls['cep'].touched">
-  Cep can't be empty.
+<div class="error-box" *ngIf="editAddress.controls['cep'].hasError('CepIsEmpty') && editAddress.controls['cep'].touched">
+  Cep can't be empty or have letters.
 </div>
 
-<div class="error-box" *ngIf="editAddress.controls['cep'].hasError('ValidateCepOutput') && editAddress.controls['cep'].touched">
-  This cep isn't valid.
+<div class="error-box" *ngIf="editAddress.controls['cep'].hasError('CepDoesNotHaveRequiredLenght') && editAddress.controls['cep'].touched">
+  Cep need to have eight digits.
 </div>
 
 <ion-list>
@@ -29,7 +29,7 @@
   </ion-item>
 </ion-list>
 
-<div class="error-box" *ngIf="editAddress.controls['city'].hasError('ValidateComplementIsEmpty') && editAddress.controls['city'].touched">
+<div class="error-box" *ngIf="editAddress.controls['city'].hasError('AddressInformationIsEmpty') && editAddress.controls['city'].touched">
   City can't be empty.
 </div>
 
@@ -48,10 +48,6 @@
   </ion-item>
 </ion-list>
 
-<div class="error-box" *ngIf="editAddress.controls['state'].hasError('ValidateComplementIsEmpty') && editAddress.controls['state'].touched">
-  State can't be empty.
-</div>
-
 <ion-list>
   <ion-item>
     <ion-label floating>Neighbourhood</ion-label>
@@ -63,7 +59,7 @@
   </ion-item>
 </ion-list>
 
-<div class="error-box" *ngIf="editAddress.controls['neighbourhood'].hasError('ValidateComplementIsEmpty') && editAddress.controls['neighbourhood'].touched">
+<div class="error-box" *ngIf="editAddress.controls['neighbourhood'].hasError('AddressInformationIsEmpty') && editAddress.controls['neighbourhood'].touched">
   Neighbourhood can't be empty.
 </div>
 
@@ -78,8 +74,8 @@
   </ion-item>
 </ion-list>
 
-<div class="error-box" *ngIf="editAddress.controls['number'].hasError('ValidateNumberIsEmpty') && editAddress.controls['number'].touched">
-  Number can't be empty.
+<div class="error-box" *ngIf="editAddress.controls['number'].hasError('NumberIsEmpty') && editAddress.controls['number'].touched">
+  Number can't be empty or have letters.
 </div>
 
 <ion-list>
@@ -93,6 +89,6 @@
   </ion-item>
 </ion-list>
 
-<div class="error-box" *ngIf="editAddress.controls['complement'].hasError('ValidateComplementIsEmpty') && editAddress.controls['complement'].touched">
+<div class="error-box" *ngIf="editAddress.controls['complement'].hasError('AddressInformationIsEmpty') && editAddress.controls['complement'].touched">
   Complement can't be empty.
 </div>

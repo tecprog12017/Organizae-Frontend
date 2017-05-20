@@ -2,11 +2,10 @@ import { Component } from "@angular/core";
 import { NavController } from "ionic-angular"
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { UserFullProfile, Cpf, Rg, Address, Information, Gender } from '../../../../models/user-profile';
-import { ValidateEmail, ValidatePassword } from '../../../../controller/custom-validations'
+import { ValidateEmail, ValidatePassword, ValidateBirthDate, ValidatePhone, ValidatePronoun, ValidateGenderIdentity } from '../../../../controller/custom-validations'
 import { ValidatesCpf } from '../../../../controller/cpf-custom-validations'
 import { ValidateRgNumber } from '../../../../controller/rg-custom-validations'
-import { ValidateBirthDate, ValidatePhone, ValidatePronoun, ValidateGenderIdentity } from '../../../../controller/custom-validations'
-import { ValidateAdressInformation, ValidateNumber, ValidateCep } from '../../../../controller/custom-validations'
+import { ValidateCep, ValidateAdressInformation, ValidateNumber } from '../../../../controller/address-custom-validations'
 import { Http } from '@angular/http'
 import { UserTokenSession } from '../../signIn/user-token-session.service'
 import { UserHome } from '../../userHome/user-home.component';
@@ -92,7 +91,7 @@ export class EditMain{
     return this.formBuilder.group({
       'cep' : [null, Validators.compose([Validators.required, ValidateCep()])],
       'city' : [null, Validators.compose([Validators.required, ValidateAdressInformation()])],
-      'state' : [null, Validators.compose([Validators.required, ValidateAdressInformation()])],
+      'state' : [null, Validators.compose([Validators.required])],
       'neighbourhood' : [null, Validators.compose([Validators.required, ValidateAdressInformation()])],
       'number' : [null, Validators.compose([Validators.required, ValidateNumber()])],
       'complement' : [null, Validators.compose([Validators.required, ValidateAdressInformation()])]
