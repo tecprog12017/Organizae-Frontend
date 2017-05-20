@@ -2,7 +2,8 @@ import { Component } from "@angular/core";
 import { NavController } from "ionic-angular"
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { UserFullProfile, Cpf, Rg, Address, Information, Gender } from '../../../../models/user-profile';
-import { ValidateEmail, ValidatePassword, ValidateBirthDate, ValidatePhone, ValidatePronoun, ValidateGenderIdentity } from '../../../../controller/custom-validations'
+import { ValidateEmail, ValidatePassword } from '../../../../controller/custom-validations'
+import { ValidatePhone } from '../../../../controller/additional-information-custom-validations'
 import { ValidatesCpf } from '../../../../controller/cpf-custom-validations'
 import { ValidateRgNumber } from '../../../../controller/rg-custom-validations'
 import { ValidateCep, ValidateAdressInformation, ValidateNumber } from '../../../../controller/address-custom-validations'
@@ -101,7 +102,7 @@ export class EditMain{
   //Method that connect component additional information to the main form
   initAdditionalInformation(){
     return this.formBuilder.group({
-      'birthdate' : [null, Validators.compose([Validators.required, ValidateBirthDate()])],
+      'birthdate' : [null, Validators.compose([Validators.required])],
       'phone' : [null, Validators.compose([Validators.required, ValidatePhone()])]
     });
   }
@@ -109,8 +110,8 @@ export class EditMain{
   //Method that connect component gender to the main form
   initGender(){
     return this.formBuilder.group({
-      'genderIdentity' : [null, Validators.compose([Validators.required, ValidateGenderIdentity()])],
-      'pronoun' : [null, Validators.compose([Validators.required, ValidatePronoun()])]
+      'genderIdentity' : [null, Validators.compose([Validators.required])],
+      'pronoun' : [null, Validators.compose([Validators.required])]
     });
   }
 
