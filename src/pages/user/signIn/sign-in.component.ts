@@ -40,8 +40,8 @@ export class SignIn {
     this.http.post('http://localhost:3000/api/UserProfiles/login', this.signInForm.value)
     .map(res => res.json())
     .subscribe(token => {
-      if(token != 400){
-        this.userToken = jwt.decode(token, this.secret);
+      if(token.status != 400){
+        this.userToken = jwt.decode(token.status, this.secret);
         this.navCtrl.setRoot(UserHome, { }, {animate: true, direction: 'forward'});
         this.userTokenSession.setToken(this.userToken);
       }
