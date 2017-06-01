@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Delete Account</ion-title>
+  </ion-navbar>
+
+<ion-content class="content-class">
+  <ion-card color='background' class="card-class">
+        <ion-card-header>Are you sure you want to delete your account?</ion-card-header>
+        <!-- Form used to confirm if user wants do delete their account and confirm their password -->
+        <form id="deleteUserForm" [formGroup]="deleteUserForm" (ngSubmit)="submitForm(deleteUserForm.value)">
+
+          <!-- Input for the password of the user used on the registrations -->
+          <ion-item class="input-class">
+            <ion-label floating>Password</ion-label>
+            <ion-input id="password-register" type="password" placeholder="Password" [formControl]="signUpForm.controls['passwords'].controls['password']"></ion-input>
+          </ion-item>
+          <div class="error-box" *ngIf="deleteUserForm.controls['passwords'].controls['password'].hasError('required') && signUpForm.controls['passwords'].controls['password'].touched">
+            Password is required!
+          </div>
+          <div class="error-box" *ngIf="signUpForm.controls['passwords'].controls['password'].hasError('ValidatePasswordOutput') && signUpForm.controls['passwords'].controls['password'].touched">
+            Your password must have at least one digit, one upper case letter and one lower case letter.
+          </div>
+          <br>
+
+    <button type="submit" ion-button full>Submit</button>
+  </form>
+  </ion-card>
+</ion-content>
