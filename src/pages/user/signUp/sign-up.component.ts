@@ -35,6 +35,7 @@ export class SignUp {
 
   //Creating method to submit form values to backend
   submitForm(value: any):void{
+    console.log(this.signUpForm)
     this.newUser = new UserProfile(this.signUpForm);
     this.http.post('http://localhost:3000/api/UserProfiles/sign-up', this.newUser)
     .map(res => res.json())
