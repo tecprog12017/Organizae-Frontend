@@ -1,10 +1,50 @@
 <ion-header>
   <ion-navbar color="primary">
     <ion-title>My Enterprises</ion-title>
-    <ion-buttons start>
-      <button ion-button [navPush]="newEnterprise">
-        <ion-icon name="ion-plus" ></ion-icon>
-      </button>
-    </ion-buttons>
   </ion-navbar>
 </ion-header>
+
+<ion-content class="background-class">
+  <ion-fab right bottom>
+    <button ion-fab [navPush]="newEnterprise">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+
+  <ion-card>
+
+
+  <ion-card-header>
+    Nome da Empresa
+  </ion-card-header>
+  <ion-card-content>
+  <ion-item>
+
+    <h3>State</h3>
+    <p>Rio de Janeiro</p>
+  </ion-item>
+
+  <ion-item>
+    <h3>City</h3>
+    <p>Rio de janeiro</p>
+  </ion-item>
+
+  <ion-item>
+    <h3>Occupation Area</h3>
+    <p> Programming</p>
+  </ion-item>
+
+  <ion-item>
+
+    <button ion-button icon-left clear item-right>
+        <ion-icon name="cog"></ion-icon>
+      Edit
+    </button>
+    <button ion-button icon-left clear item-left>
+        <ion-icon name="bookmark"></ion-icon>
+      Add Shortcut
+    </button>
+  </ion-item>
+</ion-card-content>
+</ion-card>
+</ion-content>
