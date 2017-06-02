@@ -3,10 +3,11 @@ import { NavController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Http } from '@angular/http';
 import { AlertController } from 'ionic-angular';
+import { UserProfile } from '../../../models/user-profile';
 import { ValidateEmail, ValidatePassword } from '../../../controller/custom-validations';
 import { SignUp } from '../signUp/sign-up.component';
-import { UserProfile } from '../../../models/user-profile';
 import { UserHome } from '../userHome/user-home.component';
+import { UserTokenSession } from './user-token-session.service'
 
 import 'rxjs/add/operator/map';
 import * as  jwt from 'jwt-simple/lib/jwt';
@@ -26,7 +27,8 @@ export class SignIn {
   secret = 'tecprog-2017/01';
 
   //Form used for the member to access the system
-  constructor(public navCtrl: NavController, formBuilder: FormBuilder, private http: Http, public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, formBuilder: FormBuilder, private http: Http,
+              public alertCtrl: AlertController, public userTokenSession: UserTokenSession) {
     this.signInForm = formBuilder.group({
       'email': [null, Validators.compose([Validators.required, ValidateEmail()])],
       'password': [null, Validators.compose([Validators.required, ValidatePassword()])],
@@ -38,9 +40,10 @@ export class SignIn {
     this.http.post('http://localhost:3000/api/UserProfiles/login', this.signInForm.value)
     .map(res => res.json())
     .subscribe(token => {
-      if(token.status != 400){
+      if(token != 400){
         this.userToken = jwt.decode(token, this.secret);
         this.navCtrl.setRoot(UserHome, { }, {animate: true, direction: 'forward'});
+        this.userTokenSession.setToken(this.userToken);
       }
       else{
         this.showSignInError();
