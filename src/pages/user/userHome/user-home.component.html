@@ -1,13 +1,37 @@
 <ion-header>
   <ion-navbar color="primary">
-    <ion-title>User Homepage</ion-title>
-    <a color="secondary" (click)="logOut()">Log Out</a>
+    <ion-title class="home-title">User Homepage</ion-title>
+    <ion-buttons end>
+      <a color="secondary" (click)="logOut()">LOG OUT</a>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
-<ion-content  padding class="background-class">
+<ion-content class="background-class">
   <ion-searchbar></ion-searchbar>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <button icon-only class="page-home-tile" [navPush]="editMain">
+             <ion-icon name="contact"></ion-icon>
+         </button>
+        <br>
+        <button ion-button color="primary" clear small [navPush]="editMain">
+           Update Profile
+         </button>
+      </ion-col>
 
-  <button ion-button type="submit" [navPush]="editMain"> Update infos </button>
-  <button ion-button type="submit" [navPush]="registerEnterprise"> Register Enterprise </button>
+       <ion-col>
+         <button icon-only class="page-home-tile" [navPush]="registerEnterprise">
+            <ion-icon name='briefcase'></ion-icon>
+          </button>
+         <br>
+         <button ion-button color="primary" clear small [navPush]="registerEnterprise">
+            Register Enterprise
+          </button>
+
+       </ion-col>
+     </ion-row>
+   </ion-grid>
+
 </ion-content>
