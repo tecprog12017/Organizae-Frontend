@@ -1,6 +1,11 @@
 import { Component } from '@angular/core';
+
+import { SignIn } from '../signIn/sign-in.component';
+import { NavController } from 'ionic-angular';
+
 import { EditMain } from '../edit/editMain/edit-main.component'
 import { RegisterEnterprise } from '../../enterprise/registerEnterprise/register-enterprise.component';
+import { UserTokenSession } from '../signIn/user-token-session.service';
 
 @Component({
   selector: "user-home",
@@ -10,4 +15,12 @@ import { RegisterEnterprise } from '../../enterprise/registerEnterprise/register
 export class UserHome {
   editMain = EditMain;
   registerEnterprise = RegisterEnterprise;
+  constructor(public navCtrl: NavController, private userTokenSession: UserTokenSession) { }
+
+  logOut () {
+    this.userTokenSession.setToken(null);
+    this.navCtrl.setRoot(SignIn, { }, {animate:true, direction:'backwards'});
+  }
+
+
 }
