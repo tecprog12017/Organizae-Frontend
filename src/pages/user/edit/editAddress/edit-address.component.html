@@ -89,7 +89,3 @@
       <ion-input type="text" *ngIf="!userToken.address" [formControl]="editAddress.controls['complement']"></ion-input>
   </ion-item>
 </ion-list>
-
-<div class="error-box" *ngIf="editAddress.controls['complement'].hasError('AddressInformationIsEmpty') && editAddress.controls['complement'].touched">
-  Complement can't be empty.
-</div>

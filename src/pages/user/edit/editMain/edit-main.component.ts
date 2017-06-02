@@ -95,7 +95,7 @@ export class EditMain{
       'state' : [null, Validators.compose([Validators.required])],
       'neighbourhood' : [null, Validators.compose([Validators.required, ValidateAdressInformation()])],
       'number' : [null, Validators.compose([Validators.required, ValidateNumber()])],
-      'complement' : [null, Validators.compose([Validators.required, ValidateAdressInformation()])]
+      'complement' : [null, null]
     });
   }
 
