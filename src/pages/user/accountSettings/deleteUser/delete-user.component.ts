@@ -6,12 +6,11 @@ import { Http } from '@angular/http';
 import { AlertController } from 'ionic-angular';
 import { UserTokenSession } from '../../signIn/user-token-session.service'
 import { ValidateEmail, ValidatePassword } from '../../../../controller/custom-validations';
-import { UserHome } from '../../userHome/user-home.component';
+import { SignIn } from '../../signIn/sign-in.component';
 
 import 'rxjs/add/operator/map';
 import * as  jwt from 'jwt-simple/lib/jwt';
-
-//jesus14320@hotmail.com
+import * as cryptoJS from 'crypto-js/crypto-js';
 
 @Component({
   selector: "delete-user",
@@ -28,21 +27,22 @@ export class DeleteUser {
 //Form used for the member to delete own account
 constructor(public navCtrl: NavController, formBuilder: FormBuilder, private http: Http,
             public alertCtrl: AlertController, public userTokenSession: UserTokenSession) {
-  this.deleteUserForm = formBuilder.group({
-    'email': [null, Validators.compose([Validators.required, ValidateEmail()])],
-    'password': [null, Validators.compose([Validators.required, ValidatePassword()])],
+  this.deleteUserForm = formBuilder.group({'password': [null, Validators.compose([Validators.required, ValidatePassword()])],
   });
  }
 
  //submit used to authenticate the user in system
  submitForm(value: any):void{
-   this.http.post('http://localhost:3000/api/UserProfiles/deleteAccount', this.deleteUserForm.value)
+   var cryptedPassword = cryptoJS.AES.encrypt(user.password, this.secret);
+   var user = {
+     'token': this.userTokenSession.getToken(),
+     'password': cryptedPassword,
+   };
+   this.http.post('http://localhost:3000/api/UserProfiles/delete-user', user)
     .map(res => res.json())
     .subscribe(token => {
       if(token.status != 400){
-        this.userToken = jwt.decode(token.status, this.secret);
-        this.navCtrl.setRoot(UserHome, { }, {animate: true, direction: 'forward'});
-        this.userTokenSession.setToken(this.userToken);
+        this.navCtrl.setRoot(SignIn, { }, {animate: true, direction: 'forward'});
       }
       else{
         this.showDeleteUserError();
