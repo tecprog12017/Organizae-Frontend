@@ -13,7 +13,8 @@ import { EditMain } from '../pages/user/edit/editMain/edit-main.component';
 import { SignIn } from '../pages/user/signIn/sign-in.component';
 import { UserHome } from '../pages/user/userHome/user-home.component';
 import { UserTokenSession } from '../pages/user/signIn/user-token-session.service'
-
+import { SettingsMain } from '../pages/user/accountSettings/settingsMain/settings-main.component'
+import { DeleteUser } from '../pages/user/accountSettings/deleteUser/delete-user.component'
 import { RegisterEnterprise } from '../pages/enterprise/registerEnterprise/register-enterprise.component';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -31,7 +32,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     EditMain,
     SignIn,
     UserHome,
-    RegisterEnterprise
+    RegisterEnterprise,
+    SettingsMain,
+    DeleteUser
   ],
   imports: [
     IonicModule.forRoot(MyApp)

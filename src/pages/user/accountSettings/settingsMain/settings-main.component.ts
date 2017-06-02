@@ -8,5 +8,5 @@ import { UserHome } from '../../userHome/user-home.component';
 })
 
 export class SettingsMain {
-
+  deleteUser = DeleteUser;
 }
