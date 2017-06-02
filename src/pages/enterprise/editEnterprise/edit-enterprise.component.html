@@ -1,6 +1,9 @@
 <ion-header>
   <ion-navbar color="primary">
-    <ion-title>Edit Enterprise</ion-title>
+    <ion-title class="edit-enterprise-title">Edit Enterprise</ion-title>
+    <button ion-fab mini class="delete-enterprise-button">
+      <ion-icon name="trash"></ion-icon>
+    </button>
   </ion-navbar>
 </ion-header>
 
@@ -22,9 +25,16 @@
     </ion-item>
     <br>
 
+    <!-- Used to get the old CNPJ provided by the user -->
+    <ion-item class="edit-enterprise-field">
+      <ion-label floating>Old CNPJ</ion-label>
+      <ion-input type="text" [formControl]="editEnterpriseForm.controls['oldCnpj']"></ion-input>
+    </ion-item>
+    <br>
+
     <!-- Used to get the new CNPJ provided by the user -->
     <ion-item class="edit-enterprise-field">
-      <ion-label floating>CNPJ</ion-label>
+      <ion-label floating>New CNPJ</ion-label>
       <ion-input type="text" [formControl]="editEnterpriseForm.controls['cnpj']"></ion-input>
     </ion-item>
     <br>
@@ -32,12 +42,17 @@
     <!-- Used to check if the password provided matches the password in the database -->
     <ion-item class="edit-enterprise-field">
       <ion-label floating>User Password</ion-label>
-      <ion-input type="password" [formControl]="editEnterpriseForm.controls['userPassword']"></ion-input>
+      <ion-input type="password" [formControl]="editEnterpriseForm.controls['confirmationPassword']"></ion-input>
     </ion-item>
     <br>
 
     <!-- Used to render address form -->
     <edit-address [group]="editEnterpriseForm.controls['address'].controls[0]"></edit-address>
 
+    <!-- Used for the user to edit his enterprise -->
+    <ion-buttons end>
+      <button ion-button type="submit" [disabled]="!editEnterpriseForm.valid">Submit</button>
+    </ion-buttons>
+    <br>
   </form>
 </ion-content>
