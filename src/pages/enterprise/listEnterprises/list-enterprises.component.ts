@@ -13,22 +13,36 @@ import { RegisterEnterprise } from '../registerEnterprise/register-enterprise.co
 
 export class ListEnterprises {
   newEnterprise = RegisterEnterprise;
+  enterprises: Array<Object>;
+
   constructor(public navCtrl: NavController, private http: Http, public userTokenSession: UserTokenSession) {
     // Setting user email as parameter to pass user to backend
+    this.enterprises = null;
+
+  }
+
+  getEnterprises()  {
     let params = new URLSearchParams();
     params.set('user', this.userTokenSession.getToken());
 
     // Getting enterprises that belong to logged user from backend
-    this.http.get('http://localhost:3000/api/enterprises/consult-enterprises', { search: params }).map(res => res.json())
-    .subscribe( res => {
-      if (res.status == 200){
-        //user has enterprises
-      }
-      else {
-        //user doesnt have enterprises
-      }
-
+    return new Promise(resolve => {
+      this.http.get('http://localhost:3000/api/enterprises/consult-enterprises', { search: params }).map(res => res.json())
+      .subscribe( res => {
+        if (res){
+          this.enterprises = res.query;
+          resolve(this.enterprises);
+          //user has enterprises
+        }
+        else {
+          //user doesnt have enterprises
+        }
+      });
     });
-
   }
+
+  ionViewWillLoad(){
+    this.getEnterprises();
+  }
+
 }

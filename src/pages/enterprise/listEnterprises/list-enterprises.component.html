@@ -5,33 +5,25 @@
 </ion-header>
 
 <ion-content class="background-class">
-  <ion-fab right bottom>
-    <button ion-fab [navPush]="newEnterprise">
-      <ion-icon name="add"></ion-icon>
-    </button>
-  </ion-fab>
-
-  <ion-card>
-
-
+  <ion-card *ngFor="let enterprise of enterprises; let i = index">
   <ion-card-header>
-    Nome da Empresa
+    <h1>{{enterprises[i].name}}</h1>
   </ion-card-header>
   <ion-card-content>
   <ion-item>
 
     <h3>State</h3>
-    <p>Rio de Janeiro</p>
+    <p>{{enterprises[i].address.state}}</p>
   </ion-item>
 
   <ion-item>
     <h3>City</h3>
-    <p>Rio de janeiro</p>
+    <p>{{enterprises[i].address.city}}</p>
   </ion-item>
 
   <ion-item>
     <h3>Occupation Area</h3>
-    <p> Programming</p>
+    <p> {{enterprises[i].occupationArea}} </p>
   </ion-item>
 
   <ion-item>
@@ -47,4 +39,9 @@
   </ion-item>
 </ion-card-content>
 </ion-card>
+<ion-fab right bottom>
+  <button ion-fab [navPush]="newEnterprise">
+    <ion-icon name="add"></ion-icon>
+  </button>
+</ion-fab>
 </ion-content>
