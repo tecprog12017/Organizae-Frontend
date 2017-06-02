@@ -1,5 +1,4 @@
 import { AbstractControl, ValidatorFn } from '@angular/forms';
-import { Directive, ElementRef, HostListener, Input } from '@angular/core';
 
 //Validation used to not allow letters, special characters and short strings in phone number
 export function ValidatePhone (): ValidatorFn {
