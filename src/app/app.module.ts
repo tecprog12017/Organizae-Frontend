@@ -15,6 +15,7 @@ import { UserHome } from '../pages/user/userHome/user-home.component';
 import { UserTokenSession } from '../pages/user/signIn/user-token-session.service'
 
 import { RegisterEnterprise } from '../pages/enterprise/registerEnterprise/register-enterprise.component';
+import { EditEnterprise } from '../pages/enterprise/editEnterprise/edit-enterprise.component';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -31,7 +32,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     EditMain,
     SignIn,
     UserHome,
-    RegisterEnterprise
+    RegisterEnterprise,
+    EditEnterprise
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -48,7 +50,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     EditMain,
     SignIn,
     UserHome,
-    RegisterEnterprise
+    RegisterEnterprise,
+    EditEnterprise
   ],
   providers: [
     StatusBar,
