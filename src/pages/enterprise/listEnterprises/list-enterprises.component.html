@@ -5,43 +5,42 @@
 </ion-header>
 
 <ion-content class="background-class">
+  <!--Show as many card as there are in array enterprises -->
   <ion-card *ngFor="let enterprise of enterprises; let i = index">
-  <ion-card-header>
-    <h1>{{enterprises[i].name}}</h1>
-  </ion-card-header>
-  <ion-card-content>
-  <ion-item>
-
-    <h3>State</h3>
-    <p>{{enterprises[i].address.state}}</p>
-  </ion-item>
-
-  <ion-item>
-    <h3>City</h3>
-    <p>{{enterprises[i].address.city}}</p>
-  </ion-item>
-
-  <ion-item>
-    <h3>Occupation Area</h3>
-    <p> {{enterprises[i].occupationArea}} </p>
-  </ion-item>
-
-  <ion-item>
-
-    <button ion-button icon-left clear item-right>
-        <ion-icon name="cog"></ion-icon>
-      Edit
+      <!-- Each card has information about one enterprise -->
+    <ion-card-header>
+      <h1>{{enterprises[i].name}}</h1>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <h3>State</h3>
+        <p>{{enterprises[i].address.state}}</p>
+      </ion-item>
+      <ion-item>
+        <h3>City</h3>
+        <p>{{enterprises[i].address.city}}</p>
+      </ion-item>
+      <ion-item>
+        <h3>Occupation Area</h3>
+        <p> {{enterprises[i].occupationArea}} </p>
+      </ion-item>
+      <ion-item>
+        <!-- Button pushes to edit enterprise in current card -->
+        <button ion-button icon-left clear item-right>
+          <ion-icon name="cog"></ion-icon>
+          Edit
+        <!-- Button adds enterprise in current card to user home -->
+        </button>
+        <button ion-button icon-left clear item-left>
+          <ion-icon name="bookmark"></ion-icon>
+          Add Shortcut
+        </button>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+  <ion-fab right bottom>
+    <button ion-fab [navPush]="newEnterprise">
+      <ion-icon name="add"></ion-icon>
     </button>
-    <button ion-button icon-left clear item-left>
-        <ion-icon name="bookmark"></ion-icon>
-      Add Shortcut
-    </button>
-  </ion-item>
-</ion-card-content>
-</ion-card>
-<ion-fab right bottom>
-  <button ion-fab [navPush]="newEnterprise">
-    <ion-icon name="add"></ion-icon>
-  </button>
-</ion-fab>
+  </ion-fab>
 </ion-content>

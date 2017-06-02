@@ -30,17 +30,18 @@ export class ListEnterprises {
       this.http.get('http://localhost:3000/api/enterprises/consult-enterprises', { search: params }).map(res => res.json())
       .subscribe( res => {
         if (res){
+          //User has enterprises
           this.enterprises = res.query;
           resolve(this.enterprises);
-          //user has enterprises
         }
         else {
-          //user doesnt have enterprises
+          //User doesnt have enterprises
         }
       });
     });
   }
 
+  // Running get enterprises method before page is rendered
   ionViewWillLoad(){
     this.getEnterprises();
   }
