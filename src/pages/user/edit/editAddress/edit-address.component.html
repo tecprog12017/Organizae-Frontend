@@ -1,4 +1,5 @@
 <ion-list [formGroup]="editAddress">
+  <br><br>
   <ion-item class="in-class">
     <ion-label floating>CEP</ion-label>
       <!-- User already have a registered cep, the field shows it up -->
@@ -34,7 +35,7 @@
 </div>
 
 <ion-list>
-  <ion-item>
+  <ion-item class="in-class">
     <ion-label floating> State</ion-label>
       <!-- User already have a registered state, the field shows it up -->
       <ion-select *ngIf="userToken.address" [(ngModel)]="userToken.address.state" [formControl]="editAddress.controls['state']">
@@ -49,7 +50,7 @@
 </ion-list>
 
 <ion-list>
-  <ion-item>
+  <ion-item class="in-class">
     <ion-label floating>Neighbourhood</ion-label>
       <!-- User already have a registered Neighbourhood, the field shows it up -->
       <ion-input type="text" *ngIf="userToken.address" [(ngModel)]="userToken.address.neighbourhood" [formControl]="editAddress.controls['neighbourhood']"></ion-input>
@@ -64,7 +65,7 @@
 </div>
 
 <ion-list>
-  <ion-item>
+  <ion-item class="in-class">
     <ion-label floating>Number</ion-label>
       <!-- User already have a registered adress number, the field shows it up -->
       <ion-input type="text" *ngIf="userToken.address" [(ngModel)]="userToken.address.number" [formControl]="editAddress.controls['number']"></ion-input>
@@ -79,7 +80,7 @@
 </div>
 
 <ion-list>
-  <ion-item>
+  <ion-item class="in-class">
     <ion-label floating>Complement</ion-label>
       <!-- User already have a registered adress complement, the field shows it up -->
       <ion-input type="text" *ngIf="userToken.address" [(ngModel)]="userToken.address.complement" [formControl]="editAddress.controls['complement']"></ion-input>
@@ -88,7 +89,3 @@
       <ion-input type="text" *ngIf="!userToken.address" [formControl]="editAddress.controls['complement']"></ion-input>
   </ion-item>
 </ion-list>
-
-<div class="error-box" *ngIf="editAddress.controls['complement'].hasError('AddressInformationIsEmpty') && editAddress.controls['complement'].touched">
-  Complement can't be empty.
-</div>

@@ -4,12 +4,12 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content class="content-class">
-  <ion-card color="gray" class="card-class">
+<ion-content class="background-class">
     <!--Form used to register an enterprise -->
     <form [formGroup]="enterpriseForm" (ngSubmit)="submitForm(enterpriseForm.value)">
       <!--Name input used for the user to register an enterprise -->
-      <ion-item>
+      <br>
+      <ion-item class="in-field">
         <ion-label floating>Name</ion-label>
         <ion-input type="text" [formControl]="enterpriseForm.controls['name']"></ion-input>
       </ion-item>
@@ -20,7 +20,7 @@
       <br>
 
       <!--Occupation area input used for the user to register an enterprise -->
-      <ion-item>
+      <ion-item class="in-field">
         <ion-label floating>Occupation Area</ion-label>
         <ion-input type="text" [formControl]="enterpriseForm.controls['occupationArea']"></ion-input>
       </ion-item>
@@ -31,7 +31,7 @@
       <br>
 
       <!--Cnpj input used for the user to register an enterprise -->
-      <ion-item>
+      <ion-item class="in-field">
         <ion-label floating>CNPJ</ion-label>
         <ion-input type="text" [formControl]="enterpriseForm.controls['cnpj']"></ion-input>
       </ion-item>
@@ -39,13 +39,15 @@
       <div class="error-box" *ngIf="enterpriseForm.controls['cnpj'].hasError('required') && enterpriseForm.controls['cnpj'].touched">
         Cnpj is required!
       </div>
-      <br>
+
 
       <!-- Rendering address inputs component -->
       <edit-address [group]="enterpriseForm.controls['address'].controls[0]"></edit-address>
 
       <!--Button used for the user to register and submit an enterprise -->
-      <button ion-button full type="submit" [disabled]="!enterpriseForm.valid">Register</button>
+      <ion-buttons end>
+        <button ion-button type="submit" [disabled]="!enterpriseForm.valid">Register</button>
+      </ion-buttons>
+      <br>
     </form>
-  </ion-card>
 </ion-content>

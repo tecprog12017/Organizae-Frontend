@@ -7,7 +7,7 @@ import { UserProfile } from '../../../models/user-profile';
 import { ValidateEmail, ValidatePassword } from '../../../controller/custom-validations';
 import { SignUp } from '../signUp/sign-up.component';
 import { UserHome } from '../userHome/user-home.component';
-import { UserTokenSession } from './user-token-session.service'
+import { UserTokenSession } from './user-token-session.service';
 
 import 'rxjs/add/operator/map';
 import * as  jwt from 'jwt-simple/lib/jwt';

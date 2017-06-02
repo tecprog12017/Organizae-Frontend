@@ -1,13 +1,9 @@
-  .content-class{
-    background-image: url("../../../assets/img/signIn_background.jpg");
-    background-size: cover;
-  }
-
-  .card-class{
-    background: transparentize(#b3b3b3, .2);
-    position: relative;
+  .in-field {
     margin-left: auto;
     margin-right: auto;
-    width: 80%;
-    top: 30%;
+    width: 95%;
+  }
+
+  .background-class {
+    background-color: #FFF6EA;
   }
