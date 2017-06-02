@@ -43,7 +43,7 @@ export class SignIn {
       if(token != 400){
         this.userToken = jwt.decode(token, this.secret);
         this.navCtrl.setRoot(UserHome, { }, {animate: true, direction: 'forward'});
-        this.userTokenSession.setToken(this.userToken);
+        this.userTokenSession.setToken(this.signInForm.value['email']);
       }
       else{
         this.showSignInError();
