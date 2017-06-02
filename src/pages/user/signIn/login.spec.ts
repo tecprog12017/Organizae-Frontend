@@ -1,83 +1,36 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms'
-import { NavPush } from 'ionic-angular'
+import { browser, element, by } from 'protractor';
 
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
-import { async } from '@angular/core/testing';
+describe('Sign-in Tests', () => {
+  var emailField, passwordField, buttonSubmit;
 
-import { SignIn } from './sign-in.component'
-
-// var Browser = require("zombie");
-// var browser = new Browser();
-var url = "http://localhost:3000";
-
-describe("Sign In Tests", function(){
-
-  let signInComponent: SignIn;
-  let fixture: ComponentFixture<SignIn>;
-  let debug: DebugElement;
-
-  // beforeEach(async(() => {
-  //   console.log('hello');
-  //   TestBed.configureTestingModule({
-  //     declarations: [ SignIn ],
-  //     providers: [{provide: SignIn}]
-  //   }).compileComponents();
-  // }));
-
+  // Executed before each 'it'
   beforeEach(() => {
-    TestBed.configureTestingModule({
-      declarations: [ SignIn ],
-      providers: [{provide: SignIn}],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      imports: [ReactiveFormsModule]
-    });
 
-    fixture = TestBed.createComponent(SignIn);
-    signInComponent = fixture.componentInstance;
+    browser.get('');
+    // wait for page load
+    browser.driver.sleep(500);
+
+    emailField = element(by.xpath('//*[@id="email"]/input'));
+    passwordField = element(by.xpath('//*[@id="password"]/input'));
+    buttonSubmit = element(by.xpath('//*[@id="sign-in-button"]'));
   });
 
-  it("Should sign in with success", function () {
-    expect(true).toEqual(true);
-    // browser.visit(url, function(){
-    //   browser.pressButton("#register-button button[type=submit]")
-    //          .fill("#first-name input[name='first name']", "Little")
-    //          .fill("#last-name input[name='last name']", "Test")
-    //          .fill("#email-register input[name='email']", "teste@gmail.com")
-    //          .fill("#password-register input[name='password']", "Teste123")
-    //          .pressButton("#sign-up-submit-button button[type=submit]")
-    //          .fill("#email input[name='email']", "teste@gmail.com")
-    //          .fill("#password input[name='password']", "Teste123");
-    //   expect(browser.html('body')).toNotContain("User Homepage");;
-    // });
+  // All fields are filled correctly
+  it('should sign-in', () => {
+    // fill sign-in fields
+    emailField.sendKeys('test@test.com');
+    passwordField.sendKeys('Test1234');
+    browser.driver.sleep(1500);
+
+    expect(buttonSubmit.isEnabled()).toBeTruthy();
   });
 
-  // it("Shouldn't allow signin with invalid email", function () {
-  //   browser.visit(url, function(){
-  //     browser.fill("#email input[name='email']", "test")
-  //            .fill("#password input[name='password']", "Teste123");
-  //     var submit = byId('sign-in-button');
-  //     expect(submit.isEnabled()).toBe(false);
-  //   });
-  // });
-  //
-  // it("Shouldn't allow signin with invalid password", function () {
-  //   browser.visit(url, function(){
-  //     browser.fill("#email input[name='email']", "test@test.com")
-  //            .fill("#password input[name='password']", "test");
-  //     var submit = byId('sign-in-button');
-  //     expect(submit.isEnabled()).toBe(false);
-  //   });
-  // });
-  //
-  // it("Shouldn't allow signin with invalid information", function () {
-  //   browser.visit(url, function(){
-  //     browser.fill("#email input[name='email']", "test@gmail.com")
-  //            .fill("#password input[name='password']", "Teste123")
-  //            .pressButton("#sign-in-button button[type=submit]");
-  //     expect(browser.html('body')).toContain("Login Error!");
-  //   });
-  // });
+  it('Email field is not correct', () => {
+    // fill sign-in fields
+    emailField.sendKeys('test');
+    passwordField.sendKeys('Test1234');
+    browser.driver.sleep(1500);
+
+    expect(buttonSubmit.isEnabled()).toBeFalsy();
+  });
 });
