@@ -32,20 +32,3 @@ export function ValidatePassword (): ValidatorFn {
     }
   }
 }
-
-//Validation used to not allow letters, special characters and short strings in phone number
-export function ValidatePhone (): ValidatorFn {
-
-  return (control: AbstractControl): {[key: string]: any} => {
-    const phoneRegex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,7}$/im
-    var isValid = phoneRegex.test(control.value);
-
-    console.log(isValid);
-    if(isValid){
-      return null
-    }
-    else{
-      return { ValidatePhoneOutput : true };
-    }
-  }
-}

@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Register Enterprise</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="content-class">
+  <ion-card color="gray" class="card-class">
+    <!--Form used to register an enterprise -->
+    <form [formGroup]="enterpriseForm" (ngSubmit)="submitForm(enterpriseForm.value)">
+      <!--Name input used for the user to register an enterprise -->
+      <ion-item>
+        <ion-label floating>Name</ion-label>
+        <ion-input type="text" [formControl]="enterpriseForm.controls['name']"></ion-input>
+      </ion-item>
+      <!--Box used to notify the user about their errors -->
+      <div class="error-box" *ngIf="enterpriseForm.controls['name'].hasError('required') && enterpriseForm.controls['name'].touched">
+        Name is required!
+      </div>
+      <br>
+
+      <!--Occupation area input used for the user to register an enterprise -->
+      <ion-item>
+        <ion-label floating>Occupation Area</ion-label>
+        <ion-input type="text" [formControl]="enterpriseForm.controls['occupationArea']"></ion-input>
+      </ion-item>
+      <!--Box used to notify the user about their errors -->
+      <div class="error-box" *ngIf="enterpriseForm.controls['occupationArea'].hasError('required') && enterpriseForm.controls['occupationArea'].touched">
+        Occupation area is required!
+      </div>
+      <br>
+
+      <!--Cnpj input used for the user to register an enterprise -->
+      <ion-item>
+        <ion-label floating>CNPJ</ion-label>
+        <ion-input type="text" [formControl]="enterpriseForm.controls['cnpj']"></ion-input>
+      </ion-item>
+      <!--Box used to notify the user about their errors -->
+      <div class="error-box" *ngIf="enterpriseForm.controls['cnpj'].hasError('required') && enterpriseForm.controls['cnpj'].touched">
+        Cnpj is required!
+      </div>
+      <br>
+
+      <!-- Rendering address inputs component -->
+      <edit-address [group]="enterpriseForm.controls['address'].controls[0]"></edit-address>
+
+      <!--Button used for the user to register and submit an enterprise -->
+      <button ion-button full type="submit" [disabled]="!enterpriseForm.valid">Register</button>
+    </form>
+  </ion-card>
+</ion-content>

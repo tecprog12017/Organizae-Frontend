@@ -1,53 +1,31 @@
 <ion-list [formGroup]="editRg">
   <ion-item class="in-class">
     <ion-label floating>RG Number</ion-label>
-    <ion-input type="text" [formControl]="editRg.controls['rgNumber']"></ion-input>
+    <!-- User already have a registered rg number, the field shows it up -->
+    <ion-input type="text" *ngIf="userToken.rg" [(ngModel)]="userToken.rg.rgNumber" [formControl]="editRg.controls['rgNumber']"></ion-input>
+    <!-- User have never registered rg number, the field is empty -->
+    <ion-input type="text"  *ngIf="!userToken.rg" [formControl]="editRg.controls['rgNumber']"></ion-input>
   </ion-item>
-
-  <div *ngIf="editRg.controls['rgNumber'].value !== null && editRg.controls['rgNumber'].value.length > 15"> Rg number can't have more then 15 characters </div>
-  <div *ngIf="editRg.controls['rgNumber'].value !== null && editRg.controls['rgNumber'].value.length < 5"> Rg number can't have less then 5 characters </div>
 </ion-list>
+
+<div class="error-box" *ngIf="editRg.controls['rgNumber'].hasError('RgNumberIsEmpty') && editRg.controls['rgNumber'].touched">
+  Rg number can't be empty or have letters.
+</div>
+
+<div class="error-box" *ngIf="editRg.controls['rgNumber'].hasError('RgNumberDoesNotHaveRequiredLenght') && editRg.controls['rgNumber'].touched">
+  Rg number can't have less then 5 characters or more then 13 characters.
+</div>
 
 <ion-list>
   <ion-item class="in-class">
     <ion-label floating>RG Expedition State</ion-label>
-      <ion-select [formControl]="editRg.controls['rgExpeditionState']">
-        <ion-option value="ac"> Acre </ion-option>
-        <ion-option value="al"> Alagoas </ion-option>
-        <ion-option value="ap"> Amapá </ion-option>
-
-        <ion-option value="am"> Amazonas </ion-option>
-        <ion-option value="ba"> Bahia </ion-option>
-        <ion-option value="ce"> Ceará </ion-option>
-
-        <ion-option value="df"> Distrito Federal </ion-option>
-        <ion-option value="es"> Espírito Santo </ion-option>
-        <ion-option value="go"> Goiás </ion-option>
-
-        <ion-option value="ma"> Maranhão </ion-option>
-        <ion-option value="mt"> Mato Grosso </ion-option>
-        <ion-option value="ms"> Mato Grosso do Sul </ion-option>
-
-        <ion-option value="mg"> Minas Gerais </ion-option>
-        <ion-option value="pa"> Pará </ion-option>
-        <ion-option value="pb"> Paraíba </ion-option>
-
-        <ion-option value="pr"> Paraná </ion-option>
-        <ion-option value="pe"> Pernambuco </ion-option>
-        <ion-option value="pi"> Piauí </ion-option>
-
-        <ion-option value="rj"> Rio de Janeiro </ion-option>
-        <ion-option value="rn"> Rio Grande do Norte </ion-option>
-        <ion-option value="rs"> Rio Grande do Sul </ion-option>
-
-        <ion-option value="ro"> Rondônia </ion-option>
-        <ion-option value="rr"> Roraima </ion-option>
-        <ion-option value="sc"> Santa Catarina </ion-option>
-
-        <ion-option value="sp"> São Paulo </ion-option>
-        <ion-option value="se"> Sergipe </ion-option>
-        <ion-option value="to"> Tocantis </ion-option>
-
-      </ion-select>
+    <!-- User already have a registered rg expedition state, the field shows it up -->
+    <ion-select *ngIf="userToken.rg" [(ngModel)]="userToken.rg.rgExpeditionState" [formControl]="editRg.controls['rgExpeditionState']">
+        <ion-option *ngFor="let state of states" [value]="state.initials">{{ state.name }}</ion-option>
+    </ion-select>
+    <!-- User have never registered and rg expedition state, the field comes empty -->
+    <ion-select *ngIf="!userToken.rg" [formControl]="editRg.controls['rgExpeditionState']">
+        <ion-option *ngFor="let state of states" [value]="state.initials">{{ state.name }}</ion-option>
+    </ion-select>
     </ion-item>
 </ion-list>

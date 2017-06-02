@@ -1,5 +1,6 @@
 import { FormGroup } from '@angular/forms';
 
+//Class which contain just relevant information to sign-up user.
 export class UserProfile {
   firstName: string;
   lastName: string;
@@ -10,7 +11,10 @@ export class UserProfile {
     this.firstName = form.get('firstName').value;
     this.lastName = form.get('lastName').value;
     this.email = form.get('email').value;
-    this.password = form.get('password').value;
+
+    let passwords = null;
+    passwords = form.get('passwords');
+    this.password =  passwords.get('password').value;
   }
 }
 
@@ -50,6 +54,7 @@ export class Address {
   }
 }
 
+//Class wich contains other adittional relevant informations about the user
 export class Information {
   birthdate: Date;
   phone: string;
@@ -67,5 +72,24 @@ export class Gender {
   constructor( editGender: FormGroup) {
     this.genderIdentity = editGender.get('personalInformation').value[1].genderIdentity;
     this.pronoun = editGender.get('personalInformation').value[1].pronoun;
+  }
+}
+
+//Class which contain all personal information from the user, that are not relevant at user sign-up.
+export class UserFullProfile {
+  email: string;
+  rg: Rg;
+  cpf: Cpf;
+  address: Address;
+  information: Information;
+  gender: Gender;
+
+  constructor(userEmail: string, rg: Rg, cpf: Cpf, address: Address, information: Information, gender: Gender) {
+    this.email = userEmail;
+    this.rg = rg;
+    this.cpf = cpf;
+    this.address = address;
+    this.information = information;
+    this.gender = gender;
   }
 }
