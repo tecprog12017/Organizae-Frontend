@@ -46,4 +46,9 @@ export class ListEnterprises {
     this.getEnterprises();
   }
 
+  // Updating enterprises after coming back from new enterprise page
+    ionViewWillEnter() {
+        this.getEnterprises();
+    }
+
 }
