@@ -12,12 +12,12 @@
           <!-- Input for the password of the user used on the registrations -->
           <ion-item class="input-class">
             <ion-label floating>Password</ion-label>
-            <ion-input id="password-register" type="password" placeholder="Password" [formControl]="signUpForm.controls['passwords'].controls['password']"></ion-input>
+            <ion-input id="password-register" type="password" placeholder="Password" [formControl]="deleteUserForm.controls['passwords'].controls['password']"></ion-input>
           </ion-item>
-          <div class="error-box" *ngIf="deleteUserForm.controls['passwords'].controls['password'].hasError('required') && signUpForm.controls['passwords'].controls['password'].touched">
+          <div class="error-box" *ngIf="deleteUserForm.controls['passwords'].controls['password'].hasError('required') && deleteUserForm.controls['passwords'].controls['password'].touched">
             Password is required!
           </div>
-          <div class="error-box" *ngIf="signUpForm.controls['passwords'].controls['password'].hasError('ValidatePasswordOutput') && signUpForm.controls['passwords'].controls['password'].touched">
+          <div class="error-box" *ngIf="deleteUserForm.controls['passwords'].controls['password'].hasError('ValidatePasswordOutput') && deleteUserForm.controls['passwords'].controls['password'].touched">
             Your password must have at least one digit, one upper case letter and one lower case letter.
           </div>
           <br>
