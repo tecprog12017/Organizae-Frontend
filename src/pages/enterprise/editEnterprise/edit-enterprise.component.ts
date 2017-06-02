@@ -17,7 +17,8 @@ export class EditEnterprise {
       'name': [null, Validators.required],
       'cnpj': [null, Validators.required],
       'occupationArea': [null, Validators.required],
-      'address': formBuilder.array([this.initAddress()])
+      'userPassword': [null, Validators.required],
+      'address': formBuilder.array([this.initAddress(),])
     });
   }
 
