@@ -51,7 +51,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     EditMain,
     SignIn,
     UserHome,
-    RegisterEnterprise
+    RegisterEnterprise,
+    SettingsMain,
+    DeleteUser
   ],
   providers: [
     StatusBar,
