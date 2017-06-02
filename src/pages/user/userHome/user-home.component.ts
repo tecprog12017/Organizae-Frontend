@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { EditMain } from '../edit/editMain/edit-main.component'
-import { RegisterEnterprise } from '../../enterprise/registerEnterprise/register-enterprise.component';
+import { ListEnterprises } from '../../enterprise/listEnterprises/list-enterprises.component';
 
 @Component({
   selector: "user-home",
@@ -9,5 +9,5 @@ import { RegisterEnterprise } from '../../enterprise/registerEnterprise/register
 
 export class UserHome {
   editMain = EditMain;
-  registerEnterprise = RegisterEnterprise;
+  listEnterprises = ListEnterprises;
 }
