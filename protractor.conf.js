@@ -4,6 +4,7 @@ exports.config = {
     allScriptsTimeout: 11000,
     directConnect: true,
     getPageTimeout: 20000,
+    allScriptsTimeout: 20000,
     capabilities: {
         'browserName': 'chrome'
     },
