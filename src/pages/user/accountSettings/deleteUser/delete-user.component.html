@@ -6,7 +6,7 @@
 
 <ion-content class="content-class">
   <ion-card color='background' class="card-class">
-       <ion-card-header>Are you sure you want to delete your account? </ion-card-header>
+       <ion-card-header id="delete-confirmation">Are you sure you want to delete your account? </ion-card-header>
         <!-- Form used to confirm if user wants do delete their account and confirm their password -->
         <form id="deleteUserForm" [formGroup]="deleteUserForm" (ngSubmit)="submitForm(deleteUserForm.value)">
 
@@ -21,6 +21,7 @@
           </div>
           <br>
 
+    <button ion-button class="button-class" full> Cancel </button>
     <button type="submit" ion-button class="button-class" full>Delete my account</button>
   </form>
   </ion-card>

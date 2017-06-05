@@ -7,6 +7,7 @@ import { AlertController } from 'ionic-angular';
 import { UserTokenSession } from '../../signIn/user-token-session.service'
 import { ValidateEmail, ValidatePassword } from '../../../../controller/custom-validations';
 import { SignIn } from '../../signIn/sign-in.component';
+import { UserHome } from '../../userHome/user-home.component';
 
 import 'rxjs/add/operator/map';
 import * as  jwt from 'jwt-simple/lib/jwt';
@@ -33,29 +34,35 @@ constructor(public navCtrl: NavController, formBuilder: FormBuilder, private htt
 
  //submit used to authenticate the user in system
  submitForm(value: any):void{
-   var cryptedPassword = cryptoJS.AES.encrypt(user.password, this.secret);
+   console.log('deus eh top');
+   console.log(this.deleteUserForm.controls['password'].value);
+   var userToken = this.userTokenSession.getToken();
    var user = {
-     'token': this.userTokenSession.getToken(),
-     'password': cryptedPassword,
+     'token': userToken,
+     'password': this.deleteUserForm.controls['password'].value,
    };
+   var ue = 2;
+   console.log('jesus cristo');
    this.http.post('http://localhost:3000/api/UserProfiles/delete-user', user)
     .map(res => res.json())
     .subscribe(token => {
+      console.log('ue');
       if(token.status != 400){
-        this.navCtrl.setRoot(SignIn, { }, {animate: true, direction: 'forward'});
+        console.log('deus eh top');
+        this.showDeleteUserError(token.status);
+        this.navCtrl.push(DeleteUser);
       }
       else{
         this.showDeleteUserError();
       }
-      }
-    );
+    });
   }
 
   //Used to show the user if an error ocurred during his access attempt
-  showDeleteUserError () {
+  showDeleteUserError (message = '') {
     let alert = this.alertCtrl.create({
       title: 'Password Incorrect!',
-      subTitle: `There was an error! Check your password's input.`,
+      subTitle: `There was an error! Check your password's input.` + message,
       buttons: ['OK']
     });
     alert.present();
