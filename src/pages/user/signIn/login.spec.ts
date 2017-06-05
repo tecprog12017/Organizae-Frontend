@@ -7,6 +7,7 @@ describe('Sign-in Tests', () => {
   beforeEach(() => {
 
     browser.get('');
+    browser.ignoreSynchronization=true;
     // wait for page load
     browser.driver.sleep(500);
 
