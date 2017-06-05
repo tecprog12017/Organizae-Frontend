@@ -1,12 +1,6 @@
 import { Component,Input } from "@angular/core";
-import { NavController } from "ionic-angular"
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import { UserProfile, Gender } from '../../../../models/user-profile';
-import { ValidateEmail, ValidatePassword } from '../../../controller/custom-validations'
-import { Http } from '@angular/http'
-import { EditRg } from '../../../../pages/user/edit/editRg/edit-rg.component'
+import { FormGroup } from '@angular/forms';
 import { UserTokenSession } from '../../signIn/user-token-session.service'
-import { enableProdMode } from '@angular/core';
 
 @Component({
   selector: "edit-gender",

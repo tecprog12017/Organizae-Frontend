@@ -4,7 +4,6 @@ import { NavController } from 'ionic-angular';
 import { Http } from '@angular/http';
 import { AlertController } from 'ionic-angular';
 import { Enterprise } from '../../../models/enterprise';
-import { EditAddress } from '../../user/edit/editAddress/edit-address.component';
 import { UserTokenSession } from '../../user/signIn/user-token-session.service';
 
 @Component({

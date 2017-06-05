@@ -1,5 +1,4 @@
 import { AbstractControl, ValidatorFn } from '@angular/forms';
-import { Directive, ElementRef, HostListener, Input } from '@angular/core';
 
 //Validation used for the email on the user account
 export function ValidateEmail (): ValidatorFn {
@@ -253,7 +252,6 @@ function ValidatesCpfFirstVerifyingDigit(cpf:string){
 function ValidatesCpfSecondVerifyingDigit(cpf:string){
   var adder = 0;
   var secondDigitVerifier = 0;
-  const maxNumericalDigit = 9;
   const secondNumericalDigitLimit = 11;
   const firstNumericalDigitLimit = 10;
 

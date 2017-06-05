@@ -1,10 +1,10 @@
 import { Component } from "@angular/core";
 import { NavController } from "ionic-angular"
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserFullProfile, Cpf, Rg, Address, Information, Gender } from '../../../../models/user-profile';
-import { ValidateEmail, ValidatePassword, ValidatesCpf, ValidateRgExpeditionState } from '../../../../controller/custom-validations'
+import { ValidatesCpf, ValidateRgExpeditionState } from '../../../../controller/custom-validations'
 import { ValidateRgNumber, ValidateBirthDate, ValidatePhone, ValidatePronoun, ValidateGenderIdentity } from '../../../../controller/custom-validations'
-import { ValidateAdressInformation, ValidateNumber, ValidateCep } from '../../../../controller/custom-validations'
+import { ValidateAdressInformation, ValidateNumber } from '../../../../controller/custom-validations'
 import { Http } from '@angular/http'
 import { UserTokenSession } from '../../signIn/user-token-session.service'
 import { UserHome } from '../../userHome/user-home.component';
