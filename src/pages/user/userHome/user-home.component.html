@@ -22,18 +22,30 @@
       </ion-col>
 
        <ion-col>
-         <button icon-only class="page-home-tile" [navPush]="registerEnterprise">
+         <button icon-only class="page-home-tile" [navPush]="listEnterprises">
             <ion-icon name='briefcase'></ion-icon>
           </button>
          <br>
-         <button ion-button color="primary" clear small [navPush]="registerEnterprise">
-            Register Enterprise
-         </button>
-         <br>
-         <button ion-button color="primary" [navPush]="editEnterprise">Edit Enterprise</button>
+         <button ion-button color="primary" clear small [navPush]="listEnterprises">
+            My Enterprises
+          </button>
 
        </ion-col>
      </ion-row>
+     <ion-row>
+       <ion-col>
+         <br>
+         <button icon-only class="page-home-tile" [navPush]="editEnterprise">
+            <ion-icon name='cog'></ion-icon>
+          </button>
+          <br>
+         <button ion-button color="primary" clear small [navPush]="editEnterprise">
+            Edit Enterprise
+          </button>
+       </ion-col>
+       <ion-col></ion-col>
+     </ion-row>
    </ion-grid>
+
 
 </ion-content>
