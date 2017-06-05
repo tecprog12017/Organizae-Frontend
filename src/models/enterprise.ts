@@ -13,6 +13,7 @@ export class Enterprise {
   constructor (form: FormGroup) {
     this.name = form.get('name').value;
     this.cnpj = form.get('cnpj').value;
+    this.oldCnpj = form.get('cnpj').value;
     this.occupationArea = form.get('occupationArea').value;
     this.address = new Address(form);
     this.owner = null;

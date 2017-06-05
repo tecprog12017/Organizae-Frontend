@@ -9,7 +9,7 @@
 
 <ion-content class="edit-enterpise-background">
   <!-- Form used to edit the information of the enterprise -->
-  <form [formGroup]="editEnterpriseForm">
+  <form [formGroup]="editEnterpriseForm" (ngSubmit)="submitForm(editEnterpriseForm.value)">
     <br>
     <!-- Used to get the new name provided by the user -->
     <ion-item class="edit-enterprise-field">
