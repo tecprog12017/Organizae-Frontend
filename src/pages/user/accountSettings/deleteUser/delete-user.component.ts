@@ -34,23 +34,16 @@ constructor(public navCtrl: NavController, formBuilder: FormBuilder, private htt
 
  //submit used to authenticate the user in system
  submitForm(value: any):void{
-   console.log('deus eh top');
-   console.log(this.deleteUserForm.controls['password'].value);
-   var userToken = this.userTokenSession.getToken();
    var user = {
-     'token': userToken,
+     'token': this.userTokenSession.getToken(),
      'password': this.deleteUserForm.controls['password'].value,
    };
-   var ue = 2;
-   console.log('jesus cristo');
    this.http.post('http://localhost:3000/api/UserProfiles/delete-user', user)
     .map(res => res.json())
     .subscribe(token => {
-      console.log('ue');
       if(token.status != 400){
-        console.log('deus eh top');
-        this.showDeleteUserError(token.status);
-        this.navCtrl.push(DeleteUser);
+        this.showDeleteUserSucess();
+        this.navCtrl.setRoot(SignIn, { }, {animate: true, direction: 'forward'});
       }
       else{
         this.showDeleteUserError();
@@ -59,10 +52,20 @@ constructor(public navCtrl: NavController, formBuilder: FormBuilder, private htt
   }
 
   //Used to show the user if an error ocurred during his access attempt
-  showDeleteUserError (message = '') {
+  showDeleteUserSucess () {
+    let alert = this.alertCtrl.create({
+      title: 'Sorry to hear you\'re leaving...',
+      subTitle: `Account deleted sucessfully.`,
+      buttons: ['OK']
+    });
+    alert.present();
+  }
+
+  //Used to show the user if an error ocurred during his access attempt
+  showDeleteUserError () {
     let alert = this.alertCtrl.create({
       title: 'Password Incorrect!',
-      subTitle: `There was an error! Check your password's input.` + message,
+      subTitle: `There was an error! Check your password's input.`,
       buttons: ['OK']
     });
     alert.present();
