@@ -1,5 +1,4 @@
 import { AbstractControl, ValidatorFn } from '@angular/forms';
-import { Directive, ElementRef, HostListener, Input } from '@angular/core';
 
 //Validation used for the email on the user account
 export function ValidateEmail (): ValidatorFn {

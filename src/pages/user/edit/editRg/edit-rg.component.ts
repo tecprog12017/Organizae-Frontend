@@ -1,9 +1,5 @@
 import { Component,Input } from "@angular/core";
-import { NavController } from "ionic-angular"
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import { UserProfile, Rg } from '../../../../models/user-profile';
-import { ValidateEmail } from '../../../../controller/custom-validations'
-import { Http } from '@angular/http'
+import { FormGroup } from '@angular/forms';
 import { StatesService } from '../../../../pages/user/edit/editAddress/states.service'
 import { UserTokenSession } from '../../signIn/user-token-session.service'
 

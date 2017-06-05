@@ -14,6 +14,7 @@ import { UserTokenSession } from '../../user/signIn/user-token-session.service';
 export class RegisterEnterprise {
   enterpriseForm: FormGroup;
   newEnterprise: Enterprise;
+  EditAddress: EditAddress;
 
   //Form used to create the inputs used to register an enterprise
   constructor(public navCtrl: NavController, private formBuilder: FormBuilder,
