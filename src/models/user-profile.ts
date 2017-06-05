@@ -11,7 +11,10 @@ export class UserProfile {
     this.firstName = form.get('firstName').value;
     this.lastName = form.get('lastName').value;
     this.email = form.get('email').value;
-    this.password = form.get('password').value;
+
+    let passwords = null;
+    passwords = form.get('passwords');
+    this.password =  passwords.get('password').value;
   }
 }
 

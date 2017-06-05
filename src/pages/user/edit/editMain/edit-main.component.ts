@@ -2,9 +2,10 @@ import { Component } from "@angular/core";
 import { NavController } from "ionic-angular"
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserFullProfile, Cpf, Rg, Address, Information, Gender } from '../../../../models/user-profile';
-import { ValidatesCpf, ValidateRgExpeditionState } from '../../../../controller/custom-validations'
-import { ValidateRgNumber, ValidateBirthDate, ValidatePhone, ValidatePronoun, ValidateGenderIdentity } from '../../../../controller/custom-validations'
-import { ValidateAdressInformation, ValidateNumber } from '../../../../controller/custom-validations'
+import { ValidatePhone } from '../../../../controller/additional-information-custom-validations'
+import { ValidatesCpf } from '../../../../controller/cpf-custom-validations'
+import { ValidateRgNumber } from '../../../../controller/rg-custom-validations'
+import { ValidateCep, ValidateAdressInformation, ValidateNumber } from '../../../../controller/address-custom-validations'
 import { Http } from '@angular/http'
 import { UserTokenSession } from '../../signIn/user-token-session.service'
 import { UserHome } from '../../userHome/user-home.component';
@@ -81,26 +82,26 @@ export class EditMain{
   initRg(){
     return this.formBuilder.group({
       'rgNumber' : [null, Validators.compose([Validators.required, ValidateRgNumber()])],
-      'rgExpeditionState' : [null, Validators.compose([Validators.required, ValidateRgExpeditionState()])]
+      'rgExpeditionState' : [null, Validators.compose([Validators.required])]
     });
   }
 
   //Method that connect component address to the main form
   initAddress(){
     return this.formBuilder.group({
-      'cep' : [null, Validators.compose([Validators.required])],
+      'cep' : [null, Validators.compose([Validators.required, ValidateCep()])],
       'city' : [null, Validators.compose([Validators.required, ValidateAdressInformation()])],
-      'state' : [null, Validators.compose([Validators.required, ValidateAdressInformation()])],
+      'state' : [null, Validators.compose([Validators.required])],
       'neighbourhood' : [null, Validators.compose([Validators.required, ValidateAdressInformation()])],
       'number' : [null, Validators.compose([Validators.required, ValidateNumber()])],
-      'complement' : [null, Validators.compose([Validators.required, ValidateAdressInformation()])]
+      'complement' : [null, null]
     });
   }
 
   //Method that connect component additional information to the main form
   initAdditionalInformation(){
     return this.formBuilder.group({
-      'birthdate' : [null, Validators.compose([Validators.required, ValidateBirthDate()])],
+      'birthdate' : [null, Validators.compose([Validators.required])],
       'phone' : [null, Validators.compose([Validators.required, ValidatePhone()])]
     });
   }
@@ -108,8 +109,8 @@ export class EditMain{
   //Method that connect component gender to the main form
   initGender(){
     return this.formBuilder.group({
-      'genderIdentity' : [null, Validators.compose([Validators.required, ValidateGenderIdentity()])],
-      'pronoun' : [null, Validators.compose([Validators.required, ValidatePronoun()])]
+      'genderIdentity' : [null, Validators.compose([Validators.required])],
+      'pronoun' : [null, Validators.compose([Validators.required])]
     });
   }
 

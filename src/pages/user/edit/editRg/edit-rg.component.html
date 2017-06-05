@@ -1,4 +1,5 @@
 <ion-list [formGroup]="editRg">
+  <br><br>
   <ion-item class="in-class">
     <ion-label floating>RG Number</ion-label>
     <!-- User already have a registered rg number, the field shows it up -->
@@ -6,18 +7,15 @@
     <!-- User have never registered rg number, the field is empty -->
     <ion-input type="text"  *ngIf="!userToken.rg" [formControl]="editRg.controls['rgNumber']"></ion-input>
   </ion-item>
-
-  <ion-label class="error-box" *ngIf="editRg.controls['rgNumber'].hasError('ValidateRgNumberIsEmpty') && editRg.controls['rgNumber'].touched">
-    Rg number can't be empty.
-  </ion-label>
-
-  <ion-label class="error-box" *ngIf="editRg.controls['rgNumber'].hasError('ValidateRgNumberOutput') && editRg.controls['rgNumber'].touched">
-    Rg number can't have less then 5 characters or more then 13 characters.
-  </ion-label>
-
-
-
 </ion-list>
+
+<div class="error-box" *ngIf="editRg.controls['rgNumber'].hasError('RgNumberIsEmpty') && editRg.controls['rgNumber'].touched">
+  Rg number can't be empty or have letters.
+</div>
+
+<div class="error-box" *ngIf="editRg.controls['rgNumber'].hasError('RgNumberDoesNotHaveRequiredLenght') && editRg.controls['rgNumber'].touched">
+  Rg number can't have less then 5 characters or more then 13 characters.
+</div>
 
 <ion-list>
   <ion-item class="in-class">
@@ -31,8 +29,4 @@
         <ion-option *ngFor="let state of states" [value]="state.initials">{{ state.name }}</ion-option>
     </ion-select>
     </ion-item>
-
-    <ion-label class="error-box" *ngIf="editRg.controls['rgExpeditionState'].hasError('ValidateRgExpeditionStateOutput') && editRg.controls['rgExpeditionState'].touched">
-      Rg Expedition State can't be empty.
-    </ion-label>
 </ion-list>

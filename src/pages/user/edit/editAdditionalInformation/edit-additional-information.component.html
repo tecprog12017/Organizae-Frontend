@@ -1,15 +1,11 @@
 <ion-list [formGroup]="editAdditionalInformation">
-  <ion-item>
+  <ion-item class="in-class">
     <ion-label floating>Birthdate</ion-label>      <!-- User already have it's birthdate, the field shows it up -->
       <ion-datetime displayFormat="DD/MM/YYYY" pickerFormat="DD MMMM YYYY" *ngIf="userToken.information" [(ngModel)]="userToken.information.birthdate" [formControl]="editAdditionalInformation.controls['birthdate']"></ion-datetime>
       <!-- User have never registered it's birthdate, the field is empty -->
       <ion-datetime displayFormat="DD/MM/YYYY" pickerFormat="DD MMMM YYYY" *ngIf="!userToken.information" [formControl]="editAdditionalInformation.controls['birthdate']"></ion-datetime>
   </ion-item>
 </ion-list>
-
-<div class="error-box" *ngIf="editAdditionalInformation.controls['birthdate'].hasError('ValidateBirthDateIsEmpty') && editAdditionalInformation.controls['birthdate'].touched">
-  Birthdate can't be empty.
-</div>
 
 <ion-list>
   <ion-item class="in-class">
@@ -23,10 +19,10 @@
 
 </ion-list>
 
-<div class="error-box" *ngIf="editAdditionalInformation.controls['phone'].hasError('ValidatePhoneOutput') && editAdditionalInformation.controls['phone'].touched">
-  Phone number is not valid.
+<div class="error-box" *ngIf="editAdditionalInformation.controls['phone'].hasError('PhoneIsEmpty') && editAdditionalInformation.controls['phone'].touched">
+  Phone number can't be empty or have letters.
 </div>
 
-<div class="error-box" *ngIf="editAdditionalInformation.controls['phone'].hasError('ValidatePhoneOutputIsEmpty') && editAdditionalInformation.controls['phone'].touched">
-  Phone number can't be empty.
+<div class="error-box" *ngIf="editAdditionalInformation.controls['phone'].hasError('PhoneDoesNotHaveRequiredLenght') && editAdditionalInformation.controls['phone'].touched">
+  Phone number can't have less then eight 8 or more then 13.
 </div>

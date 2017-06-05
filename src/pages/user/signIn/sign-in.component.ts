@@ -7,7 +7,7 @@ import { UserProfile } from '../../../models/user-profile';
 import { ValidateEmail, ValidatePassword } from '../../../controller/custom-validations';
 import { SignUp } from '../signUp/sign-up.component';
 import { UserHome } from '../userHome/user-home.component';
-import { UserTokenSession } from './user-token-session.service'
+import { UserTokenSession } from './user-token-session.service';
 
 import 'rxjs/add/operator/map';
 import * as  jwt from 'jwt-simple/lib/jwt';
@@ -43,7 +43,7 @@ export class SignIn {
       if(token != 400){
         this.userToken = jwt.decode(token, this.secret);
         this.navCtrl.setRoot(UserHome, { }, {animate: true, direction: 'forward'});
-        this.userTokenSession.setToken(this.userToken);
+        this.userTokenSession.setToken(this.signInForm.value['email']);
       }
       else{
         this.showSignInError();

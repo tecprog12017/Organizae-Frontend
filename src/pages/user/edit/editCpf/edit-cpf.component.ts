@@ -1,6 +1,6 @@
 import { Component, Input } from "@angular/core";
 import { FormGroup } from '@angular/forms';
-import { UserTokenSession } from '../../signIn/user-token-session.service'
+import { UserTokenSession } from '../../signIn/user-token-session.service';
 
 @Component({
   selector: "edit-cpf",
