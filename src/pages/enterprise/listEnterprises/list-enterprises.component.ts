@@ -6,6 +6,7 @@ import 'rxjs/Rx';
 
 import { UserTokenSession } from '../../user/signIn/user-token-session.service';
 import { RegisterEnterprise } from '../registerEnterprise/register-enterprise.component';
+import { EditEnterprise } from '../editEnterprise/edit-enterprise.component';
 
 @Component({
   templateUrl: 'list-enterprises.component.html'
@@ -13,6 +14,7 @@ import { RegisterEnterprise } from '../registerEnterprise/register-enterprise.co
 
 export class ListEnterprises {
   newEnterprise = RegisterEnterprise;
+  editEnterprise = EditEnterprise;
   enterprises: Array<Object>;
 
   constructor(public navCtrl: NavController, private http: Http, public userTokenSession: UserTokenSession) {
@@ -38,6 +40,13 @@ export class ListEnterprises {
           //User doesnt have enterprises
         }
       });
+    });
+  }
+
+  // Pushing page to selected enterprise edition
+  pushEditEnterprise(index: number) {
+    this.navCtrl.push(this.editEnterprise, {
+      currentEnterprise: this.enterprises[index],
     });
   }
 
