@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Http } from '@angular/http';
 import { EditAddress } from '../../user/edit/editAddress/edit-address.component';
 import { Enterprise } from '../../../models/enterprise';
+import { NavController, AlertController } from 'ionic-angular';
 
 @Component({
   selector: 'edit-enterprise',
@@ -15,7 +16,8 @@ export class EditEnterprise {
   editedEnterprise: Enterprise
 
   //Form used to edit an existing enterprise
-  constructor(private formBuilder: FormBuilder, private http: Http) {
+  constructor(private formBuilder: FormBuilder, private http: Http,
+     private navCtrl: NavController, private alertCtrl: AlertController) {
     this.editEnterpriseForm = formBuilder.group({
       'name': [null, Validators.required],
       'cnpj': [null, Validators.required],
@@ -34,12 +36,22 @@ export class EditEnterprise {
     this.http.post('http://localhost:3000/api/enterprises/edit-enterprise', this.editedEnterprise)
     .map(res => res.json())
     .subscribe( res => {
-      if(res.status == 200) {
-
+      if(res.status === 200) {
+        this.navCtrl.pop();
       } else {
-        console.log('deu ruim ein');
+        this.showEditionError();
       }
     });
+  }
+
+  //Used to notify the user about an unsuccessfull edition
+  showEditionError() {
+    let alert = this.alertCtrl.create({
+      title:'Edition error!!',
+      subTitle:'There was an error in your edition, please check your input fields.',
+      buttons: ['OK']
+    });
+    alert.present();
   }
 
   //Method that connect component address to the main form
