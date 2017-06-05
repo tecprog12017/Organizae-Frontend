@@ -71,4 +71,8 @@ constructor(public navCtrl: NavController, formBuilder: FormBuilder, private htt
     alert.present();
   }
 
+  cancel(){
+    this.navCtrl.pop();
+  }
+
 }
