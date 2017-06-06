@@ -3,8 +3,6 @@ var SpecReporter = require('jasmine-spec-reporter').SpecReporter;
 exports.config = {
     allScriptsTimeout: 11000,
     directConnect: true,
-    getPageTimeout: 20000,
-    allScriptsTimeout: 20000,
     capabilities: {
         'browserName': 'chrome'
     },
@@ -18,7 +16,6 @@ exports.config = {
     baseUrl: 'http://localhost:8100',
     useAllAngular2AppRoots: true,
     beforeLaunch: function() {
-
         require('ts-node').register({
             project: 'e2e'
         });
