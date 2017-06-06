@@ -1,5 +1,4 @@
 import { AbstractControl, ValidatorFn } from '@angular/forms';
-import { Directive, ElementRef, HostListener, Input } from '@angular/core';
 
 //Validates used to only allow cpf according to cpf algorithm
 //-> More information about this algorithm: https://http://www.geradorcpf.com/algoritmo_do_cpf.htm
@@ -135,7 +134,6 @@ function ValidatesCpfFirstVerifyingDigit(cpf:string){
 function ValidatesCpfSecondVerifyingDigit(cpf:string){
   var adder = 0;
   var secondDigitVerifier = 0;
-  const maxNumericalDigit = 9;
   const secondNumericalDigitLimit = 11;
   const firstNumericalDigitLimit = 10;
 

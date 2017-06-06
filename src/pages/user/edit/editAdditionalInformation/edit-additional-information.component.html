@@ -1,5 +1,5 @@
 <ion-list [formGroup]="editAdditionalInformation">
-  <ion-item>
+  <ion-item class="in-class">
     <ion-label floating>Birthdate</ion-label>      <!-- User already have it's birthdate, the field shows it up -->
       <ion-datetime displayFormat="DD/MM/YYYY" pickerFormat="DD MMMM YYYY" *ngIf="userToken.information" [(ngModel)]="userToken.information.birthdate" [formControl]="editAdditionalInformation.controls['birthdate']"></ion-datetime>
       <!-- User have never registered it's birthdate, the field is empty -->

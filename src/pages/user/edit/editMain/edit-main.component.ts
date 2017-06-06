@@ -2,7 +2,6 @@ import { Component } from "@angular/core";
 import { NavController } from "ionic-angular"
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { UserFullProfile, Cpf, Rg, Address, Information, Gender } from '../../../../models/user-profile';
-import { ValidateEmail, ValidatePassword } from '../../../../controller/custom-validations'
 import { ValidatePhone } from '../../../../controller/additional-information-custom-validations'
 import { ValidatesCpf } from '../../../../controller/cpf-custom-validations'
 import { ValidateRgNumber } from '../../../../controller/rg-custom-validations'
@@ -95,7 +94,7 @@ export class EditMain{
       'state' : [null, Validators.compose([Validators.required])],
       'neighbourhood' : [null, Validators.compose([Validators.required, ValidateAdressInformation()])],
       'number' : [null, Validators.compose([Validators.required, ValidateNumber()])],
-      'complement' : [null, Validators.compose([Validators.required, ValidateAdressInformation()])]
+      'complement' : [null, null]
     });
   }
 
