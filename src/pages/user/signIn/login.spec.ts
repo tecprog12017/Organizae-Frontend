@@ -9,7 +9,7 @@ describe('Sign-in Tests', () => {
     browser.get('');
     // wait for page load
     browser.driver.sleep(500);
-
+    browser.refresh();
     emailField = element(by.xpath('//*[@id="email"]/input'));
     passwordField = element(by.xpath('//*[@id="password"]/input'));
     buttonSubmit = element(by.xpath('//*[@id="sign-in-button"]'));
