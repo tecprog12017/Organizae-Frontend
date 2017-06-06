@@ -35,7 +35,7 @@ constructor(public navCtrl: NavController, formBuilder: FormBuilder, private htt
  //submit used to authenticate the user in system
  submitForm(value: any):void{
    var user = {
-     'token': this.userTokenSession.getToken(),
+     'email': this.userTokenSession.getToken()['email'],
      'password': this.deleteUserForm.controls['password'].value,
    };
    this.http.post('http://localhost:3000/api/UserProfiles/delete-user', user)
