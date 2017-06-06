@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { NavController } from "ionic-angular"
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserFullProfile, Cpf, Rg, Address, Information, Gender } from '../../../../models/user-profile';
 import { ValidatePhone } from '../../../../controller/additional-information-custom-validations'
 import { ValidatesCpf } from '../../../../controller/cpf-custom-validations'
