@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Delete Account</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="content-class">
+  <ion-card color='background' class="card-class">
+       <ion-card-header id="delete-confirmation">Are you sure you want to delete your account? </ion-card-header>
+        <!-- Form used to confirm if user wants do delete their account and confirm their password -->
+        <form id="deleteUserForm" [formGroup]="deleteUserForm" (ngSubmit)="submitForm(deleteUserForm.value)">
+
+          <!-- Input for the user's password used to delete account -->
+          <ion-item class="input-class">
+            <ion-label floating>Password</ion-label>
+            <ion-input id="password" type="password" class="input-class" [formControl]="deleteUserForm.controls['password']"></ion-input>
+          </ion-item>
+
+          <div class="error-box" *ngIf="deleteUserForm.controls['password'].hasError('required') && deleteUserForm.controls['password'].touched">
+            Password is required!
+          </div>
+          <br>
+    <button type="submit" ion-button class="button-class" full>Delete my account</button>
+  </form>
+    <button ion-button class="button-class" (click)="cancel()" full> Cancel </button>
+  </ion-card>
+</ion-content>
