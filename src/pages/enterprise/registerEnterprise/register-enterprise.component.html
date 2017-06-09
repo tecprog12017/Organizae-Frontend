@@ -40,6 +40,18 @@
         Cnpj is required!
       </div>
 
+      <div class="error-box" *ngIf="enterpriseForm.controls['cnpj'].hasError('CnpjDoesNotHaveRequiredLenght') && enterpriseForm.controls['cnpj'].touched">
+        Cnpj need to have exactly 14 numbers.
+      </div>
+
+      <div class="error-box" *ngIf="enterpriseForm.controls['cnpj'].hasError('CnpjIsEmpty') && enterpriseForm.controls['cnpj'].touched">
+        Cnpj can't be empty.
+      </div>
+
+      <div class="error-box" *ngIf="enterpriseForm.controls['cnpj'].hasError('CnpjIsInvalid') && enterpriseForm.controls['cnpj'].touched">
+        This cnpj number is not valid.
+      </div>
+
 
       <!-- Rendering address inputs component -->
       <edit-address [group]="enterpriseForm.controls['address'].controls[0]"></edit-address>

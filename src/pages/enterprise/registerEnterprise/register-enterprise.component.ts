@@ -6,6 +6,7 @@ import { AlertController } from 'ionic-angular';
 import { Enterprise } from '../../../models/enterprise';
 import { EditAddress } from '../../user/edit/editAddress/edit-address.component';
 import { UserTokenSession } from '../../user/signIn/user-token-session.service';
+import { ValidatesCnpj } from '../../../controller/cnpj-custom-validations'
 
 @Component({
   templateUrl: 'register-enterprise.component.html'
@@ -22,7 +23,7 @@ export class RegisterEnterprise {
               public userTokenSession: UserTokenSession) {
     this.enterpriseForm = formBuilder.group({
       'name': [null, Validators.required],
-      'cnpj': [null, Validators.required],
+      'cnpj': [null, Validators.compose([Validators.required, ValidatesCnpj()])],
       'occupationArea': [null, Validators.required],
       'address': formBuilder.array([this.initAddress(),])
     });
