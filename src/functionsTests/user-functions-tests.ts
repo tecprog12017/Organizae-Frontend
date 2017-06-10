@@ -4,9 +4,6 @@ var chai = require('chai');
 var chaiHttp  = require('chai-http');
 var server = 'http://localhost:3000';
 
-export let buttonSubmitSignup = element(by.xpath('//*[@id="sign-up-submit-button"]'));
-export let buttonSubmitLogin = element(by.xpath('//*[@id="sign-in-button"]'));
-
 export function fillSignUpFields(user){
   // get and fill signup fields
   var firstNameField = element(by.xpath('//*[@id="first-name"]/input'));
@@ -27,6 +24,8 @@ export function fillSignUpFields(user){
 
 export function clickSubmitSignUpButton() {
   browser.driver.sleep(500);
+
+  var buttonSubmitSignup = element(by.xpath('//*[@id="sign-up-submit-button"]'));
   // click on button
   buttonSubmitSignup.click();
 
@@ -43,6 +42,7 @@ export function fillLoginFields(user) {
 }
 
 export function clickSubmitLoginButton() {
+  var buttonSubmitLogin = element(by.xpath('//*[@id="sign-in-button"]'));
   browser.driver.sleep(500);
   // click on button
   buttonSubmitLogin.click();
