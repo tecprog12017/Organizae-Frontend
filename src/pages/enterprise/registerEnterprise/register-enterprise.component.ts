@@ -7,6 +7,7 @@ import { Enterprise } from '../../../models/enterprise';
 import { EditAddress } from '../../user/edit/editAddress/edit-address.component';
 import { UserTokenSession } from '../../user/signIn/user-token-session.service';
 import { ValidatesCnpj } from '../../../controller/cnpj-custom-validations'
+import { ValidateCep, ValidateAdressInformation, ValidateNumber } from '../../../controller/address-custom-validations'
 
 @Component({
   templateUrl: 'register-enterprise.component.html'
@@ -59,12 +60,12 @@ export class RegisterEnterprise {
   //Method that connect component address to the main form
   initAddress(){
     return this.formBuilder.group({
-      'cep' : [null, Validators.compose([Validators.required])],
-      'city' : [null, Validators.compose([Validators.required])],
+      'cep' : [null, Validators.compose([Validators.required, ValidateCep()])],
+      'city' : [null, Validators.compose([Validators.required, ValidateAdressInformation()])],
       'state' : [null, Validators.compose([Validators.required])],
-      'neighbourhood' : [null, Validators.compose([Validators.required])],
-      'number' : [null, Validators.compose([Validators.required])],
-      'complement' : [null, Validators.compose([Validators.required])]
+      'neighbourhood' : [null, Validators.compose([Validators.required, ValidateAdressInformation()])],
+      'number' : [null, Validators.compose([Validators.required, ValidateNumber()])],
+      'complement' : [null, null]
     });
   }
 
