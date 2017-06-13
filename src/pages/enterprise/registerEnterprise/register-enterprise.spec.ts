@@ -12,7 +12,7 @@ let enterprise;
 
 let registerEnterpriseButton = element(by.xpath('/html/body/ion-app/ng-component/ion-nav/ng-component/ion-content/div[2]/form/ion-buttons/button'));
 
-fdescribe('Create Enterprise Tests', () => {
+describe('Create Enterprise Tests', () => {
   beforeEach(() => {
     // enterprise data used for the tests
     enterprise = {name: 'testEnterprise',
