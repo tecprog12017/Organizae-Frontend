@@ -12,8 +12,9 @@ import { EditMain } from '../pages/user/edit/editMain/edit-main.component';
 
 import { SignIn } from '../pages/user/signIn/sign-in.component';
 import { UserHome } from '../pages/user/userHome/user-home.component';
-import { UserTokenSession } from '../pages/user/signIn/user-token-session.service'
-
+import { UserTokenSession } from '../pages/user/signIn/user-token-session.service';
+import { SettingsMain } from '../pages/user/accountSettings/settingsMain/settings-main.component';
+import { DeleteUser } from '../pages/user/accountSettings/deleteUser/delete-user.component';
 import { RegisterEnterprise } from '../pages/enterprise/registerEnterprise/register-enterprise.component';
 import { EditEnterprise } from '../pages/enterprise/editEnterprise/edit-enterprise.component';
 import { ListEnterprises } from '../pages/enterprise/listEnterprises/list-enterprises.component';
@@ -34,6 +35,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     SignIn,
     UserHome,
     RegisterEnterprise,
+    SettingsMain,
+    DeleteUser,
     EditEnterprise,
     ListEnterprises
   ],
@@ -53,6 +56,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     SignIn,
     UserHome,
     RegisterEnterprise,
+    SettingsMain,
+    DeleteUser,
     EditEnterprise,
     ListEnterprises
   ],

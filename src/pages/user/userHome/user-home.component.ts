@@ -3,7 +3,9 @@ import { Component } from '@angular/core';
 import { SignIn } from '../signIn/sign-in.component';
 import { NavController } from 'ionic-angular';
 
-import { EditMain } from '../edit/editMain/edit-main.component'
+import { EditMain } from '../edit/editMain/edit-main.component';
+import { RegisterEnterprise } from '../../enterprise/registerEnterprise/register-enterprise.component';
+import { SettingsMain } from '../accountSettings/settingsMain/settings-main.component';
 import { ListEnterprises } from '../../enterprise/listEnterprises/list-enterprises.component';
 import { UserTokenSession } from '../signIn/user-token-session.service';
 import { EditEnterprise } from '../../enterprise/editEnterprise/edit-enterprise.component';
@@ -16,6 +18,8 @@ import { EditEnterprise } from '../../enterprise/editEnterprise/edit-enterprise.
 
 export class UserHome {
   editMain = EditMain;
+  registerEnterprise = RegisterEnterprise;
+  settingsMain = SettingsMain;
   editEnterprise = EditEnterprise;
   listEnterprises = ListEnterprises;
 
