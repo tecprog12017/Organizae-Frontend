@@ -5,5 +5,34 @@
 </ion-header>
 
 <ion-content class="add-employees-background">
+  <ion-card>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+            Nome
+        </ion-col>
+        <ion-col>
+          Email
+        </ion-col>
+        <ion-col>
+          Ação
+        </ion-col>
+      </ion-row>
+      <ion-row *ngFor="let user of allUsers; let i = index;" [attr.currentIndex]="i">
+        <ion-col>
+          {{ user.firstName + " " + user.lastName }}
+        </ion-col>
+        <ion-col>
+          {{ user.email }}
+        </ion-col>
+        <ion-col>
+          <button icon-only ion-button>
+            <ion-icon name="checkmark"></ion-icon>
+          </button>
+        </ion-col>
 
+      </ion-row>
+    </ion-grid>
+
+  </ion-card>
 </ion-content>

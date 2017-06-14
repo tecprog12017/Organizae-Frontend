@@ -15,9 +15,26 @@ export class AddEmployees {
   allUsers: Array<Object>;
 
   constructor(public navCtrl: NavController, private http: Http, public userTokenSession: UserTokenSession) {
-    // Setting user email as parameter to pass user to backend
     this.allUsers = null;
 
   }
+
+  ionViewWillLoad(){
+    this.getAllUsers();
+  }
+
+  getAllUsers(){
+     return new Promise(resolve => {
+      this.http.get("http://localhost:3000/api/UserProfiles/find-users")
+      .map(res => res.json())
+      . subscribe(data => {
+        this.allUsers = data.userProfiles;
+      resolve(this.allUsers);
+      });
+    });
+
+
+  }
+
 
 }
