@@ -7,6 +7,7 @@ import 'rxjs/Rx';
 import { UserTokenSession } from '../../user/signIn/user-token-session.service';
 import { RegisterEnterprise } from '../registerEnterprise/register-enterprise.component';
 import { EditEnterprise } from '../editEnterprise/edit-enterprise.component';
+import { AddEmployees } from '../addEmployees/add-employees.component';
 
 @Component({
   templateUrl: 'list-enterprises.component.html'
@@ -15,6 +16,7 @@ import { EditEnterprise } from '../editEnterprise/edit-enterprise.component';
 export class ListEnterprises {
   newEnterprise = RegisterEnterprise;
   editEnterprise = EditEnterprise;
+  addEmployees = AddEmployees;
   enterprises: Array<Object>;
 
   constructor(public navCtrl: NavController, private http: Http, public userTokenSession: UserTokenSession) {
@@ -60,4 +62,10 @@ export class ListEnterprises {
         this.getEnterprises();
     }
 
+  // Pushing page to selected enterprise edition
+  pushAddEmployees(index: number){
+  this.navCtrl.push(this.addEmployees, {
+    currentEnterprise: this.enterprises[index],
+    });
+  }
 }
