@@ -6,16 +6,18 @@
 
 <ion-content class="add-employees-background">
   <ion-card>
+
+
     <ion-grid>
       <ion-row>
         <ion-col>
-            Nome
+            Name
         </ion-col>
         <ion-col>
-          Email
+          E-mail
         </ion-col>
         <ion-col>
-          Ação
+          Select
         </ion-col>
       </ion-row>
       <ion-row *ngFor="let user of allUsers; let i = index;" [attr.currentIndex]="i">
@@ -26,13 +28,15 @@
           {{ user.email }}
         </ion-col>
         <ion-col>
-          <button icon-only ion-button>
-            <ion-icon name="checkmark"></ion-icon>
-          </button>
+          <ion-checkbox checked="false" (ionChange)="  addEmployee(user.email, $event)">+</ion-checkbox>
         </ion-col>
 
       </ion-row>
     </ion-grid>
+    <ion-buttons end>
+      <button ion-button (click)="registerEmployees()">Add</button>
+    </ion-buttons>
+
 
   </ion-card>
 </ion-content>
