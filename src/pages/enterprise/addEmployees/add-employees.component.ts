@@ -7,6 +7,7 @@ import 'rxjs/Rx';
 import { UserProfile } from '../../../models/user-profile/';
 import { UserTokenSession } from '../../user/signIn/user-token-session.service';
 import { Enterprise } from '../../../models/enterprise';
+import { ListEnterprises } from '../listEnterprises/list-enterprises.component';
 
 @Component({
   templateUrl: 'add-employees.component.html'
@@ -25,13 +26,15 @@ export class AddEmployees {
 
   }
 
+  //This method runs before the window load completely, so we can query all users at database
   ionViewWillLoad(){
     this.getAllUsers();
   }
 
+  //This one find all users that are not at hosted at the current enterprise
   getAllUsers(){
      return new Promise(resolve => {
-      this.http.get("http://localhost:3000/api/UserProfiles/find-users")
+      this.http.post("http://localhost:3000/api/UserProfiles/find-users", this.currentEnterprise)
       .map(res => res.json())
       . subscribe(data => {
         this.allUsers = data.userProfiles;
@@ -40,6 +43,7 @@ export class AddEmployees {
     });
   }
 
+  //Add the employee select to the array that will be sent to database
   addEmployee(userEmail, checkBoxEvent){
     if(checkBoxEvent.checked){
       this.selectedUsers.push(userEmail);
@@ -49,9 +53,8 @@ export class AddEmployees {
     }
   }
 
+  //This method runs the register of the selected users to the enteprise table and each user
   registerEmployees(){
-    console.log(this.currentEnterprise.owner, this.currentEnterprise.name);
-
     let selectEnterprise = {
                             "owner":{
                                 "email":this.currentEnterprise.owner
@@ -67,9 +70,32 @@ export class AddEmployees {
     data.append('enterprise', JSON.stringify(selectEnterprise));
     data.append('users', JSON.stringify(selectEmployees));
 
-    this.http.post('http://localhost:3000/api/enterprises/add-employee', data).subscribe();
 
-    this.http.post('http://localhost:3000/api/UserProfiles/add-enterprise', data).subscribe();
+    //Perform the addition of all employee to enterprise
+    this.http.post('http://localhost:3000/api/enterprises/add-employee', data)
+    .map(res => res.json())
+    .subscribe(status => {
+      if(status != 400){
+        this.navCtrl.push(ListEnterprises, { }, {animate: true, direction: 'forward'});
+      }
+      else{
+        //To do stuff
+      }
+    }
+    );
+
+    //Perform the addition of the enterprise to each user
+    this.http.post('http://localhost:3000/api/UserProfiles/add-enterprise', data)
+    .map(res => res.json())
+    .subscribe(status => {
+      if(status != 400){
+        //Nothing to do
+      }
+      else{
+        //Stuff to do
+      }
+    }
+    );
   }
 
 
