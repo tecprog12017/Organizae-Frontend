@@ -19,6 +19,7 @@ import { RegisterEnterprise } from '../pages/enterprise/registerEnterprise/regis
 import { EditEnterprise } from '../pages/enterprise/editEnterprise/edit-enterprise.component';
 import { ListEnterprises } from '../pages/enterprise/listEnterprises/list-enterprises.component';
 
+import { AddEmployees } from '../pages/enterprise/addEmployees/add-employees.component';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -38,7 +39,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     SettingsMain,
     DeleteUser,
     EditEnterprise,
-    ListEnterprises
+    ListEnterprises,
+    AddEmployees
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -59,7 +61,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     SettingsMain,
     DeleteUser,
     EditEnterprise,
-    ListEnterprises
+    ListEnterprises,
+    AddEmployees
   ],
   providers: [
     StatusBar,
