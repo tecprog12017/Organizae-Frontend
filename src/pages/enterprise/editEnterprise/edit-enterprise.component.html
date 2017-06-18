@@ -39,6 +39,15 @@
     </ion-item>
     <br>
 
+    <!--Box used to notify the user about their errors -->
+    <div class="error-box" *ngIf="editEnterpriseForm.controls['cnpj'].hasError('CnpjDoesNotHaveRequiredLenght') && editEnterpriseForm.controls['cnpj'].touched">
+      Cnpj need to have exactly 14 numbers.
+    </div>
+
+    <div class="error-box" *ngIf="editEnterpriseForm.controls['cnpj'].hasError('CnpjIsInvalid') && editEnterpriseForm.controls['cnpj'].touched">
+      This cnpj number is not valid.
+    </div>
+
     <!-- Used to check if the password provided matches the password in the database -->
     <ion-item class="edit-enterprise-field">
       <ion-label floating>User Password</ion-label>
