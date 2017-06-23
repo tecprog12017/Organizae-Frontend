@@ -4,6 +4,8 @@ import { Http } from '@angular/http';
 import { EditAddress } from '../../user/edit/editAddress/edit-address.component';
 import { Enterprise } from '../../../models/enterprise';
 import { NavController, AlertController, NavParams } from 'ionic-angular';
+import { ValidatesCnpj } from '../../../controller/cnpj-custom-validations'
+import { ValidateCep, ValidateAdressInformation, ValidateNumber } from '../../../controller/address-custom-validations'
 
 @Component({
   selector: 'edit-enterprise',
@@ -26,7 +28,7 @@ export class EditEnterprise {
       //Creating form builder with fields to edit enterprise
        this.editEnterpriseForm = formBuilder.group({
          'name': [this.currentEnterprise.name, Validators.required],
-         'cnpj': [null, Validators.required],
+         'cnpj': [null, Validators.compose([Validators.required, ValidatesCnpj()])],
          'oldCnpj': [this.currentEnterprise.cnpj, Validators.required],
          'occupationArea': [this.currentEnterprise.occupationArea, Validators.required],
          'confirmationPassword': [null, Validators.required],
@@ -63,12 +65,12 @@ export class EditEnterprise {
   //Method that connect component address to the main form
   initAddress(){
     return this.formBuilder.group({
-      'cep' : [this.currentEnterprise.address.cep, Validators.compose([Validators.required])],
-      'city' : [this.currentEnterprise.address.city, Validators.compose([Validators.required])],
-      'state' : [this.currentEnterprise.address.state, Validators.compose([Validators.required])],
-      'neighbourhood' : [this.currentEnterprise.address.neighbourhood, Validators.compose([Validators.required])],
-      'number' : [this.currentEnterprise.address.number, Validators.compose([Validators.required])],
-      'complement' : [this.currentEnterprise.address.complement, Validators.compose([Validators.required])]
+      'cep' : [null, Validators.compose([Validators.required, ValidateCep()])],
+      'city' : [null, Validators.compose([Validators.required, ValidateAdressInformation()])],
+      'state' : [null, Validators.compose([Validators.required])],
+      'neighbourhood' : [null, Validators.compose([Validators.required, ValidateAdressInformation()])],
+      'number' : [null, Validators.compose([Validators.required, ValidateNumber()])],
+      'complement' : [null, null]
     });
   }
 }

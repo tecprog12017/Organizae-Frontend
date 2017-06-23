@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title class="add-employees-title">Add Employees</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="add-employees-background">
+  <ion-card>
+
+
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+            Name
+        </ion-col>
+        <ion-col>
+          E-mail
+        </ion-col>
+        <ion-col>
+          Select
+        </ion-col>
+      </ion-row>
+      <ion-row *ngFor="let user of allUsers; let i = index;" [attr.currentIndex]="i">
+        <ion-col>
+          {{ user.firstName + " " + user.lastName }}
+        </ion-col>
+        <ion-col>
+          {{ user.email }}
+        </ion-col>
+        <ion-col>
+          <ion-checkbox checked="false" (ionChange)="  addEmployee(user.email, $event)">+</ion-checkbox>
+        </ion-col>
+
+      </ion-row>
+    </ion-grid>
+    <ion-buttons end>
+      <button ion-button (click)="registerEmployees()">Add</button>
+    </ion-buttons>
+
+
+  </ion-card>
+</ion-content>
