@@ -27,7 +27,8 @@ export class ListEnterprises {
 
   getEnterprises()  {
     let params = new URLSearchParams();
-    params.set('user', this.userTokenSession.getToken());
+    let userToken = this.userTokenSession.getToken();
+    params.set('user', userToken["email"]);
 
     // Getting enterprises that belong to logged user from backend
     return new Promise(resolve => {
@@ -50,6 +51,7 @@ export class ListEnterprises {
     this.navCtrl.push(this.editEnterprise, {
       currentEnterprise: this.enterprises[index],
     });
+    console.log(this.enterprises[index]);
   }
 
   // Running get enterprises method before page is rendered

@@ -33,7 +33,7 @@ export class RegisterEnterprise {
   //Submit used to register the enterprise on the database
   submitForm (value: any): void {
     this.newEnterprise = new Enterprise(this.enterpriseForm);
-    this.newEnterprise.owner = this.userTokenSession.userToken;
+    this.newEnterprise.owner = this.userTokenSession.userToken["email"];
 
     this.http.post('http://localhost:3000/api/enterprises/register-enterprise', this.newEnterprise)
     .map( res => res.json())

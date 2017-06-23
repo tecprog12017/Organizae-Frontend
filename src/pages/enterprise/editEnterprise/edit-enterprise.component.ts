@@ -41,6 +41,7 @@ export class EditEnterprise {
     this.editedEnterprise = new Enterprise(this.editEnterpriseForm);
     this.editedEnterprise.oldCnpj = this.editEnterpriseForm.get('oldCnpj').value;
     this.editedEnterprise.setEditEnterprise(this.editEnterpriseForm);
+    this.editedEnterprise.owner = this.currentEnterprise.owner;
     this.http.post('http://localhost:3000/api/enterprises/edit-enterprise', this.editedEnterprise)
     .map(res => res.json())
     .subscribe( res => {
