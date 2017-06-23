@@ -111,8 +111,10 @@ function ReplaceSpecialCharacters(addressInfo:string){
   }
 }
 
-function ReplaceNotNumericalDigits(addressInfo:string){
-  if(addressInfo != null){
+function ReplaceNotNumericalDigits(addressInfoParam:string){
+
+  if(addressInfoParam != null){
+    let addressInfo = addressInfoParam.toString();
     //remove all non numerical characters of Adress Info to prevent masks
     return addressInfo = addressInfo.replace(/\D/g, '');
   }

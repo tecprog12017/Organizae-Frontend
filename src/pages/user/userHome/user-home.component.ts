@@ -23,7 +23,9 @@ export class UserHome {
   editEnterprise = EditEnterprise;
   listEnterprises = ListEnterprises;
 
-  constructor(public navCtrl: NavController, private userTokenSession: UserTokenSession) { }
+  constructor(public navCtrl: NavController, private userTokenSession: UserTokenSession) {
+
+  }
 
   logOut () {
     this.userTokenSession.setToken(null);

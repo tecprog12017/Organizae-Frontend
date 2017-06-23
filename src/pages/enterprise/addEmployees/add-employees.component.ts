@@ -4,10 +4,8 @@ import { Http, URLSearchParams } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/Rx';
 
-import { UserProfile } from '../../../models/user-profile/';
 import { UserTokenSession } from '../../user/signIn/user-token-session.service';
 import { Enterprise } from '../../../models/enterprise';
-import { ListEnterprises } from '../listEnterprises/list-enterprises.component';
 
 @Component({
   templateUrl: 'add-employees.component.html'
@@ -76,7 +74,7 @@ export class AddEmployees {
     .map(res => res.json())
     .subscribe(status => {
       if(status != 400){
-        this.navCtrl.push(ListEnterprises, { }, {animate: true, direction: 'forward'});
+        this.navCtrl.pop();
       }
       else{
         //To do stuff
@@ -97,6 +95,4 @@ export class AddEmployees {
     }
     );
   }
-
-
 }

@@ -2,12 +2,12 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class UserTokenSession {
-  userToken: string;
+  userToken: Object;
 
   constructor () {
   }
 
-  setToken (userToken: string) {
+  setToken (userToken: Object) {
     this.userToken = userToken;
   }
 

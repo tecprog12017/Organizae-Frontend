@@ -5,13 +5,10 @@ import { UserProfile } from '../../../../models/user-profile';
 import { Http } from '@angular/http';
 import { AlertController } from 'ionic-angular';
 import { UserTokenSession } from '../../signIn/user-token-session.service'
-import { ValidateEmail, ValidatePassword } from '../../../../controller/custom-validations';
+import { ValidatePassword } from '../../../../controller/custom-validations';
 import { SignIn } from '../../signIn/sign-in.component';
-import { UserHome } from '../../userHome/user-home.component';
 
 import 'rxjs/add/operator/map';
-import * as  jwt from 'jwt-simple/lib/jwt';
-import * as cryptoJS from 'crypto-js/crypto-js';
 
 @Component({
   selector: "delete-user",

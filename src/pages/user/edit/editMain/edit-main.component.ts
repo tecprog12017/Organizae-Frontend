@@ -43,8 +43,8 @@ export class EditMain{
       'documents' : formBuilder.array([this.initRg(), this.initCpf()],),
       'address' : formBuilder.array([ this.initAddress()],),
       'personalInformation' : formBuilder.array([ this.initAdditionalInformation(), this.initGender()],)
-
     });
+    console.log(userTokenSession.getToken());
   }
 
   //Method to assign new informations to current user.
@@ -55,12 +55,13 @@ export class EditMain{
     this.newInformation = new Information(this.editForm)
     this.newGender = new Gender(this.editForm)
 
-    this.userFullProfile = new UserFullProfile(this.userTokenSession.getToken()['email'],this.newRg, this.newCpf, this.newAddress, this.newInformation, this.newGender)
-    this.http.post('http://localhost:3000/api/UserProfiles/update', this.userFullProfile)
+    let userTokenEmail = this.userTokenSession.getToken()['email'];
+    this.userFullProfile = new UserFullProfile(userTokenEmail, this.newRg, this.newCpf, this.newAddress, this.newInformation, this.newGender)
+    this.http.post('http://localhost:3000/api/UserProfiles/updateUserProfile', this.userFullProfile)
     .map(res => res.json())
     .subscribe(token =>{
-      if(token.status != 400){
-        var userToken = jwt.decode(token, this.secret);
+      if(token.userInstanceValue != 400){
+        var userToken = jwt.decode(token.userInstanceValue, this.secret);
         this.userTokenSession.setToken(userToken)
         this.navCtrl.setRoot(UserHome, { }, {animate: true, direction: 'forward'});
       }
