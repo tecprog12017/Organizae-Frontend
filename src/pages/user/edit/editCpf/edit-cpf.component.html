@@ -1,0 +1,22 @@
+<ion-item [formGroup]="editCpf" class="in-class">
+
+  	<ion-label floating>CPF</ion-label>
+
+    <!-- User already have a registered cpf, the field shows it up -->
+    <ion-input type="text" *ngIf="userToken.cpf" [(ngModel)]="userToken.cpf.cpf" [formControl]="editCpf.controls['cpf']" ui-mask="999.999.999-99"></ion-input>
+
+    <!-- User have never registered cp, the field is empty -->
+    <ion-input type="text" *ngIf="!userToken.cpf" [formControl]="editCpf.controls['cpf']" ui-mask="999.999.999-99"></ion-input>
+</ion-item>
+
+<div class="error-box" *ngIf="editCpf.controls['cpf'].hasError('CpfDoesNotHaveRequiredLenght') && editCpf.controls['cpf'].touched">
+  Cpf need to have exactly 11 characters.
+</div>
+
+<div class="error-box" *ngIf="editCpf.controls['cpf'].hasError('CpfIsEmpty') && editCpf.controls['cpf'].touched">
+  Cpf can't be empty or have letters.
+</div>
+
+<div class="error-box" *ngIf="editCpf.controls['cpf'].hasError('CpfIsInvalid') && editCpf.controls['cpf'].touched">
+  This cpf number is not valid.
+</div>

@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Register Enterprise</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="background-class">
+    <!--Form used to register an enterprise -->
+    <form [formGroup]="enterpriseForm" (ngSubmit)="submitForm(enterpriseForm.value)">
+      <!--Name input used for the user to register an enterprise -->
+      <br>
+      <ion-item class="in-field">
+        <ion-label floating>Enterprise Name</ion-label>
+        <ion-input type="text" [formControl]="enterpriseForm.controls['name']"></ion-input>
+      </ion-item>
+      <!--Box used to notify the user about their errors -->
+      <div class="error-box" *ngIf="enterpriseForm.controls['name'].hasError('required') && enterpriseForm.controls['name'].touched">
+        Name is required!
+      </div>
+      <br>
+
+      <!--Occupation area input used for the user to register an enterprise -->
+      <ion-item class="in-field">
+        <ion-label floating>Occupation Area</ion-label>
+        <ion-input type="text" [formControl]="enterpriseForm.controls['occupationArea']"></ion-input>
+      </ion-item>
+      <!--Box used to notify the user about their errors -->
+      <div class="error-box" *ngIf="enterpriseForm.controls['occupationArea'].hasError('required') && enterpriseForm.controls['occupationArea'].touched">
+        Occupation area is required!
+      </div>
+      <br>
+
+      <!--Cnpj input used for the user to register an enterprise -->
+      <ion-item class="in-field">
+        <ion-label floating>CNPJ</ion-label>
+        <ion-input type="text" [formControl]="enterpriseForm.controls['cnpj']"></ion-input>
+      </ion-item>
+      <!--Box used to notify the user about their errors -->
+      <div class="error-box" *ngIf="enterpriseForm.controls['cnpj'].hasError('required') && enterpriseForm.controls['cnpj'].touched">
+        Cnpj is required!
+      </div>
+
+      <div class="error-box" *ngIf="enterpriseForm.controls['cnpj'].hasError('CnpjDoesNotHaveRequiredLenght') && enterpriseForm.controls['cnpj'].touched">
+        Cnpj need to have exactly 14 numbers.
+      </div>
+
+      <div class="error-box" *ngIf="enterpriseForm.controls['cnpj'].hasError('CnpjIsEmpty') && enterpriseForm.controls['cnpj'].touched">
+        Cnpj can't be empty.
+      </div>
+
+      <div class="error-box" *ngIf="enterpriseForm.controls['cnpj'].hasError('CnpjIsInvalid') && enterpriseForm.controls['cnpj'].touched">
+        This cnpj number is not valid.
+      </div>
+
+
+      <!-- Rendering address inputs component -->
+      <edit-address [group]="enterpriseForm.controls['address'].controls[0]"></edit-address>
+
+      <!--Button used for the user to register and submit an enterprise -->
+      <ion-buttons end>
+        <button ion-button type="submit" [disabled]="!enterpriseForm.valid">Register</button>
+      </ion-buttons>
+      <br>
+    </form>
+</ion-content>

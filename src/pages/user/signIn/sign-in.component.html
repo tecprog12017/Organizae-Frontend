@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-navbar color='primary'>
+    <ion-title>Organizaê</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="content-class">
+  <!-- Card containing sign in form -->
+  <ion-card color='background' class="card">
+    <ion-card-header>Sign In</ion-card-header>
+    <!-- Form used for the user to access his account -->
+    <form [formGroup]="signInForm" (ngSubmit)="submitForm(signInForm.value)">
+
+      <!-- Email input used for the user to access his account -->
+      <ion-item class="input-class">
+        <ion-label floating>E-mail</ion-label>
+        <ion-input id="email" type="text" class="input-class" [formControl]="signInForm.controls['email']"></ion-input>
+      </ion-item>
+      <br>
+
+      <!-- Password input used for the user to access his account -->
+      <ion-item class="input-class">
+        <ion-label floating>Password</ion-label>
+        <ion-input id="password" type="password" [formControl]="signInForm.controls['password']"></ion-input>
+      </ion-item>
+      <br>
+
+      <!-- Button to access application -->
+      <button id="sign-in-button" type="submit" ion-button class="button-class" [disabled]="!signInForm.valid">Submit</button>
+      <br>
+
+      <!-- Link redirecting to sign up page -->
+      <a [navPush]="signUp" class="link-class">Not a member? Sign up now.</a>
+      <br>
+
+    </form>
+  </ion-card>
+
+</ion-content>
