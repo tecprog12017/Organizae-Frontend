@@ -4,6 +4,7 @@ import { Http } from '@angular/http';
 import { EditAddress } from '../../user/edit/editAddress/edit-address.component';
 import { Enterprise } from '../../../models/enterprise';
 import { NavController, AlertController, NavParams } from 'ionic-angular';
+import { Logger } from 'angular2-logger/core';
 import { ValidatesCnpj } from '../../../controller/cnpj-custom-validations'
 import { ValidateCep, ValidateAdressInformation, ValidateNumber } from '../../../controller/address-custom-validations'
 
@@ -20,11 +21,10 @@ export class EditEnterprise {
 
   //Form used to edit an existing enterprise
   constructor(private formBuilder: FormBuilder, private http: Http,
-     private navCtrl: NavController, private alertCtrl: AlertController, public navParams: NavParams) {
+     private navCtrl: NavController, private alertCtrl: AlertController, public navParams: NavParams, private _logger: Logger) {
 
        //Getting enterprise selected from page list enterprise
        this.currentEnterprise = navParams.get('currentEnterprise');
-       console.log(this.currentEnterprise);
       //Creating form builder with fields to edit enterprise
        this.editEnterpriseForm = formBuilder.group({
          'name': [this.currentEnterprise.name, Validators.required],
@@ -34,6 +34,7 @@ export class EditEnterprise {
          'confirmationPassword': [null, Validators.required],
          'address': formBuilder.array([this.initAddress(),])
        });
+       this._logger.info('Enterprise information was placed on form');
      }
 
   //Method used to submit edited value
