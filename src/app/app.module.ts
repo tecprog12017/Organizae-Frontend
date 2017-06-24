@@ -1,8 +1,10 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-import { SignUp } from '../pages/user/signUp/sign-up.component';
+import { Logger } from 'angular2-logger/core';
+import { LOG_LOGGER_PROVIDERS } from 'angular2-logger/core';
 
+import { SignUp } from '../pages/user/signUp/sign-up.component';
 import { EditCpf } from '../pages/user/edit/editCpf/edit-cpf.component'
 import { EditGender } from '../pages/user/edit/editGender/edit-gender.component'
 import { EditRg } from '../pages/user/edit/editRg/edit-rg.component'
@@ -65,6 +67,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     AddEmployees
   ],
   providers: [
+    Logger,
+    LOG_LOGGER_PROVIDERS,
     StatusBar,
     SplashScreen,
     UserTokenSession,

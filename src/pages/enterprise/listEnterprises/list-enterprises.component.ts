@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Http, URLSearchParams } from '@angular/http';
+import { Logger } from 'angular2-logger/core';
 import 'rxjs/add/operator/map';
 import 'rxjs/Rx';
 
@@ -19,10 +20,9 @@ export class ListEnterprises {
   addEmployees = AddEmployees;
   enterprises: Array<Object>;
 
-  constructor(public navCtrl: NavController, private http: Http, public userTokenSession: UserTokenSession) {
+  constructor(public navCtrl: NavController, private http: Http, public userTokenSession: UserTokenSession, private _logger: Logger) {
     // Setting user email as parameter to pass user to backend
     this.enterprises = null;
-
   }
 
   getEnterprises()  {
@@ -36,11 +36,13 @@ export class ListEnterprises {
       .subscribe( res => {
         if (res){
           //User has enterprises
+          this._logger.info('This user have enterprises, listing all of them');
           this.enterprises = res.query;
           resolve(this.enterprises);
         }
         else {
           //User doesnt have enterprises
+          this._logger.info('This user have no enterprises, showing empty page');
         }
       });
     });
@@ -51,7 +53,6 @@ export class ListEnterprises {
     this.navCtrl.push(this.editEnterprise, {
       currentEnterprise: this.enterprises[index],
     });
-    console.log(this.enterprises[index]);
   }
 
   // Running get enterprises method before page is rendered
