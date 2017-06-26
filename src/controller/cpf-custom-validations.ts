@@ -7,20 +7,21 @@
 
 
 import { AbstractControl, ValidatorFn } from '@angular/forms';
-
+import { Logger } from 'angular2-logger/core';
+import { LOG_LOGGER_PROVIDERS } from 'angular2-logger/core';
 //Validates used to only allow cpf according to cpf algorithm
 //-> More information about this algorithm: https://http://www.geradorcpf.com/algoritmo_do_cpf.htm
 export function ValidatesCpf(): ValidatorFn {
 
   return (control: AbstractControl): {[key: string]: any} => {
     var cpf = control.value;
-    console.info(cpf);
+    this._logger.info(cpf, "cpf at current moment");
 
 
     const cpfWithoutletters = ReplaceNotNumericalDigits(cpf);
     if(cpfWithoutletters != null){
       cpf = cpfWithoutletters
-      console.info(cpf)
+      this._logger.info(cpf, "cpf has beens registered already");
     }else{
       return null
     }
@@ -34,11 +35,11 @@ export function ValidatesCpf(): ValidatorFn {
 
       //check if the first verifying digit of cpf is valid
       ValidatesCpfFirstVerifyingDigit(cpf);
-      console.trace("Cpf: ", cpf, " tem o primeiro digito valido");
+      this._logger.info("Cpf: ", cpf, " tem o primeiro digito valido");
 
       //check if the second verifying digit of cpf is valid
       ValidatesCpfSecondVerifyingDigit(cpf);
-      console.trace("Cpf: ", cpf, " tem o segundo digito válido");
+      this._logger.info("Cpf: ", cpf, " tem o segundo digito válido");
 
     }catch(error){
       if(error instanceof Error){

@@ -20,6 +20,8 @@ import { ListEnterprises } from '../pages/enterprise/listEnterprises/list-enterp
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { Logger } from 'angular2-logger/core';
+import { LOG_LOGGER_PROVIDERS } from 'angular2-logger/core'
 
 @NgModule({
   declarations: [
