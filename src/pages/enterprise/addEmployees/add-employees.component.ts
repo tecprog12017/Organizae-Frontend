@@ -3,6 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { Http, URLSearchParams } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/Rx';
+import { Logger } from 'angular2-logger/core';
 
 import { UserTokenSession } from '../../user/signIn/user-token-session.service';
 import { Enterprise } from '../../../models/enterprise';
@@ -17,7 +18,7 @@ export class AddEmployees {
   currentEnterprise: Enterprise;
 
   constructor(public navCtrl: NavController, private http: Http, public userTokenSession: UserTokenSession,
-              public navParams: NavParams) {
+              public navParams: NavParams, private _logger: Logger) {
     this.allUsers = null;
     this.selectedUsers = [];
     this.currentEnterprise = navParams.get('currentEnterprise');
@@ -27,6 +28,7 @@ export class AddEmployees {
   //This method runs before the window load completely, so we can query all users at database
   ionViewWillLoad(){
     this.getAllUsers();
+    this._logger.info('Getting all users before render page');
   }
 
   //This one find all users that are not at hosted at the current enterprise
@@ -75,8 +77,10 @@ export class AddEmployees {
     .subscribe(status => {
       if(status != 400){
         this.navCtrl.pop();
+        this._logger.info('Add employee to enterprise with sucess');
       }
       else{
+        this._logger.error('Something went wrong at backend while add employee to enterprise');
         //To do stuff
       }
     }
@@ -88,9 +92,11 @@ export class AddEmployees {
     .subscribe(status => {
       if(status != 400){
         //Nothing to do
+        this._logger.info('Add enterprise to specific employee sucessfuly');
       }
       else{
         //Stuff to do
+        this._logger.error('Got an error adding the enterprise to employee');
       }
     }
     );
