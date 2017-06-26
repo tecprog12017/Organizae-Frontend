@@ -1,3 +1,11 @@
+/**
+  File:cpf-custom-validations.ts
+  Purpose:take care of the validation of user's cpf
+  //more Information about his validation at: https://http://www.geradorcpf.com/algoritmo_do_cpf.htm
+  License: MIT
+*/
+
+
 import { AbstractControl, ValidatorFn } from '@angular/forms';
 
 //Validates used to only allow cpf according to cpf algorithm
