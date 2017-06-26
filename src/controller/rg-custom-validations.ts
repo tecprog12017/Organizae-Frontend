@@ -39,7 +39,7 @@ export function ValidateRgNumber (): ValidatorFn {
   }
 }
 
-function ReplaceNotNumericalDigits(rgNumber:string){
+private Sfunction ReplaceNotNumericalDigits(rgNumber:string){
   if(rgNumber != null){
     //remove all non numerical characters of rg number to prevent masks
     return rgNumber = rgNumber.replace(/\D/g, '');
@@ -62,7 +62,7 @@ function CheckIfRgNumberIsEmpty(rgNumber:string){
 }
 
 //Check RgNumber cpf between 5 and  13  digits
-function CheckIfCpfHasRequiredLenght(rgNumber:string){
+private function CheckIfCpfHasRequiredLenght(rgNumber:string){
   assert(rgNUmber != null, "rg Number can not be null")
   assert(rgNUmber != "", "rg Number can not be empty")
   const minDigitsValue = 5
