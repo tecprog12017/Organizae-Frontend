@@ -1,10 +1,11 @@
 import { AbstractControl, ValidatorFn } from '@angular/forms';
 
+var assert = require('assert');
+
 export function ValidateRgNumber (): ValidatorFn {
 
   return (control: AbstractControl): {[key: string]: any} => {
     var rgNumber = control.value;
-    console.log(rgNumber);
 
     const rgNumberWithoutletters = ReplaceNotNumericalDigits(rgNumber);
     if(rgNumberWithoutletters != null){
@@ -50,6 +51,7 @@ function ReplaceNotNumericalDigits(rgNumber:string){
 }
 
 function CheckIfRgNumberIsEmpty(rgNumber:string){
+  assert(rgNUmber != null, "rg Number can not be null")
   if(rgNumber.trim() == ""){
     console.error("Rg number is empty");
     throw new Error("Rg number is empty")
@@ -61,6 +63,8 @@ function CheckIfRgNumberIsEmpty(rgNumber:string){
 
 //Check RgNumber cpf between 5 and  13  digits
 function CheckIfCpfHasRequiredLenght(rgNumber:string){
+  assert(rgNUmber != null, "rg Number can not be null")
+  assert(rgNUmber != "", "rg Number can not be empty")
   const minDigitsValue = 5
   const maxDigitsValue = 13;
 
